@@ -59,7 +59,8 @@
             </div>
             <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:150px">
                 <div class="row" style="margin-top: 5%">
-                    <form class="contact-form" method="post" action="/staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                    <form class="" method="post" action="staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="col-sm-6" style="" id="" >
                             <div class="" style="margin-left: 5%">
                                 <label class="" for="">Mobile No:</label>
@@ -69,14 +70,15 @@
                                     </div>
                                     <div class="form-group col-sm-3">
                                         <div class="form-group">
-                                            <center><button id="" style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
+                                            <center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <form class="contact-form" method="post" action="/staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                    <form class="" method="post" action="staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="col-sm-6" style="" id="" >
                             <div class="" style="margin-left: -3%">
                                 <label class="" for="">Email Address:</label>
@@ -86,7 +88,7 @@
                                     </div>
                                     <div class="form-group col-sm-3">
                                         <div class="form-group">
-                                            <center><button id="" style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
+                                            <center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
                                         </div>
                                     </div>
                                 </div>
@@ -95,75 +97,45 @@
                     </form>
                 </div>
             </div><br/>
-
-            <div id="" style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
-                <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="margin-top: -2.5%;margin-left: 5%">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <div class="row" style="">
-                        <div class="col-sm-6" style="" id="" >
-                            <div class="">
-                                <label class="" for=""><b>Surname:</b></label>
-                                <div class="form-group">
-                                    <label class="" for=""><b></b></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6" style="" id="" >
-                            <div class="">
-                                <label class="" for=""><b>Firstname:</b></label>
-                                <div class="form-group">
-                                    <label class="" for=""><b></b></label>
-                                </div>
-                            </div>
-                        </div>
+            @if(isset($customer))
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <table class="table table-bordered table-striped table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Surname</th>
+                                    <th>First Name</th>
+                                    <th>Mobile Number</th>
+                                    <th>Email</th>
+                                    <th>Room</th>
+                                    <th>Check In</th>
+                                    <th>Check Out</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if($customer->count() > 0)
+                                    <?php $i=1?>
+                                    @foreach($customer as $cus)
+                                        <tr>
+                                            <td>{{$i++}}</td>
+                                            <td>{{$cus->sname}}</td>
+                                            <td>{{$cus->fname}}</td>
+                                            <td>{{$cus->mobile}}</td>
+                                            <td>{{$cus->email}}</td>
+                                            <td>{{$cus->roomNo()->first()->room_no}}</td>
+                                            <td>{{$cus->check_in->format('D, jS, M Y')}}</td>
+                                            <td>{{$cus->check_out->format('D, jS, M Y')}}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr><th colspan="8">No Match Found</th></tr>
+                                @endif
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="row" style="">
-                        <div class="col-sm-6" style="" id="" >
-                            <div class="">
-                                <label class="" for=""><b>Mobile No:</b></label>
-                                <div class="form-group">
-                                    <label class="" for=""><b></b></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6" style="" id="" >
-                            <div class="">
-                                <label class="" for=""><b>Email Address:</b></label>
-                                <div class="form-group">
-                                    <label class="" for=""><b></b></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="">
-                        <div class="col-sm-6" style="" id="" >
-                            <div class="">
-                                <label class="" for=""><b>Check In:</b></label>
-                                <div class="form-group">
-                                    <label class="" for=""><b></b></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6" style="" id="" >
-                            <div class="">
-                                <label class="" for=""><b>Check Out:</b></label>
-                                <div class="form-group">
-                                    <label class="" for=""><b></b></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="" style="margin-left: 40%">
-                        <label class="" for=""><b>Room No:</b></label>
-                        <div class="form-group">
-                            <label class="" for=""><b></b></label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button id="submitForm" style="width: 50%; margin-left:22%" type="submit" class="btn btn-primary "><b>Close</b></button>
-                    </div>
-                </form>
-            </div><br/>
+                </div>
+            @endif
 
         </div>
     </div><!--/.container-->
@@ -187,6 +159,6 @@
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/main.js"></script>
-<script src="js/custom/default.js"></script>
+{{--<script src="js/custom/default.js"></script>--}}
 </body>
 </html>

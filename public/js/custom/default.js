@@ -1,10 +1,13 @@
 $(function(){
     $('.book_room').bind('click', function(){
+        $('#summaryDiv').html('');
+        $('#reservation-form')[0].reset();
         var id = $(this).val();
         $.get('/get-category/'+id, function(data){
             if(data){
                 //$('#pricing').addClass('show');
                 $('#pricing').removeClass('hide');
+                $('#summaryForm').removeClass('hide');
                 $('#room_price').text(data.price);
                 $('#room_name').text(data.name);
                 $('#cat_image1').attr('src', data.image);
@@ -16,6 +19,40 @@ $(function(){
                 });
                 $('#roomNo_id').html(option);
                 //console.info('Room No', data.roomNos);
+                $('html, body').animate({
+                    scrollTop: $('#pricing').offset().top
+                }, 2000);
+            }
+            //alert(data.id);
+        });
+
+    });
+
+    $('.reserveRoomBtn').bind('click', function(){
+
+        $('#summaryDiv').html('');
+        $('#reservation-form')[0].reset();
+        var id = $(this).val();
+        $.get('/get-category/'+id, function(data){
+            if(data){
+                //$('#pricing').addClass('show');
+                $('#pricing').removeClass('hide');
+                $('#summaryForm').removeClass('hide');
+
+                $('#room_price').text(data.price);
+                $('#room_name').text(data.name);
+                $('#cat_image1').attr('src', data.image);
+                $('#cat_image2').attr('href', data.image);
+                $('#room_count').text(data.roomNos.length);
+                var option = '<option value="">Select room</option>';
+                $.each(data.roomNos, function(index, value){
+                    option += '<option value="'+value.id+'">'+value.room_no+'</option>';
+                });
+                $('#roomNo_id').html(option);
+                //console.info('Room No', data.roomNos);
+                $('html, body').animate({
+                    scrollTop: $('#pricing').offset().top
+                }, 2000);
             }
             //alert(data.id);
         });
@@ -23,6 +60,7 @@ $(function(){
     });
 
     $('#submitForm').bind('click', function(e){
+        $('#summaryForm').addClass('hide');
         e.preventDefault();
         $.post('/reserve-room/', $('#reservation-form').serialize(), function(data){
             if(data){
@@ -70,3 +108,10 @@ $(function(){
         return false;
     });
 });
+
+//Scrolling To a div
+function scroll2Div(div){
+    $('html, body').animate({
+        scrollTop: div.offset().top
+    }, 2000);
+}

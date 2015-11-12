@@ -19,8 +19,8 @@ class CreateReservationTable extends Migration
             $table->string('mobile');
             $table->string('email');
             $table->string('roomNo_id');
-            $table->date('check_in');
-            $table->date('check_out');
+            $table->timestamp('check_in');
+            $table->timestamp('check_out');
             $table->timestamps();
         });
     }

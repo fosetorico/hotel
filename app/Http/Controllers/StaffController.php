@@ -20,13 +20,13 @@ class StaffController extends Controller
     {
         $inputs = $request->all();
 
-        if($inputs['mobile'])
+        if(isset($inputs['mobile']))
         {
-            $customer = Reservation::where('mobile', $inputs['mobile'])->get();
+            $customer = Reservation::where('mobile', $inputs['mobile'])->orderBy('check_in', 'desc')->get();
         }
-        elseif($inputs['email'])
+        elseif(isset($inputs['email']))
         {
-            $customer = Reservation::where('email', $inputs['email'])->get();
+            $customer = Reservation::where('email', $inputs['email'])->orderBy('check_in', 'desc')->get();
         }
         return view('staffs.staff', compact('customer'));
     }

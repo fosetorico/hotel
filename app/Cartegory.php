@@ -18,4 +18,9 @@ class Cartegory extends Model
     {
         return $this->hasMany('App\RoomNo', 'cart_id');
     }
+
+    public function rooms()
+    {
+        return $this->hasMany('App\Room', 'cart_id');
+    }
 }

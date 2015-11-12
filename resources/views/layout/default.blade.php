@@ -9,6 +9,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/datepicker/css/datepicker.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -184,6 +185,8 @@
                 </div-->
 
                 <div class="col-sm-6" style="" id="summaryDiv">
+                </div>
+                <div class="col-sm-6 hide" style="" id="summaryForm">
                     <center><label><i>There Are <b><label id="room_count" style="color:red"></label></b> Rooms Available That Match Your Choice</i></label><br/><br/></center>
                     <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="margin-top: -2.5%">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -233,13 +236,13 @@
                                 <div class="col-sm-6" style="" id="" >
                                     <div class="form-group">
                                         <label class="" for="">Check In:</label>
-                                        <input type="date" name="check_in" id="check_in" class="form-control" required="required" placeholder="Check In">
+                                        <input type="text" name="check_in" id="check_in" class="form-control date-picker" required="required" placeholder="Check In">
                                     </div>
                                 </div>
                                 <div class="col-sm-6" style="" id="" >
                                     <div class="form-group">
                                         <label class="" for="">Check Out:</label>
-                                        <input type="date" name="check_out" id="check_out" class="form-control" required="required" placeholder="Check Out">
+                                        <input type="text" name="check_out" id="check_out" class="form-control date-picker" required="required" placeholder="Check Out">
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +401,29 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script src="js/main.js"></script>
 <script src="js/custom/default.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        var DatePicker = function () {
+            //function to initiate bootstrap-datepicker
+            var runDatePicker = function () {
+                $('.date-picker').datepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd',
+                });
+            };
+            return {
+                //main function to initiate template pages
+                init: function () {
+                    runDatePicker();
+                }
+            };
+        }();
+
+        DatePicker.init();
+    });
+</script>
 </body>
 </html>

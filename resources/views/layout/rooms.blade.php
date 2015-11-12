@@ -9,6 +9,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/datepicker/css/datepicker.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -51,78 +52,44 @@
 
 </section><!--/#main-slider-->
 
-<section id="main-slider" class="carousel" style="border: 2px solid blue; height: 20px">
-    <div class="carousel-inner" style="margin-top:-90px;border: 2px solid red; height:400px">
-        <div class="item active" style="background-color: ghostwhite; height: 400px;">
-            <div class="container" style="">
-                <div class="center gap">
-                    <h2>Super Deluxe.</h2>
-                </div>
-                <div class="row" style="margin-top: 4%">
-                        <div class="col-sm-3">
-                            <div class="carousel-content" style="">
-                                    <img class="" src="images/portfolio/thumb/slider-bg copy.jpg" alt="" style="width:96%;height:200px;">
+@foreach($cart as $car)
+    <section id="main-slider" class="carousel" style="border: 2px solid blue; height: 20px">
+        <div class="carousel-inner" style="margin-top:-90px;border: 2px solid red; height:400px">
+            <?php $i = 0?>
+            @if($car->rooms()->count() > 0)
+                @foreach($car->rooms()->get() as $room)
+                    @if($i < 1)
+                        <div class="item active" style="background-color: ghostwhite; height: 400px;">
+                    @else
+                        <div class="item" style="background-color: ghostwhite; height: 400px;">
+                    @endif
+                        <div class="container" style="">
+                            <div class="center gap">
+                                <h2>{{$car->name}}.</h2>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="carousel-content" style="">
-                                <img class="" src="images/portfolio/thumb/slider-bg copy.jpg" alt="" style="width:96%;height:200px;">
+                            <div class="row" style="margin-top: 4%">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="carousel-content" style="">
+                                            <img class="" src="{{$room->image}}" alt="" style="width:96%;height:200px;">
+                                    </div>
+                                </div>
+                                <p> Room {{$room->name}}</p>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="carousel-content" style="">
-                                <img class="" src="images/portfolio/thumb/slider-bg copy.jpg" alt="" style="width:96%;height:200px;">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="carousel-content" style="">
-                                <img class="" src="images/portfolio/thumb/slider-bg copy.jpg" alt="" style="width:96%;height:200px;">
-                            </div>
-                        </div>
-                </div>
-            </div><br/>
-            <div class="form-group">
-                <center><button id="submitForm" style="width: 30%" type="submit" class="btn btn-primary "><b>Reserve</b></button></center>
-            </div>
-        </div>
-        <div class="item" style="background-color: ghostwhite; height: 400px;">
-            <div class="container" style="">
-                <div class="center gap">
-                    <h2>Super Deluxe.</h2>
-                </div>
-                <div class="row" style="margin-top: 4%">
-                    <div class="col-sm-3">
-                        <div class="carousel-content" style="">
-                            <img class="" src="images/team3.jpg" alt="" style="width:96%;height:200px;">
+                        </div><br/>
+                        <div class="form-group">
+                            <center><button value="{{$car->id}}" style="width: 30%" type="button" class="reserveRoomBtn btn btn-primary "><b>Reserve</b></button></center>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="carousel-content" style="">
-                            <img class="" src="images/team3.jpg" alt="" style="width:96%;height:200px;">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="carousel-content" style="">
-                            <img class="" src="images/team3.jpg" alt="" style="width:96%;height:200px;">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="carousel-content" style="">
-                            <img class="" src="images/team3.jpg" alt="" style="width:96%;height:200px;">
-                        </div>
-                    </div>
-                </div>
-            </div><br/>
-            <div class="form-group">
-                <center><button id="submitForm" style="width: 30%" type="submit" class="btn btn-primary "><b>Reserve</b></button></center>
-            </div>
-        </div>
-    </div><!--/.carousel-inner-->
-    <a class="prev" href="#main-slider" data-slide="prev" style="margin-top: 6.5%"><i class="icon-angle-left"></i></a>
-    <a class="next" href="#main-slider" data-slide="next" style="margin-top: 6.5%"><i class="icon-angle-right"></i></a>
-</section><!--/#main-slider-->
+                    {{$i++}}
+                @endforeach
+            @endif
+        </div><!--/.carousel-inner-->
+        <a class="prev" href="#main-slider" data-slide="prev" style="margin-top: 6.5%"><i class="icon-angle-left"></i></a>
+        <a class="next" href="#main-slider" data-slide="next" style="margin-top: 6.5%"><i class="icon-angle-right"></i></a>
+    </section><!--/#main-slider-->
+@endforeach
 
-<section id="pricing" class="">
+<section id="pricing" class="hide">
     <div class="container">
         <div class="box">
             <div class="center" style="margin-top: -5%">
@@ -134,7 +101,7 @@
                 <div class="col-sm-6" style="">
                     <ul class="plan" style="margin-top:5%">
                         <li class="plan-name"><h4><b><label id="room_name"></label></b></h4></li>
-                        <div id="pricing-table" class="row">
+                        <div id="pricing-table2" class="row">
                             <div class="col-sm-6" style="">
                                 <div class="portfolio-image" style="width:100%;">
                                     <img src="" id="cat_image1" alt="" style="width:100%; height:200px; margin-left:5%">
@@ -153,8 +120,10 @@
                 </div>
 
                 <div class="col-sm-6" style="" id="summaryDiv">
+                </div>
+                <div class="col-sm-6 hide" style="" id="summaryForm">
                     <center><label><i>There Are <b><label id="room_count" style="color:red"></label></b> Rooms Available That Match Your Choice</i></label><br/><br/></center>
-                    <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="margin-top: -2.5%">
+                    <form id="reservation-form" method="post" action="/reserve-room" role="form" style="margin-top: -2.5%">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="row" style="">
                             <div class="col-sm-6" style="" id="" >
@@ -202,13 +171,13 @@
                             <div class="col-sm-6" style="" id="" >
                                 <div class="form-group">
                                     <label class="" for="">Check In:</label>
-                                    <input type="date" name="check_in" id="check_in" class="form-control" required="required" placeholder="Check In">
+                                    <input type="text" name="check_in" id="check_in" class="form-control date-picker" required="required" placeholder="Check In">
                                 </div>
                             </div>
                             <div class="col-sm-6" style="" id="" >
                                 <div class="form-group">
                                     <label class="" for="">Check Out:</label>
-                                    <input type="date" name="check_out" id="check_out" class="form-control" required="required" placeholder="Check Out">
+                                    <input type="text" name="check_out" id="check_out" class="form-control date-picker" required="required" placeholder="Check Out">
                                 </div>
                             </div>
                         </div>
@@ -244,7 +213,29 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script src="js/main.js"></script>
 <script src="js/custom/default.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        var DatePicker = function () {
+            //function to initiate bootstrap-datepicker
+            var runDatePicker = function () {
+                $('.date-picker').datepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd',
+                });
+            };
+            return {
+                //main function to initiate template pages
+                init: function () {
+                    runDatePicker();
+                }
+            };
+        }();
+
+        DatePicker.init();
+    });
+</script>
 </body>
 </html>

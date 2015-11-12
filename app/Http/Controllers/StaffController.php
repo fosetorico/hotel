@@ -20,7 +20,14 @@ class StaffController extends Controller
     {
         $inputs = $request->all();
 
-        $customer = Reservation::where('mobile', $inputs['mobile']);
+        if($inputs['mobile'])
+        {
+            $customer = Reservation::where('mobile', $inputs['mobile'])->get();
+        }
+        elseif($inputs['email'])
+        {
+            $customer = Reservation::where('email', $inputs['email'])->get();
+        }
         return view('staffs.staff', compact('customer'));
     }
 }

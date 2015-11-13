@@ -138,9 +138,6 @@
                             <div class="col-sm-6" style="">
                                 <div class="portfolio-image" style="width:100%;">
                                     <img src="" id="cat_image1" alt="" style="width:100%; height:200px; margin-left:5%">
-                                    <!--div class="overlay">
-                                        <a class="preview btn btn-danger" id="cat_image2" title="Lorem ipsum dolor sit amet" href=""><i class="icon-eye-open"></i></a>
-                                    </div-->
                                 </div><br/><br/>
                             </div>
                             <div class="col-sm-6" style="">
@@ -151,43 +148,14 @@
                         </div>
                     </ul>
                 </div>
-                <!--div class="col-sm-6" style="" id="summaryDiv">
-                    <section style="margin-top: 10%;width: 90%;margin-left: 5%">
-                        <center><label><h4><b><i>Your Reservation Details...</i></b></h4></label></center>
-                        <div class="row" style="background-color: white; border-radius:20px 20px">
-                            <div class="col-sm-6" style="margin-top: 3.5%" id="" >
-                                <div class=""><label class="" for="">Surname:</label>
-                                    <label class="" for="">'+data.sname+'</label>
-                                </div><br/>
-                                <div class=""><label class="" for="">Firstname:</label>
-                                    <label class="" for="">'+data.fname+'</label>
-                                </div><br/>
-                                <div class=""><label class="" for="">Phone Number:</label>
-                                    <label class="" for="">'+data.mobile+'</label>
-                                </div><br/>
-                                <div class=""><label class="" for="">Room Number:</label>
-                                    <label class="" for="">'+data.roomNo+'</label>
-                                </div><br/>
-                            </div>
-                            <div class="col-sm-6" style="margin-top: 3.5%" id="">
-                                <div class=""><label class="" for="">Email Address:</label>
-                                    <label class="" for="">'+data.email+'</label>
-                                </div><br/>
-                                <div class=""><label class="" for="">Check In:</label>
-                                    <label class="" for="">'+data.check_in+'</label>
-                                </div><br/>
-                                <div class=""><label class="" for="">Check Out:</label>
-                                    <label class="" for="">'+data.check_out+'</label>
-                                </div><br/>
-                            </div>
-                        </div>
-                    </section>
-                </div-->
 
                 <div class="col-sm-6" style="" id="summaryDiv">
                 </div>
                 <div class="col-sm-6 hide" style="" id="summaryForm">
                     <center><label><i>There Are <b><label id="room_count" style="color:red"></label></b> Rooms Available That Match Your Choice</i></label><br/><br/></center>
+                    <div id="msg_div" class="alert">
+
+                    </div>
                     <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="margin-top: -2.5%">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="row" style="">
@@ -257,72 +225,6 @@
     </div>
 </section><!--/#pricing-->
 
-<section id="about-us">
-    <div- class="container">
-        <div class="box">
-            <div class="center">
-                <h2>Meet the Team</h2>
-                <p class="lead">Pellentesque habitant morbi tristique senectus et netus et<br>malesuada fames ac turpis egestas.</p>
-            </div>
-            <div class="gap"></div>
-            <div id="team-scroller" class="carousel scale">
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team1.jpg" alt="" ></p>
-                                    <h3>Agnes Smith<small class="designation">CEO &amp; Founder</small></h3>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team2.jpg" alt="" ></p>
-                                    <h3>Donald Ford<small class="designation">Senior Vice President</small></h3>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team3.jpg" alt="" ></p>
-                                    <h3>Karen Richardson<small class="designation">Assitant Vice President</small></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team3.jpg" alt="" ></p>
-                                    <h3>David Robbins<small class="designation">Co-Founder</small></h3>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team1.jpg" alt="" ></p>
-                                    <h3>Philip Mejia<small class="designation">Marketing Manager</small></h3>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team2.jpg" alt="" ></p>
-                                    <h3>Charles Erickson<small class="designation">Support Manager</small></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="left-arrow" href="#team-scroller" data-slide="prev">
-                    <i class="icon-angle-left icon-4x"></i>
-                </a>
-                <a class="right-arrow" href="#team-scroller" data-slide="next">
-                    <i class="icon-angle-right icon-4x"></i>
-                </a>
-            </div>
-        </div-->
-    </div><!--/.container-->
-</section><!--/#about-us-->
-
 <section id="contact">
     <div class="container">
         <div class="box last">
@@ -331,9 +233,9 @@
                     <h1>Our Address.</h1><hr style="width: 70%;margin-left: 0%"/>
                     <address>
                         <h4><b>Newland Hotel and Suite.</b></h4>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107.<br>
-                        <abbr title="Phone">Tel:</abbr> (123) 456-7890
+                        11 Koforidua St, Off Mambolo St<br>
+                        Wuse Zone 2, Abuja.<br>
+                        <abbr title="Phone">Tel:</abbr> (234) 456-7890-899
                     </address>
 
                     <!--div class="status alert alert-success" style="display: none"></div>
@@ -382,13 +284,108 @@
             </div><!--/.row-->
         </div><!--/.box-->
     </div><!--/.container-->
-</section><!--/#contact-->
+</section><!--/#contact--><br/><br/>
+
+<section id="services" STYLE="">
+    <div class="container">
+        <div class="box first" STYLE="">
+            <div class="center gap" STYLE="">
+                <h4><b><i>Forgot Your Reservation Details?...Search Here.</i></b></h4>
+            </div>
+            <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:120px">
+                <div class="row" style="margin-top: 5%">
+                    <form class="" method="post" action="/check" role="form" style="margin-top: -2.5%;margin-left: 2%">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="col-sm-6" style="" id="" >
+                            <div class="" style="margin-left: 5%">
+                                <label class="" for="">Mobile No:</label>
+                                <div class="row" style="">
+                                    <div class="form-group col-sm-9">
+                                        <input type="text" style="" name="mobile" id="mobile" class="form-control" required="required" placeholder="Mobile No">
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <div class="form-group">
+                                            <center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="" method="post" action="/check" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <div class="col-sm-6" style="" id="" >
+                            <div class="" style="margin-left: -3%">
+                                <label class="" for="">Email Address:</label>
+                                <div class="row" style="">
+                                    <div class="form-group col-sm-9">
+                                        <input type="text" style="" name="email" id="email" class="form-control" required="required" placeholder="Email Address">
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <div class="form-group">
+                                            <center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><br/>
+            @if(isset($customer))
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <table class="table table-bordered table-striped table-hover table-responsive">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Surname</th>
+                                <th>First Name</th>
+                                <th>Mobile Number</th>
+                                <th>Email</th>
+                                <th>Room</th>
+                                <th>Check In</th>
+                                <th>Check Out</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if($customer->count() > 0)
+                                <?php $i=1?>
+                                @foreach($customer as $cus)
+                                    <tr>
+                                        <td>{{$i++}}</td>
+                                        <td>{{$cus->sname}}</td>
+                                        <td>{{$cus->fname}}</td>
+                                        <td>{{$cus->mobile}}</td>
+                                        <td>{{$cus->email}}</td>
+                                        <td>{{$cus->roomNo()->first()->room_no}}</td>
+                                        <td>{{$cus->check_in->format('D, jS, M Y')}}</td>
+                                        <td>{{$cus->check_out->format('D, jS, M Y')}}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr><th colspan="8">No Match Found</th></tr>
+                            @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
+
+        </div>
+    </div><!--/.container-->
+</section><!--/#services-->
 
 <footer id="footer">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <b>&copy;</b> 2015 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates"><b>Newlnd Hotels and Suites</b></a>. All Rights Reserved.
+                <b>&copy;</b>
+                <?php
+                    $date = date('Y-M-d');
+                    $subt = substr($date, 0, 4);
+                ?> {{$subt}}&nbsp;
+                <a target="_blank" href="" title=""><b>Newland Hotels and Suites</b></a>. All Rights Reserved.
             </div>
             <!--div class="col-sm-6">
                 <img class="pull-right" src="images/shapebootstrap.png" alt="ShapeBootstrap" title="ShapeBootstrap">

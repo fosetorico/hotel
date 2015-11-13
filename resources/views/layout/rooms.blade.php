@@ -48,38 +48,34 @@
     </div>
 </header><!--/#header-->
 
-<section id="" class="" style="height:55px">
-
-</section><!--/#main-slider-->
-
 @foreach($cart as $car)
-    <section id="main-slider" class="carousel" style="border: 2px solid blue; height: 20px">
-        <div class="carousel-inner" style="margin-top:-90px;border: 2px solid red; height:400px">
+    <section id="main-slider" class="carousel" style="height: 700px">
+        <div class="carousel-inner" style="margin-top:-90px;height:750px">
             <?php $i = 0?>
             @if($car->rooms()->count() > 0)
                 @foreach($car->rooms()->get() as $room)
                     @if($i < 1)
-                        <div class="item active" style="background-color: ghostwhite; height: 400px;">
+                        <div class="item active" style="background-color: ghostwhite;height: 650px;">
                     @else
-                        <div class="item" style="background-color: ghostwhite; height: 400px;">
+                        <div class="item" style="background-color: ghostwhite;height: 650px;">
                     @endif
-                        <div class="container" style="">
-                            <div class="center gap">
-                                <h2>{{$car->name}}.</h2>
-                            </div>
-                            <div class="row" style="margin-top: 4%">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <div class="carousel-content" style="">
-                                            <img class="" src="{{$room->image}}" alt="" style="width:96%;height:200px;">
-                                    </div>
+                            <div class="container" style=""><br/>
+                                <div class="center gap">
+                                    <h2>{{$car->name}}.</h2><hr/>
                                 </div>
-                                <p> Room {{$room->name}}</p>
+                                <div class="row" style="margin-top: 4%">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <div class="carousel-content" style="">
+                                                <img class="" src="{{$room->image}}" alt="" style="width:96%;height:400px;">
+                                        </div>
+                                    </div>
+                                    <p> Room {{$room->name}}</p>
+                                </div>
+                            </div><br/><br/>
+                            <div class="form-group">
+                                <center><button value="{{$car->id}}" style="width: 30%" type="button" class="reserveRoomBtn btn btn-primary "><b>Reserve</b></button></center>
                             </div>
-                        </div><br/>
-                        <div class="form-group">
-                            <center><button value="{{$car->id}}" style="width: 30%" type="button" class="reserveRoomBtn btn btn-primary "><b>Reserve</b></button></center>
-                        </div>
-                    </div>
+                         </div>
                     {{$i++}}
                 @endforeach
             @endif
@@ -89,10 +85,10 @@
     </section><!--/#main-slider-->
 @endforeach
 
-<section id="pricing" class="hide">
+<section id="pricing" class="hide" style="margin-top: 5%">
     <div class="container">
         <div class="box">
-            <div class="center" style="margin-top: -5%">
+            <div class="center" style="margin-top: -2%">
                 <h2>Room Reservation.</h2>
             </div>
             <div id="pricing-table" class="row" style="border:1px solid #c0c0c0; border-radius: 5px 5px">
@@ -185,16 +181,13 @@
                             <center><button id="submitForm" style="width: 80%" type="submit" class="btn btn-primary "><b>Reserve</b></button></center>
                         </div>
                     </form>
-                </div>
+                </div><br/>
 
             </div>
         </div>
     </div>
 </section><!--/#pricing-->
 
-        </div>
-    </div><!--/.container-->
-</section><!--/#services-->
 
 <footer id="footer">
     <div class="container">

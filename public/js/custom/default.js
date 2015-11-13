@@ -29,12 +29,13 @@ $(function(){
     });
 
     $('.reserveRoomBtn').bind('click', function(){
-
+        //image show
         $('#summaryDiv').html('');
         $('#reservation-form')[0].reset();
         var id = $(this).val();
         $.get('/get-category/'+id, function(data){
             if(data){
+                //image hide
                 //$('#pricing').addClass('show');
                 $('#pricing').removeClass('hide');
                 $('#summaryForm').removeClass('hide');
@@ -60,46 +61,64 @@ $(function(){
     });
 
     $('#submitForm').bind('click', function(e){
-        $('#summaryForm').addClass('hide');
         e.preventDefault();
         $.post('/reserve-room/', $('#reservation-form').serialize(), function(data){
             if(data){
-                var output ='<div class="col-sm-6" style="" id="summaryDiv">\
-                                <section style="margin-top: 10%;width: 200%;margin-left: 5%">\
-                                    <center><label><h4><b><i>Your Reservation Details...</i></b></h4></label></center>\
-                                    <div class="row" style="background-color: white; border-radius:20px 20px">\
-                                        <div class="col-sm-6" style="margin-top: 3.5%" id="" >';
-                                output += '<div class=""><label class="" for=""><b>Surname:</b></label>\
-                                                <label class="" for=""><b>'+data.sname+'</b></label>\
-                                              </div><br>';
-                                output += '<div class=""><label class="" for=""><b>Firstname:</b></label>\
-                                                <label class="" for=""><b>'+data.fname+'</b></label>\
-                                            </div><br>';
-                                output += '<div class=""><label class="" for=""><b>Phone Number:</b></label>\
-                                                <label class="" for=""><b>'+data.mobile+'</b></label>\
-                                            </div><br>\
+                if(!data.success){
+                    var output = data.message + '<ul>';
+                    $('#msg_div').addClass('alert-danger');
+                    $.each(data.errors, function (index, value) {
+                        output += '<li>'+value+'</li>';
+                    });
+                    output += '</ul>';
+                    $('#msg_div').html(output);
+                }
+                else {
+                    $('#summaryForm').addClass('hide');
+                    var output = '<div class="col-sm-6" style="" id="summaryDiv">\
+                                    <section style="margin-top: 10%;width: 200%;margin-left: 5%">\
+                                        <div class="row" style="background-color: white; border-radius:20px 20px">\
+                                            <center><label><h4><b><i>Your Reservation Details...</i></b></h4></label></center>\
+                                            <div class="alert alert-success">'+data.message+'</div>\
+                                            <div class="col-md-10 col-md-offset-1">\
+                                                <table class="table table-bordered table-striped table-hover table-responsive" style="border-radius: 10px 10px">\
+                                                    <tbody>\
+                                                        <tr>';
+                    output += '<td><label class="" for=""><b>Surname:</b></label></td>\
+                                                               <td><label class="" for="">' + data.sname + '</label></td>\
+                                                        </tr>\
+                                                        <tr>';
+                    output += '<td><label class="" for=""><b>Firstname:</b></label></td>\
+                                                               <td><label class="" for="">' + data.fname + '</label></td>\
+                                                        </tr>\
+                                                        <tr>';
+                    output += '<td><label class="" for=""><b>Phone Number:</b></label></td>\
+                                                               <td><label class="" for="">' + data.mobile + '</label></td>\
+                                                        </tr>\
+                                                        <tr>';
+                    output += '<td><label class="" for=""><b>Email Address:</b></label></td>\
+                                                               <td><label class="" for="">' + data.email + '</label></td>\
+                                                        </tr>\
+                                                        </tr>';
+                    output += '<td><label class="" for="">Check In:</b></label></td>\
+                                                               <td><label class="" for="">' + data.check_in + '</label></td>\
+                                                        </tr>\
+                                                        <tr>';
+                    output += '<td><label class="" for=""><b>Check Out:</b></label></td>\
+                                                               <td><label class="" for="">' + data.check_out + '</label></td>\
+                                                        </tr>\
+                                                        <tr>';
+                    output += '<td><label class="" for=""><b>Room Number:</b></label></td>\
+                                                               <td><label class="" for="">' + data.roomNo + '</label></td>\
+                                                        </tr>\
+                                                    </tbody>\
+                                                </table><br/>\
+                                            </div>\
                                         </div>\
-                                        <div class="col-sm-6" style="margin-top: 3.5%" id="">';
-                                output += '<div class=""><label class="" for=""><b>Email Address:</b></label>\
-                                                <label class="" for=""><b>'+data.email+'</b></label>\
-                                           </div><br>';
-                                output += '<div class=""><label class="" for="">Check In:</b></label>\
-                                                <label class="" for=""><b>'+data.check_in+'</b></label>\
-                                           </div><br>';
-                                output += '<div class=""><label class="" for=""><b>Check Out:</b></label>\
-                                                <label class="" for=""><b>'+data.check_out+'</b></label>\
-                                           </div><br>\
-                                        </div>';
-                                output += '<div class=""><center><label class="" for=""><b>Room Number:</b></label>\
-                                                <label class="" for=""><b>'+data.roomNo+'</b></label></center>\
-                                            </div><br>\
-                                        <div class="form-group">\
-                                            <center><button id="close" style="width: 80%" type="submit" class="btn btn-primary "><b>Close</b></button></center>\
-                                        </div>\
-                                     </div>\
-                                </section>\
-                             </div-->';
-                $('#summaryDiv').html(output);
+                                    </section><br/>\
+                                 </div>';
+                    $('#summaryDiv').html(output);
+                }
                 console.info('Reservation', data);
                 //$('#pricing').addClass('show');
             }

@@ -9,7 +9,7 @@ class Reservation extends Model
 {
     protected $table = 'reservation';
     protected $dates = ['check_in', 'check_out'];
-    protected $fillable = ['sname','fname','mobile','email','roomNo_id','check_in','check_out'];
+    protected $fillable = ['sname','fname','mobile','email','roomNo_id','check_in','check_out','status'];
 
 
     /**

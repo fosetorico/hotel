@@ -21,6 +21,7 @@ class CreateReservationTable extends Migration
             $table->string('roomNo_id');
             $table->timestamp('check_in');
             $table->timestamp('check_out');
+            $table->string('status');
             $table->timestamps();
         });
     }

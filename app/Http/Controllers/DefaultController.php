@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reservation;
 use App\RoomNo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Cartegory;
 use App\Room;
@@ -24,8 +25,11 @@ class DefaultController extends Controller
     {
         $messages = [
             'sname.required' => 'The Surname is Required!',
+            'sname.alpha' => 'The Surname may only contain letters!',
             'fname.required' => 'The First Name is Required!',
+            'fname.alpha' => 'The First Name may only contain letters!',
             'mobile.required' => 'Mobile Number is Required!',
+            'mobile.numeric' => 'Mobile Number must be numbers!',
             'email.required' => 'An Email Address is Required!',
             'email.email' => 'A valid Email Address is Required!',
             'roomNo_id.required' => 'Room is Required!',
@@ -33,9 +37,9 @@ class DefaultController extends Controller
             'check_out.required' => 'Check Out Date is Required!',
         ];
         return Validator::make($data, [
-            'sname' => 'required',
-            'fname' => 'required',
-            'mobile' => 'required',
+            'sname' => 'required|alpha',
+            'fname' => 'required|alpha',
+            'mobile' => 'required|numeric',
             'email' => 'required|email',
             'roomNo_id' => 'required',
             'check_in' => 'required',
@@ -62,49 +66,73 @@ class DefaultController extends Controller
     public function reserveRoom(Request $request){
         $inputs = $request->all();
 
+        $in = new Carbon($inputs['check_in']);
+        $out = new Carbon($inputs['check_out']);
+        $difference = $in->diffInHours($out, false);
 
-        if ($this->validator($inputs)->fails())
-        {
+        if($difference < 0){
             $reservation = new \stdClass();
             $reservation->success = false;
-            $reservation->message = 'Error!!! You have error(s) while filling the form.';
-            $reservation->errors = $this->validator($inputs)->errors();
-        }else{
-            $reservation = Reservation::create($inputs);
-            if($reservation){
-                $roomNo = $reservation->roomNo()->first();
-                $roomNo->status = 1;
-                $reservation->status = 'hold';
-                $roomNo->save();
-                $reservation->save();
-                $reservation->roomNo = $reservation->roomNo()->first()->room_no;
-                $reservation->success = true;
-                $reservation->message = 'Reserved!!! You have successfully reserved the room.';
+            $reservation->message = 'Error!!! Check Out Date cannot be less than Check In Date.';
+            $reservation->errors = ['Check Out Date cannot be less than Check In Date'];
 
+            return response()->json($reservation);
+        }else {
+
+            if ($this->validator($inputs)->fails()) {
+                $reservation = new \stdClass();
+                $reservation->success = false;
+                $reservation->message = 'Error!!! You have error(s) while filling the form.';
+                $reservation->errors = $this->validator($inputs)->errors();
+            } else {
+                $reservation = Reservation::create($inputs);
+                if ($reservation) {
+                    $roomNo = $reservation->roomNo()->first();
+                    $roomNo->status = 1;
+                    $reservation->status = 'hold';
+                    $roomNo->save();
+                    $reservation->save();
+                    $reservation->roomNo = $reservation->roomNo()->first()->room_no;
+                    $reservation->success = true;
+                    $reservation->message = 'Reserved!!! You have successfully reserved the room.';
+
+                }
             }
+            return response()->json($reservation);
         }
-        return response()->json($reservation);
 
     }
 
     public function search(Request $request)
     {
         $inputs = $request->all();
+        $customers = new \stdClass();
 
-        if(isset($inputs['mobile']))
+        if(isset($inputs['mobile_search']))
         {
-            $customer = Reservation::where('mobile', $inputs['mobile'])->orderBy('check_in', 'desc')->get();
+            $customer = Reservation::where('status', '<', 3)->where('mobile', $inputs['mobile_search'])->orderBy('check_in', 'desc')->get();
         }
-        elseif(isset($inputs['email']))
+        elseif(isset($inputs['email_search']))
         {
-            $customer = Reservation::where('email', $inputs['email'])->orderBy('check_in', 'desc')->get();
+            $customer = Reservation::where('status', '<', 3)->where('email', $inputs['email_search'])->orderBy('check_in', 'desc')->get();
         }
 
-        $images = Images::where('disp','Y')->get();
-        $slide = Images::where('slid','Y')->get();
-        $cart = Cartegory::all();
-        return view('layout.default', compact('images','slide', 'cart', 'customer'));
-        //return view('layout.default', compact('customer'));
-//        return response()->json($customer);
+        if($customer->count() > 0){
+            foreach($customer as $cus){
+                $cus->room = $cus->roomNo()->first()->room_no;
+                $cus->in = $cus->check_in->format('D, jS, M Y');
+                $cus->out = $cus->check_out->format('D, jS, M Y');
+            }
+
+            $customers->reserve = $customer;
+            $customers->success = true;
+        }
+
+//        $images = Images::where('disp','Y')->get();
+//        $slide = Images::where('slid','Y')->get();
+//        $cart = Cartegory::all();
+//        return view('layout.default', compact('images','slide', 'cart', 'customer'));
+
+        return response()->json($customers);
     }
 }

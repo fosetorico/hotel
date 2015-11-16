@@ -19,31 +19,23 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/js/script.js"></script>
+
 </head><!--/head-->
 
-<body data-spy="scroll" data-target="#navbar" data-offset="0">
-<header id="header" role="banner">
-    <div class="container">
-        <div id="navbar" class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html"></a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav" style="">
-                    <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
-                    <!--li><a href="">Services</a></li>
-                    <li><a href="">Rooms</a></li>
-                    <li><a href="">Gallery</a></li>
-                    <li><a href="">Contact</a></li-->
-                </ul>
-            </div>
-        </div>
+<body>
+<header id="header" role="">
+    <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
+        <ul style="margin-top: 1%;">
+            <li class='active'><a href='/auth/login'><b><i class="icon-lock"></i>&nbsp;Staff Login</b></a></li>
+            <li><a href=''><b><i class="icon-lock"></i>&nbsp;Admin Login</b></a></li>
+            {{--<li><a href='/rooms'><b>Rooms</b></a></li>--}}
+            {{--<li><a href='/gallery'><b>Gallery</b></a></li>--}}
+            {{--<li class='active'><a href='/contact'><b>Contact</b></a></li>--}}
+        </ul>
     </div>
 </header><!--/#header-->
 
@@ -57,13 +49,13 @@
             <div class="center gap">
                 <h3><b>Staff Login.</b></h3>
             </div>
+            @include('errors.errors')
             <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:200px">
                 <div class="row" style="margin-top: 5%">
-                    @include('errors.errors')
                     <form class="" method="post" action="/auth/login" role="form" style="margin-top: -2.5%;margin-left: 5%">
                         {!! csrf_field() !!}
                         {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
-                        <div class="col-sm-6" style="" id="" >
+                        <div class="col-sm-6" style="height: 70px;" id="" >
                             <div class="" style="margin-left: 5%">
                                 <label class="" for="">Email:</label>
                                 <div class="row" style="">
@@ -73,7 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6" style="" id="" >
+                        <div class="col-sm-6" style="height: 80px;" id="" >
                             <div class="" style="margin-left: -3%">
                                 <label class="" for="">Password:</label>
                                 <div class="row" style="">
@@ -83,11 +75,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <input type="checkbox" name="remember"> Remember Me
+                        <div class="form-group"style="margin-left: 18%;">
+                            <input style=" margin-top: 0%" type="checkbox" name="remember"> Remember Me
                         </div>
                         <div class="form-group" style="margin-left: 18%">
-                            <button id="staffLogin" style="width: 70%" type="submit" class="btn btn-primary "><b>Login</b></button>
+                            <button id="staffLogin" style="width: 70%" type="submit" class="btn btn-primary "><b>Sign In</b></button>
                         </div>
                     </form>
                 </div>

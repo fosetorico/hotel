@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2015 at 08:09 PM
+-- Generation Time: Nov 16, 2015 at 07:55 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS `images` (
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `slid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `disp` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slid` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N',
+  `disp` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`room_id`)
@@ -96,7 +96,9 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2015_11_11_122601_create_cartegory_table', 3),
 ('2015_11_11_150001_create_reservation_table', 4),
 ('2015_11_11_151335_create_room-no_table', 5),
-('2015_11_13_180125_create_staffLogin_table', 6);
+('2015_11_13_180125_create_staffLogin_table', 6),
+('2015_11_13_212311_create_users_table', 7),
+('2015_11_15_173317_create_reservation_status_table', 8);
 
 -- --------------------------------------------------------
 
@@ -113,26 +115,50 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `roomNo_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `check_in` timestamp NOT NULL,
   `check_out` timestamp NOT NULL,
-  `status` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'hold',
+  `status` int(3) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=54 ;
 
 --
 -- Dumping data for table `reservation`
 --
 
 INSERT INTO `reservation` (`id`, `sname`, `fname`, `mobile`, `email`, `roomNo_id`, `check_in`, `check_out`, `status`, `created_at`, `updated_at`) VALUES
-(19, 'Anene', 'valentine', '4444444444444', 'dhf@ghn.drfg', '17', '2015-10-27 07:58:47', '2015-11-23 07:58:47', 'hold', '2015-11-13 07:58:47', '2015-11-13 07:58:47'),
-(20, 'Kayoh', 'Obi', '6666666', 'eeee@hhh.vo', '9', '2015-10-01 08:00:22', '2015-11-06 08:00:22', 'hold', '2015-11-13 08:00:22', '2015-11-13 08:00:22'),
-(21, 'Anene', 'mh,j', '3333333', 'dhf@ghn.drfg544', '7', '2015-10-21 08:01:09', '2015-11-25 08:01:09', 'hold', '2015-11-13 08:01:09', '2015-11-13 08:01:09'),
-(22, 'esrfrrr', 'cccccc', '999999999999', 'eeee@hhh.vo', '14', '2015-10-05 08:05:50', '2015-11-04 08:05:50', 'hold', '2015-11-13 08:05:50', '2015-11-13 08:05:50'),
-(23, 'fgmhhm', 'rbtnymuyr', '3333333', 'eeee@hhh.vo', '5', '2015-10-16 08:06:51', '2015-11-25 08:06:51', 'hold', '2015-11-13 08:06:51', '2015-11-13 08:06:51'),
-(24, 'esrfrrr', 'rbtnymuyr', '475897', 'dhf@ghn.drfg', '8', '2015-10-03 08:09:53', '2015-11-19 08:09:53', 'hold', '2015-11-13 08:09:53', '2015-11-13 08:09:53'),
-(25, 'dfgh', 'rbtnymuyr', '3333333', 'dhf@ghn.drfg544', '10', '2015-11-14 08:12:24', '2015-11-13 08:12:24', 'hold', '2015-11-13 08:12:24', '2015-11-13 08:12:24'),
-(26, 'esrfrrr', 'rbtnymuyr', '1234566', 'dhf@ghn.drfg544', '6', '2015-11-06 08:14:20', '2015-11-17 08:14:20', 'hold', '2015-11-13 08:14:20', '2015-11-13 08:14:20'),
-(27, 'esrfrrr', 'cccccc', '475897', 'dhf@ghn.drfg544', '15', '2015-10-28 18:03:23', '2015-11-22 18:03:23', 'hold', '2015-11-13 18:03:23', '2015-11-13 18:03:23');
+(19, 'Anene', 'valentine', '4444444444444', 'dhf@ghn.drfg', '17', '2015-11-15 17:45:21', '2015-11-15 17:45:21', 4, '2015-11-13 07:58:47', '2015-11-13 07:58:47'),
+(20, 'Kayoh', 'Obi', '6666666', 'eeee@hhh.vo', '9', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:00:22', '2015-11-13 08:00:22'),
+(21, 'Anene', 'mh,j', '3333333', 'dhf@ghn.drfg544', '7', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:01:09', '2015-11-13 08:01:09'),
+(22, 'esrfrrr', 'cccccc', '999999999999', 'eeee@hhh.vo', '14', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:05:50', '2015-11-13 08:05:50'),
+(23, 'fgmhhm', 'rbtnymuyr', '3333333', 'eeee@hhh.vo', '5', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:06:51', '2015-11-13 08:06:51'),
+(24, 'esrfrrr', 'rbtnymuyr', '475897', 'dhf@ghn.drfg', '8', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:09:53', '2015-11-13 08:09:53'),
+(25, 'dfgh', 'rbtnymuyr', '3333333', 'dhf@ghn.drfg544', '10', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:12:24', '2015-11-13 08:12:24'),
+(26, 'esrfrrr', 'rbtnymuyr', '1234566', 'dhf@ghn.drfg544', '6', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:14:20', '2015-11-13 08:14:20'),
+(27, 'esrfrrr', 'cccccc', '475897', 'dhf@ghn.drfg544', '15', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 18:03:23', '2015-11-13 18:03:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation_status`
+--
+
+CREATE TABLE IF NOT EXISTS `reservation_status` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `reservation_status`
+--
+
+INSERT INTO `reservation_status` (`id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'hold', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'check_in', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'check_out', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'expired', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -223,32 +249,31 @@ INSERT INTO `room_no` (`id`, `room_no`, `cart_id`, `status`, `created_at`, `upda
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stafflogin`
+-- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `stafflogin` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `surname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mobile` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` text COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `admin` int(3) NOT NULL DEFAULT '0',
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `stafflogin`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `stafflogin` (`id`, `title`, `surname`, `lastname`, `mobile`, `email`, `address`, `username`, `password`, `admin`, `created_at`, `updated_at`) VALUES
-(1, 'Hon.', 'Adigwe', 'Pascal', '08035333772', 'pascal@yahoo.com', 'Legislative quaters', 'pascal', 'pascal', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Miss', 'Bolanle', 'Rita', '0897654321', 'rita@gmail.com', '34 lokogoma, apo', 'rita', 'rita', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `users` (`id`, `email`, `password`, `surname`, `lastname`, `mobile`, `address`, `admin`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'pascal@yahoo.com', '$2y$10$HgOHJJnlnYJs77vcvzLgf.iWBiDC9BZHNoLJMhn3r6mU.TK3b7Kvm', '', 'Pascal', '', '', 1, NULL, '2015-11-14 06:57:05', '2015-11-14 06:57:05');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

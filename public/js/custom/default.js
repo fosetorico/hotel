@@ -1,4 +1,5 @@
 $(function(){
+
     $('.book_room').bind('click', function(){
         $('#summaryDiv').html('');
         $('#reservation-form')[0].reset();
@@ -126,11 +127,145 @@ $(function(){
         });
         return false;
     });
+
+    $('#mobile_search_btn').bind('click', function(e){
+        e.preventDefault();
+        var output = '<div class="row">\
+                            <div class="col-md-10 col-md-offset-1">\
+                                <table class="table table-bordered table-striped table-hover table-responsive">\
+                                    <thead>\
+                                        <tr>\
+                                            <th>#</th>\
+                                            <th>Surname</th>\
+                                            <th>First Name</th>\
+                                            <th>Mobile Number</th>\
+                                            <th>Email</th>\
+                                            <th>Room</th>\
+                                            <th>Check In</th>\
+                                            <th>Check Out</th>\
+                                        </tr>\
+                                    </thead>\
+                                    <tbody>';
+        $.post('/check/', $('#mobile_form').serialize(), function(data){
+            if(data){
+                if(!data.success){
+                    output += '<tr>\
+                                    <tr><th colspan="8">No Match Found</th></tr>\
+                                </tr>';
+                }
+                else {
+                    $.each(data.reserve, function(index, value){
+                        output += '<tr>\
+                                        <td>'+(index + 1)+'</td>\
+                                        <td>'+value.sname+'</td>\
+                                        <td>'+value.fname+'</td>\
+                                        <td>'+value.mobile+'</td>\
+                                        <td>'+value.email+'</td>\
+                                        <td>'+value.room+'</td>\
+                                        <td>'+value.in+'</td>\
+                                        <td>'+value.out+'</td>\
+                                    </tr>';
+                    });
+                }
+                output +=           '</tbody>\
+                                    </table>\
+                                </div>\
+                            </div>';
+                $('#search_table').html(output);
+                //$('#pricing').addClass('show');
+            }
+            //alert(data.id);
+        });
+        return false;
+    });
+
+
+    $('#email_search_btn').bind('click', function(e){
+        e.preventDefault();
+        var output = '<div class="row">\
+                            <div class="col-md-10 col-md-offset-1">\
+                                <table class="table table-bordered table-striped table-hover table-responsive">\
+                                    <thead>\
+                                        <tr>\
+                                            <th>#</th>\
+                                            <th>Surname</th>\
+                                            <th>First Name</th>\
+                                            <th>Mobile Number</th>\
+                                            <th>Email</th>\
+                                            <th>Room</th>\
+                                            <th>Check In</th>\
+                                            <th>Check Out</th>\
+                                        </tr>\
+                                    </thead>\
+                                    <tbody>';
+        $.post('/check/', $('#email_form').serialize(), function(data){
+            if(data){
+                if(!data.success){
+                    output += '<tr>\
+                                    <tr><th colspan="8">No Match Found</th></tr>\
+                                </tr>';
+                }
+                else {
+                    $.each(data.reserve, function(index, value){
+                        output += '<tr>\
+                                        <td>'+(index + 1)+'</td>\
+                                        <td>'+value.sname+'</td>\
+                                        <td>'+value.fname+'</td>\
+                                        <td>'+value.mobile+'</td>\
+                                        <td>'+value.email+'</td>\
+                                        <td>'+value.room+'</td>\
+                                        <td>'+value.in+'</td>\
+                                        <td>'+value.out+'</td>\
+                                    </tr>';
+                    });
+                }
+                output +=           '</tbody>\
+                                    </table>\
+                                </div>\
+                            </div>';
+                $('#search_table').html(output);
+                //$('#pricing').addClass('show');
+            }
+            //alert(data.id);
+        });
+        return false;
+    });
+
+
 });
 
-//Scrolling To a div
-function scroll2Div(div){
-    $('html, body').animate({
-        scrollTop: div.offset().top
-    }, 2000);
-}
+/*----------------------------------------  Gallery Image Preview  ----------------------------------------------*/
+    function readURL(input)
+    {
+        if(input.files && input.files[0])
+        {
+            var reader = new FileReader();
+            reader.onload = function (e){
+                $('#img_prev').attr('src', e.target.result)
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+/*----------------------------------------  End Gallery Image Preview  ----------------------------------------------*/
+
+/*----------------------------------------  Room Image Preview  ----------------------------------------------*/
+    function readURL2(input)
+    {
+        if(input.files && input.files[0])
+        {
+            var reader = new FileReader();
+            reader.onload = function (e){
+                $('#img_prev2').attr('src', e.target.result)
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+/*----------------------------------------  End Room Image Preview  ----------------------------------------------*/
+
+/*----------------------------------------  Scrolling To a div   ----------------------------------------------*/
+    function scroll2Div(div){
+        $('html, body').animate({
+            scrollTop: div.offset().top
+        }, 2000);
+    }
+/*----------------------------------------  End Scrolling To a div   ----------------------------------------------*/

@@ -8,10 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'CreateCartegoryTable' => $baseDir . '/database/migrations/2015_11_11_122601_create_cartegory_table.php',
     'CreateImagesTable' => $baseDir . '/database/migrations/2015_11_09_095138_create_images_table.php',
+    'CreateReservationStatusTable' => $baseDir . '/database/migrations/2015_11_15_173317_create_reservation_status_table.php',
     'CreateReservationTable' => $baseDir . '/database/migrations/2015_11_11_150001_create_reservation_table.php',
     'CreateRoomImgTable' => $baseDir . '/database/migrations/2015_11_11_104502_create_room-img_table.php',
     'CreateRoomNoTable' => $baseDir . '/database/migrations/2015_11_11_151335_create_room-no_table.php',
-    'CreateStaffLoginTable' => $baseDir . '/database/migrations/2015_11_13_180125_create_staffLogin_table.php',
+    'CreateUsersTable' => $baseDir . '/database/migrations/2015_11_13_212311_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',

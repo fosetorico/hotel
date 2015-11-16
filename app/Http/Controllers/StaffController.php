@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reservation;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,12 +23,14 @@ class StaffController extends Controller
 
     public function index()
     {
-        return view('staffs.staff');
+        $staf = User::all();
+        return view('staffs.staff',compact('staf'));
     }
 
     public function search(Request $request)
     {
         $inputs = $request->all();
+        //$status = Reservation::where('status',4)->get();
 
         if(isset($inputs['mobile']))
         {

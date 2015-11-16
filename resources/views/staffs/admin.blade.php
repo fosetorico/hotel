@@ -29,8 +29,8 @@
 <header id="header" role="">
     <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/staff'><b style="color:black"><i class="icon-home"></i>&nbsp;Home</b></a></li>
-            <li><a href='/upload'><b>Upload Images</b></a></li>
+            {{--<li><a href='/staff'><b style="color:black"><i class="icon-home"></i>&nbsp;Home</b></a></li>--}}
+            {{--<li><a href='/upload'><b>Upload Images</b></a></li>--}}
             {{--<li><a href='/rooms'><b>Rooms</b></a></li>--}}
             {{--<li><a href=''><b>Gallery</b></a></li>--}}
             {{--<li class='active'><a href='/contact'><b>Contact</b></a></li>--}}
@@ -45,7 +45,7 @@
     <div class="container">
         <div class="box first" STYLE="margin-top:2%">
             <div class="center gap">
-                <h3><b>Check Reservation Details.</b></h3> welcome {{Auth::user()->fullName()}}   <a href='/auth/logout'><b>Logout</b></a>
+                <h3><b>Check Reservation Details.</b></h3>
             </div>
             <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:150px">
                 <div class="row" style="margin-top: 5%">
@@ -92,35 +92,35 @@
                     <div class="col-md-10 col-md-offset-1">
                         <table class="table table-bordered table-striped table-hover table-responsive">
                             <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Surname</th>
-                                    <th>First Name</th>
-                                    <th>Mobile Number</th>
-                                    <th>Email</th>
-                                    <th>Room</th>
-                                    <th>Check In</th>
-                                    <th>Check Out</th>
-                                </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Surname</th>
+                                <th>First Name</th>
+                                <th>Mobile Number</th>
+                                <th>Email</th>
+                                <th>Room</th>
+                                <th>Check In</th>
+                                <th>Check Out</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @if(($customer->count() > 0) && ($customer->status != 4))
-                                    <?php $i=1?>
-                                    @foreach($customer as $cus)
-                                        <tr>
-                                            <td>{{$i++}}</td>
-                                            <td>{{$cus->sname}}</td>
-                                            <td>{{$cus->fname}}</td>
-                                            <td>{{$cus->mobile}}</td>
-                                            <td>{{$cus->email}}</td>
-                                            <td>{{$cus->roomNo()->first()->room_no}}</td>
-                                            <td>{{$cus->check_in->format('D, jS, M Y')}}</td>
-                                            <td>{{$cus->check_out->format('D, jS, M Y')}}</td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <tr><th colspan="8">No Record Found</th></tr>
-                                @endif
+                            @if(($customer->count() > 0) && ($customer->status != 4))
+                                <?php $i=1?>
+                                @foreach($customer as $cus)
+                                    <tr>
+                                        <td>{{$i++}}</td>
+                                        <td>{{$cus->sname}}</td>
+                                        <td>{{$cus->fname}}</td>
+                                        <td>{{$cus->mobile}}</td>
+                                        <td>{{$cus->email}}</td>
+                                        <td>{{$cus->roomNo()->first()->room_no}}</td>
+                                        <td>{{$cus->check_in->format('D, jS, M Y')}}</td>
+                                        <td>{{$cus->check_out->format('D, jS, M Y')}}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr><th colspan="8">No Record Found</th></tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>

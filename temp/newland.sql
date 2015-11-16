@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 16, 2015 at 07:55 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Nov 16, 2015 at 10:50 PM
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,14 +27,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `cartegory` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `image_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -53,15 +52,14 @@ INSERT INTO `cartegory` (`id`, `name`, `description`, `image_id`, `price`, `crea
 --
 
 CREATE TABLE IF NOT EXISTS `images` (
-  `room_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`room_id` int(10) unsigned NOT NULL,
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `slid` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N',
   `disp` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`room_id`)
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -107,18 +105,17 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `reservation` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `sname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mobile` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `roomNo_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `check_in` timestamp NOT NULL,
-  `check_out` timestamp NOT NULL,
+  `check_in` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `check_out` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` int(3) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=54 ;
 
 --
@@ -132,7 +129,7 @@ INSERT INTO `reservation` (`id`, `sname`, `fname`, `mobile`, `email`, `roomNo_id
 (22, 'esrfrrr', 'cccccc', '999999999999', 'eeee@hhh.vo', '14', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:05:50', '2015-11-13 08:05:50'),
 (23, 'fgmhhm', 'rbtnymuyr', '3333333', 'eeee@hhh.vo', '5', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:06:51', '2015-11-13 08:06:51'),
 (24, 'esrfrrr', 'rbtnymuyr', '475897', 'dhf@ghn.drfg', '8', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:09:53', '2015-11-13 08:09:53'),
-(25, 'dfgh', 'rbtnymuyr', '3333333', 'dhf@ghn.drfg544', '10', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:12:24', '2015-11-13 08:12:24'),
+(25, 'dfgh', 'rbtnymuyr', '3333333', 'dhf@ghn.drfg544', '10', '2015-11-16 20:03:45', '2015-11-15 17:24:50', 4, '2015-11-13 08:12:24', '2015-11-13 08:12:24'),
 (26, 'esrfrrr', 'rbtnymuyr', '1234566', 'dhf@ghn.drfg544', '6', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:14:20', '2015-11-13 08:14:20'),
 (27, 'esrfrrr', 'cccccc', '475897', 'dhf@ghn.drfg544', '15', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 18:03:23', '2015-11-13 18:03:23');
 
@@ -143,11 +140,10 @@ INSERT INTO `reservation` (`id`, `sname`, `fname`, `mobile`, `email`, `roomNo_id
 --
 
 CREATE TABLE IF NOT EXISTS `reservation_status` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -167,13 +163,12 @@ INSERT INTO `reservation_status` (`id`, `status`, `created_at`, `updated_at`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `room_img` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cart_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
@@ -211,13 +206,12 @@ INSERT INTO `room_img` (`id`, `image`, `name`, `cart_id`, `created_at`, `updated
 --
 
 CREATE TABLE IF NOT EXISTS `room_no` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `room_no` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cart_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(3) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
@@ -253,7 +247,7 @@ INSERT INTO `room_no` (`id`, `room_no`, `cart_id`, `status`, `created_at`, `upda
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `surname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -263,18 +257,102 @@ CREATE TABLE IF NOT EXISTS `users` (
   `admin` int(3) NOT NULL DEFAULT '0',
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `surname`, `lastname`, `mobile`, `address`, `admin`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'pascal@yahoo.com', '$2y$10$HgOHJJnlnYJs77vcvzLgf.iWBiDC9BZHNoLJMhn3r6mU.TK3b7Kvm', '', 'Pascal', '', '', 1, NULL, '2015-11-14 06:57:05', '2015-11-14 06:57:05');
+(1, 'pascal@yahoo.com', '$2y$10$HgOHJJnlnYJs77vcvzLgf.iWBiDC9BZHNoLJMhn3r6mU.TK3b7Kvm', 'Adigwe', 'Pascal', '0987654322', 'legislative quarters Apo', 1, 'RX0fMSZOpSPNBjMPWozvWfWNUsjYEyMXq3XDYAVm8ERMOi8f7KbHA78zTyfu', '2015-11-14 06:57:05', '2015-11-16 20:46:25'),
+(2, 'kingsley4united@yahoo.com', '$2y$10$vPx3xQcskat85jzZ/uZae.TxDRSBNJeGvAEE7xeJE9XET39Re4jgu', 'Chinaka', 'Kingsley', '09077665436', 'ghfcvghf dfvc fgjghfg', 0, 'EOQNrhJZ1oe8oVXCJOakmmBUSVXWD6ZUYMWwc4ecdVWHGdrZBdcSR5HMkXZt', '2015-11-16 18:14:19', '2015-11-16 20:43:59');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cartegory`
+--
+ALTER TABLE `cartegory`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+ ADD PRIMARY KEY (`room_id`);
+
+--
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reservation_status`
+--
+ALTER TABLE `reservation_status`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `room_img`
+--
+ALTER TABLE `room_img`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `room_no`
+--
+ALTER TABLE `room_no`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cartegory`
+--
+ALTER TABLE `cartegory`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+MODIFY `room_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `reservation`
+--
+ALTER TABLE `reservation`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+--
+-- AUTO_INCREMENT for table `reservation_status`
+--
+ALTER TABLE `reservation_status`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `room_img`
+--
+ALTER TABLE `room_img`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `room_no`
+--
+ALTER TABLE `room_no`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

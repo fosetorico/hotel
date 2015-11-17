@@ -82,6 +82,7 @@ trait AuthenticatesUsers
             return $this->authenticated($request, Auth::user());
         }
 
+//Authenticate User or Admin
         if(Auth::user()->admin === 1){
             return redirect('/admin');
         }else{

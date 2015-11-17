@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2015 at 10:50 PM
+-- Generation Time: Nov 17, 2015 at 11:09 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   `disp` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `images`
@@ -71,7 +71,9 @@ INSERT INTO `images` (`room_id`, `img`, `name`, `description`, `slid`, `disp`, `
 (2, 'images/portfolio/thumb/IMG-20151107-WA0002.jpg', 'Reception', 'Reception', 'Y', 'N', '2015-11-11 09:02:15', '2015-11-11 09:02:15'),
 (3, 'images/portfolio/thumb/IMG-20151107-WA0019.jpg', 'Bar', 'Bar', 'Y', 'Y', '2015-11-11 09:03:02', '2015-11-11 09:03:02'),
 (4, 'images/portfolio/thumb/slider-bg copy.jpg', 'Front View', 'Front View', 'N', 'N', '2015-11-11 09:04:02', '2015-11-11 09:04:02'),
-(5, 'images/portfolio/thumb/IMG-20151107-WA0017.jpg', 'Accommodation', 'Accommodation', 'Y', 'Y', '2015-11-11 09:06:00', '2015-11-11 09:06:00');
+(5, 'images/portfolio/thumb/IMG-20151107-WA0017.jpg', 'Accommodation', 'Accommodation', 'Y', 'Y', '2015-11-11 09:06:00', '2015-11-11 09:06:00'),
+(8, '8.jpg', 'Seun', '            hjytfexdf ty5rsezsd                            ', 'N', 'N', '2015-11-17 21:03:42', '2015-11-17 21:03:42'),
+(9, '9.jpg', 'KayOh China', 'uytfgghgh yuhg', 'N', 'N', '2015-11-17 21:08:26', '2015-11-17 21:08:26');
 
 -- --------------------------------------------------------
 
@@ -116,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `status` int(3) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=54 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `reservation`
@@ -124,14 +126,14 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 
 INSERT INTO `reservation` (`id`, `sname`, `fname`, `mobile`, `email`, `roomNo_id`, `check_in`, `check_out`, `status`, `created_at`, `updated_at`) VALUES
 (19, 'Anene', 'valentine', '4444444444444', 'dhf@ghn.drfg', '17', '2015-11-15 17:45:21', '2015-11-15 17:45:21', 4, '2015-11-13 07:58:47', '2015-11-13 07:58:47'),
-(20, 'Kayoh', 'Obi', '6666666', 'eeee@hhh.vo', '9', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:00:22', '2015-11-13 08:00:22'),
-(21, 'Anene', 'mh,j', '3333333', 'dhf@ghn.drfg544', '7', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:01:09', '2015-11-13 08:01:09'),
-(22, 'esrfrrr', 'cccccc', '999999999999', 'eeee@hhh.vo', '14', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:05:50', '2015-11-13 08:05:50'),
-(23, 'fgmhhm', 'rbtnymuyr', '3333333', 'eeee@hhh.vo', '5', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:06:51', '2015-11-13 08:06:51'),
-(24, 'esrfrrr', 'rbtnymuyr', '475897', 'dhf@ghn.drfg', '8', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:09:53', '2015-11-13 08:09:53'),
+(20, 'Kayoh', 'Obi', '6666666', 'eeee@hhh.vo', '9', '2015-11-17 20:58:00', '2015-11-15 17:24:50', 4, '2015-11-13 08:00:22', '2015-11-13 08:00:22'),
+(21, 'Anene', 'mh,j', '3333333', 'dhf@ghn.drfg544', '7', '2015-11-17 20:58:00', '2015-11-15 17:24:50', 4, '2015-11-13 08:01:09', '2015-11-13 08:01:09'),
+(22, 'esrfrrr', 'cccccc', '999999999999', 'eeee@hhh.vo', '14', '2015-11-17 20:58:00', '2015-11-15 17:24:50', 4, '2015-11-13 08:05:50', '2015-11-13 08:05:50'),
+(23, 'fgmhhm', 'rbtnymuyr', '3333333', 'eeee@hhh.vo', '5', '2015-11-17 20:58:00', '2015-11-15 17:24:50', 4, '2015-11-13 08:06:51', '2015-11-13 08:06:51'),
+(24, 'esrfrrr', 'rbtnymuyr', '475897', 'dhf@ghn.drfg', '8', '2015-11-17 20:58:00', '2015-11-15 17:24:50', 4, '2015-11-13 08:09:53', '2015-11-13 08:09:53'),
 (25, 'dfgh', 'rbtnymuyr', '3333333', 'dhf@ghn.drfg544', '10', '2015-11-16 20:03:45', '2015-11-15 17:24:50', 4, '2015-11-13 08:12:24', '2015-11-13 08:12:24'),
-(26, 'esrfrrr', 'rbtnymuyr', '1234566', 'dhf@ghn.drfg544', '6', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 08:14:20', '2015-11-13 08:14:20'),
-(27, 'esrfrrr', 'cccccc', '475897', 'dhf@ghn.drfg544', '15', '2015-11-15 17:24:50', '2015-11-15 17:24:50', 1, '2015-11-13 18:03:23', '2015-11-13 18:03:23');
+(26, 'esrfrrr', 'rbtnymuyr', '1234566', 'dhf@ghn.drfg544', '6', '2015-11-17 20:58:00', '2015-11-15 17:24:50', 4, '2015-11-13 08:14:20', '2015-11-13 08:14:20'),
+(27, 'esrfrrr', 'cccccc', '475897', 'dhf@ghn.drfg544', '15', '2015-11-17 20:58:00', '2015-11-15 17:24:50', 4, '2015-11-13 18:03:23', '2015-11-13 18:03:23');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `reservation_status` (
   `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `reservation_status`
@@ -169,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `room_img` (
   `cart_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `room_img`
@@ -197,7 +199,9 @@ INSERT INTO `room_img` (`id`, `image`, `name`, `cart_id`, `created_at`, `updated
 (19, 'images/portfolio/thumb/room/IMG-20151107-WA0020.jpg', 'Bedroom', '3', '2015-11-11 11:21:58', '2015-11-11 11:21:58'),
 (20, 'images/portfolio/thumb/room/IMG-20151107-WA0011.jpg', 'Toilet', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (21, 'images/portfolio/thumb/room/IMG-20151107-WA0013.jpg', 'Suite', '2', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(22, 'images/portfolio/thumb/room/IMG-20151107-WA0014.jpg', 'Toilet', '3', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(22, 'images/portfolio/thumb/room/IMG-20151107-WA0014.jpg', 'Toilet', '3', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, '24.jpg', 'KayOh China', '2', '2015-11-17 20:48:29', '2015-11-17 20:48:29'),
+(25, '25.jpg', 'Seun', '3', '2015-11-17 21:08:51', '2015-11-17 21:08:51');
 
 -- --------------------------------------------------------
 
@@ -223,19 +227,19 @@ INSERT INTO `room_no` (`id`, `room_no`, `cart_id`, `status`, `created_at`, `upda
 (2, 'N102', '1', 0, '2015-11-11 14:32:17', '2015-11-11 14:32:17'),
 (3, 'N103', '2', 0, '2015-11-11 14:32:31', '2015-11-12 10:26:30'),
 (4, 'N104', '3', 0, '2015-11-11 14:33:06', '2015-11-11 14:33:06'),
-(5, 'N201', '3', 1, '2015-11-11 14:33:23', '2015-11-13 08:06:52'),
-(6, 'N202', '2', 1, '2015-11-11 14:33:47', '2015-11-13 08:14:20'),
-(7, 'N203', '3', 1, '2015-11-11 14:34:16', '2015-11-13 08:01:09'),
-(8, 'N204', '2', 1, '2015-11-11 14:34:41', '2015-11-13 08:09:53'),
-(9, 'N205', '3', 1, '2015-11-11 14:35:18', '2015-11-13 08:00:22'),
-(10, 'N206', '3', 1, '2015-11-11 14:35:38', '2015-11-13 08:12:24'),
+(5, 'N201', '3', 0, '2015-11-11 14:33:23', '2015-11-13 08:06:52'),
+(6, 'N202', '2', 0, '2015-11-11 14:33:47', '2015-11-13 08:14:20'),
+(7, 'N203', '3', 0, '2015-11-11 14:34:16', '2015-11-13 08:01:09'),
+(8, 'N204', '2', 0, '2015-11-11 14:34:41', '2015-11-13 08:09:53'),
+(9, 'N205', '3', 0, '2015-11-11 14:35:18', '2015-11-13 08:00:22'),
+(10, 'N206', '3', 0, '2015-11-11 14:35:38', '2015-11-13 08:12:24'),
 (11, 'N207', '1', 0, '2015-11-11 14:36:00', '2015-11-11 22:36:00'),
 (12, 'N208', '1', 0, '2015-11-11 14:36:10', '2015-11-11 14:36:10'),
 (13, 'N301', '3', 0, '2015-11-11 14:37:35', '2015-11-11 14:37:35'),
-(14, 'N302', '2', 1, '2015-11-11 14:37:54', '2015-11-13 08:05:50'),
-(15, 'N303', '2', 1, '2015-11-11 14:38:09', '2015-11-13 18:03:23'),
+(14, 'N302', '2', 0, '2015-11-11 14:37:54', '2015-11-13 08:05:50'),
+(15, 'N303', '2', 0, '2015-11-11 14:38:09', '2015-11-13 18:03:23'),
 (16, 'N304', '1', 0, '2015-11-11 14:38:29', '2015-11-11 14:38:29'),
-(17, 'N305', '1', 1, '2015-11-11 14:38:51', '2015-11-13 07:58:47'),
+(17, 'N305', '1', 0, '2015-11-11 14:38:51', '2015-11-13 07:58:47'),
 (18, 'N306', '1', 0, '2015-11-11 14:39:01', '2015-11-12 09:15:26'),
 (19, 'N307', '2', 0, '2015-11-11 14:39:19', '2015-11-11 14:39:19'),
 (20, 'N308', '3', 0, '2015-11-11 14:39:33', '2015-11-11 14:39:33');
@@ -327,22 +331,22 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-MODIFY `room_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `room_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `reservation_status`
 --
 ALTER TABLE `reservation_status`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `room_img`
 --
 ALTER TABLE `room_img`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `room_no`
 --
@@ -353,6 +357,19 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 ALTER TABLE `users`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `roomExpire` ON SCHEDULE EVERY 1 HOUR STARTS '2015-11-17 21:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE room_no SET status = 0
+WHERE id IN (SELECT roomNo_id FROM reservation
+WHERE NOW() >= DATE_ADD(check_in, INTERVAL 24 HOUR))$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `reservationExpire` ON SCHEDULE EVERY 1 HOUR STARTS '2015-11-17 21:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE reservation SET status = 4 
+WHERE NOW() >= DATE_ADD(check_in, INTERVAL 24 HOUR)$$
+
+DELIMITER ;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -39,6 +39,7 @@
 </header><!--/#header-->
 
 <section id="services" STYLE="">
+
     <div class="container">
         <div class="box first" STYLE="margin-top:2%">
             <div class="center gap">
@@ -49,8 +50,13 @@
                 <div class="center gap">
                     <h4>Rooms Images.</h4><hr style="margin-left: 20%; width:60%;"/>
                 </div>
+                <!-- start: FLASH MESSAGE -->
+                @if(Session::has('flash_message'))
+                    {!! Session::get('flash_message') !!}
+                @endif
                 <div class="row" style="margin-top: 5%">
-                    <form id="room_form" class="" method="post" action="" role="form" style="margin-top: -2.5%;margin-left: 2%">
+                    @include('errors.errors')
+                    <form class="" enctype="multipart/form-data" method="post" action="/upload" role="form" style="margin-top: -2.5%;margin-left: 2%">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="col-sm-6" style="height: 70px;" id="" >
                             <div class="" style="margin-left: 10%; width:80%; height: 200px; border: 2px solid #c0c0c0;">
@@ -63,7 +69,7 @@
                                 <div class="">
                                     <label class="" for="">Image:</label>
                                     <div class="form-group">
-                                        <input type="file" name="pix" id="pix" onchange="readURL(this);"/>
+                                        <input type="file" name="image" id="image" onchange="readURL(this);"/>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +77,7 @@
                                 <div class="">
                                     <label class="" for="">Image Name:</label>
                                     <div class="form-group">
-                                        <input type="text" name="img_name" id="img_name" style="width:70%" class="form-control" required="required" placeholder="Image Name">
+                                        <input type="text" name="name" id="name" style="width:70%" class="form-control" required="required" placeholder="Image Name">
                                     </div>
                                 </div>
                             </div>
@@ -79,10 +85,10 @@
                                 <div class="">
                                     <label class="" for="">Image Room Cartegory:</label>
                                     <div class="form-group">
-                                        <select class="form-control" required="required" style="width:70%" name="img_roomCart" id="img_room">
+                                        <select class="form-control" required="required" style="width:70%" name="cart_id" id="cart_id">
                                             <option value="">Select room</option>
                                             @foreach($cart as $car)
-                                                <option value="">{{$car->name}}</option>
+                                                <option value="{{$car->id}}">{{$car->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -105,7 +111,8 @@
                     <h4>Gallery Images.</h4><hr style="margin-left: 20%; width:60%;"/>
                 </div>
                 <div class="row" style="margin-top: 5%">
-                    <form id="gallery_form" class="" method="post" action="" role="form" style="margin-top: -2.5%;margin-left: 2%">
+                    @include('errors.errors')
+                    <form enctype="multipart/form-data" class="" method="post" action="galleryUpload" role="form" style="margin-top: -2.5%;margin-left: 2%">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="col-sm-6" style="height: 70px;" id="" >
                             <div class="" style="margin-left: 10%; width:80%; height: 200px; border: 2px solid #c0c0c0;">
@@ -120,7 +127,7 @@
                                 <div class="">
                                     <label class="" for="">Image:</label>
                                     <div class="form-group">
-                                        <input type="file" name="pix" id="pix" onchange="readURL2(this);"/>
+                                        <input type="file" name="img" id="img" onchange="readURL2(this);"/>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +135,7 @@
                                 <div class="">
                                     <label class="" for="">Image Name:</label>
                                     <div class="form-group">
-                                        <input type="text" name="img_name" id="img_name" style="width:70%" class="form-control" required="required" placeholder="Image Name">
+                                        <input type="text" name="name" id="name" style="width:70%" class="form-control" required="required" placeholder="Image Name">
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +143,7 @@
                                 <div class="" style="">
                                     <label class="" for="">Image Description:</label>
                                     <div class="form-group" style="">
-                                        <textarea name="img_des" id="img_des" style="width:70%" class="form-control" required="required" placeholder="Image Description">
+                                        <textarea name="description" id="description" style="width:70%" class="form-control" required="required" placeholder="Image Description">
                                         </textarea>
                                     </div>
                                 </div>

@@ -1,5 +1,8 @@
 $(function(){
 
+    $('#flash_message').delay(10000).slideUp(850);
+
+
     $('.book_room').bind('click', function(){
         $('#summaryDiv').html('');
         $('#reservation-form')[0].reset();

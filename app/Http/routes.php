@@ -11,6 +11,8 @@ Route::post('/reserve-room/', 'DefaultController@reserveRoom');
 Route::get('/staff','StaffController@index');
 Route::post('/staff','StaffController@search');
 Route::get('/upload','UploadController@index');
+Route::post('/upload','UploadController@upload');
+Route::post('/galleryUpload','UploadController@galleryUpload');
 
 //Route::get('/admin', 'AdminController@index');
 Route::get('/staff-remove', 'AdminController@removeStaff');

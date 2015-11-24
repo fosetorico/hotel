@@ -2,6 +2,14 @@ $(function(){
 
     $('#flash_message').delay(10000).slideUp(850);
 
+    $('.date-picker').datepicker({
+        autoclose: true,
+        dateFormat: 'yy-mm-dd',
+        minDate: "0",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-10:+10"
+    });
 
     $('.book_room').bind('click', function(){
         $('#summaryDiv').html('');
@@ -25,6 +33,65 @@ $(function(){
                 //console.info('Room No', data.roomNos);
                 $('html, body').animate({
                     scrollTop: $('#pricing').offset().top
+                }, 2000);
+            }
+            //alert(data.id);
+        });
+
+    });
+
+    $('.update_stat').bind('click', function(){
+        //$('#summaryDiv').html('');
+        //$('#reservation-form')[0].reset();
+        var id = $(this).val();
+        $('#reserve_id').val(id);
+        $.get('/get-reserve/'+id, function(data){
+            if(data){
+                $('#update_res').removeClass('hide');
+                //$('#summaryForm').removeClass('hide');
+                $('#update_in').val(data.In);
+                $('#update_out').val(data.Out);
+                $('html, body').animate({
+                    scrollTop: $('#update_res').offset().top
+                }, 2000);
+            }
+            //alert(data.id);
+        });
+
+    });
+
+
+    $('#checkIn_btn').bind('click', function(){
+        var reserve_id = $('#reserve_id').val();
+        var checkDate = $('#update_in').val();
+
+        $.get('/staff/check-in/'+reserve_id+'/'+checkDate, function(data){
+            if(data){
+                $('#update_res').removeClass('hide');
+                //$('#summaryForm').removeClass('hide');
+                $('#reserve_table').addClass('hide');
+                $('#update_res').html('<div class="alert alert-success">Room '+data.room+ ' has been Checked In</div>');
+                $('html, body').animate({
+                    scrollTop: $('#update_res').offset().top
+                }, 2000);
+            }
+            //alert(data.id);
+        });
+
+    });
+
+    $('#checkOut_btn').bind('click', function(){
+        var reserve_id = $('#reserve_id').val();
+        var checkDate = $('#update_out').val();
+
+        $.get('/staff/check-out/'+reserve_id+'/'+checkDate, function(data){
+            if(data){
+                $('#update_res').removeClass('hide');
+                //$('#summaryForm').removeClass('hide');
+                $('#reserve_table').addClass('hide');
+                $('#update_res').html('<div class="alert alert-success">Room '+data.room+ ' has been Checked Out</div>');
+                $('html, body').animate({
+                    scrollTop: $('#update_res').offset().top
                 }, 2000);
             }
             //alert(data.id);
@@ -105,11 +172,11 @@ $(function(){
                                                         </tr>\
                                                         </tr>';
                     output += '<td><label class="" for="">Check In:</b></label></td>\
-                                                               <td><label class="" for="">' + data.check_in + '</label></td>\
+                                                               <td><label class="" for="">' + data.In + '</label></td>\
                                                         </tr>\
                                                         <tr>';
                     output += '<td><label class="" for=""><b>Check Out:</b></label></td>\
-                                                               <td><label class="" for="">' + data.check_out + '</label></td>\
+                                                               <td><label class="" for="">' + data.Out + '</label></td>\
                                                         </tr>\
                                                         <tr>';
                     output += '<td><label class="" for=""><b>Room Number:</b></label></td>\

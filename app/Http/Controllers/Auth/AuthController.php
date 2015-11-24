@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $redirectTo = '/staff';
+//    protected $redirectTo = '/staff';
     /**
      * Create a new authentication controller instance.
      *
@@ -32,9 +32,9 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+//        $this->middleware('guest', ['except' => 'getLogout']);
 
-        $this->middleware('auth', ['except' => ['getLogin', 'postLogin', 'getRegister', 'postRegister']]);
+        $this->middleware('auth');
     }
 
     /**
@@ -46,11 +46,12 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'photo' => 'required|mimes:jpeg,png',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'surname' => 'required|max:255',
-            'lastname' => 'required|max:255',
-            'mobile' => 'required|max:255|unique:users',
+            'surname' => 'required|alpha|max:255',
+            'lastname' => 'required|alpha|max:255',
+            'mobile' => 'required|numeric|unique:users',
             'address' => 'required|max:255',
         ]);
     }
@@ -64,6 +65,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
+//            'photo' => $data['photo'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'surname' => $data['surname'],

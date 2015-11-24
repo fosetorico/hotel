@@ -30,13 +30,28 @@ trait RegistersUsers
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
+            $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+            return redirect('/register')->withErrors($validator)->withInput();
+//            $this->throwValidationException(
+//                $request, $validator
+//            );
         }
 
-        Auth::login($this->create($request->all()));
+        $inputs = $request->all();
 
-        return redirect($this->redirectPath());
+        $user = $this->create($inputs);
+        if($request->hasFile('photo'))
+        {
+            $imageName = $user->id . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(base_path() . '/public' . $user->image_path, $imageName);
+            //Update Image url
+            $user->photo = $imageName;
+            $user->save();
+        }
+        $this->setFlashMessage('Saved!!! The Staff has been registered successfully.', 1);
+
+//        Auth::login($user);
+
+        return redirect('/register');
     }
 }

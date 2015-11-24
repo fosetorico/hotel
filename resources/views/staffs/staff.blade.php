@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <link rel="SHORTCUT ICON" href="uploads/icon.jpg" TYPE="image/jpg"/>
     <title>Newland Hotels and Suites.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -23,21 +25,27 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="/js/script.js"></script>
+
+    <link href="css/datepicker/css/datepicker.css" rel="stylesheet">
 </head><!--/head-->
 
 <body data-spy="scroll" data-target="" data-offset="">
 <header id="header" role="">
+    <div style="background-color: white;width:100%">
+        <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+    </div>
     <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/staff'><b style="color:black"><i class="icon-home"></i>&nbsp;Home</b></a></li>
+            <li class='active'><a href='/staff'><b style="">Check Reservation</b></a></li>
             <li><a href='/upload'><b>Upload Images</b></a></li>
-            {{--<li><a href='/rooms'><b>Rooms</b></a></li>--}}
+            <li><a href='/availability'><b>Availability</b></a></li>
+            <li><a href='/checking'><b>Checking</b></a></li>
             {{--<li><a href=''><b>Gallery</b></a></li>--}}
             {{--<li class='active'><a href='/contact'><b>Contact</b></a></li>--}}
         </ul>
     </div>
 </header><!--/#header-->
-<section id="" class="" style="height:55px">
+<section id="" class="" style="height:120px">
 
 </section><!--/#main-slider-->
 
@@ -49,7 +57,7 @@
             </div>
             <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:150px">
                 <div class="row" style="margin-top: 5%">
-                    <form class="" method="post" action="staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                    <form class="" method="post" action="/staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="col-sm-6" style="" id="" >
                             <div class="" style="margin-left: 5%">
@@ -67,7 +75,7 @@
                             </div>
                         </div>
                     </form>
-                    <form class="" method="post" action="staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                    <form class="" method="post" action="/staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="col-sm-6" style="" id="" >
                             <div class="" style="margin-left: -3%">
@@ -86,10 +94,10 @@
                         </div>
                     </form>
                 </div>
-            </div><br/><br/><br/><br/>
+            </div><br/>
             @if(isset($customer))
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
+                <div class="row" id="reserve_table">
+                    <div class="col-md-12 col-md-offset-0">
                         <table class="table table-bordered table-striped table-hover table-responsive">
                             <thead>
                                 <tr>
@@ -104,7 +112,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(($customer->count() > 0) && ($customer->status != 4))
+                                @if(($customer->count() > 0))
                                     <?php $i=1?>
                                     @foreach($customer as $cus)
                                         <tr>
@@ -116,6 +124,9 @@
                                             <td>{{$cus->roomNo()->first()->room_no}}</td>
                                             <td>{{$cus->check_in->format('D, jS, M Y')}}</td>
                                             <td>{{$cus->check_out->format('D, jS, M Y')}}</td>
+                                            <td>
+                                                <button type="button" value="{{$cus->id}}" class="btn update_stat btn-primary btn-sm"><b>Update</b></button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @else
@@ -127,6 +138,47 @@
                 </div>
             @endif
 
+            <div id="update_res" class="hide" style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:150px; margin-top:0%">
+                {{--<form class="" method="post" action="/update_reserve" role="form" style="margin-top: -2.5%;margin-left: 5%">--}}
+                    <div class="row" style="margin-top: 5%">
+                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                        <div class="col-sm-6" style="" id="" >
+                            <div class="" style="margin-left: 5%">
+                                <label class="" for="">Check In:</label>
+                                <div class="row" style="">
+                                    <div class="form-group col-sm-9">
+                                        <input type="text" style="" name="update_in" id="update_in" class="form-control date-picker" required="required" placeholder="Check in">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="" id="" >
+                            <div class="" style="margin-left: -3%">
+                                <label class="" for="">Check Out:</label>
+                                <div class="row" style="">
+                                    <div class="form-group col-sm-9">
+                                        <input type="text" style="" name="update_out" id="update_out" class="form-control date-picker" required="required" placeholder="Check Out">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="reserve_id" id="reserve_id">
+                    <div class="row" style="">
+                        <div class="col-sm-6" style="" id="" >
+                            <div class="form-group" style="margin-top:-11%; height:50px">
+                                <button style="margin-top: -20%; margin-left:8%;width:80%" type="button" id="checkIn_btn" class="btn btn-primary "><b>Check In</b></button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="" id="" >
+                            <div class="form-group" style="margin-top:-11%; height:50px">
+                                <button style="margin-top: -20%; margin-left:-10%;width:80%" type="button" id="checkOut_btn" class="btn btn-primary "><b>Check Out</b></button>
+                            </div>
+                        </div>
+                    </div>
+                {{--</form>--}}
+            </div><br/>
+        <br/><br/>
         </div>
     </div><!--/.container-->
 </section><!--/#services-->
@@ -154,6 +206,28 @@
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/main.js"></script>
-{{--<script src="js/custom/default.js"></script>--}}
+<script src="js/custom/default.js"></script>
+<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        var DatePicker = function () {
+            //function to initiate bootstrap-datepicker
+            var runDatePicker = function () {
+                $('.date-picker').datepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd',
+                });
+            };
+            return {
+                //main function to initiate template pages
+                init: function () {
+                    runDatePicker();
+                }
+            };
+        }();
+
+        DatePicker.init();
+    });
+</script>
 </body>
 </html>

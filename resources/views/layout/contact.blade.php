@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <link rel="SHORTCUT ICON" href="uploads/icon.jpg" TYPE="image/jpg"/>
     <title>Newland Hotels and Suites.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -46,6 +48,9 @@
 
 <body data-spy="scroll" data-target="" data-offset="">
     <header id="header" role="">
+        <div style="background-color: white;width:100%">
+            <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+        </div>
         <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
             <ul style="margin-top: 1%;">
                 <li><a href='/'><b><i class="icon-home"></i>&nbsp;Home</b></a></li>
@@ -57,7 +62,7 @@
         </div>
     </header><!--/#header-->
 
-    <section id="pricing" class="" style="margin-top: 8%">
+    <section id="pricing" class="" style="margin-top: 210px">
         <div id="map-canvas" style="border:1px solid #C0C0C0; height:420px;"></div>
     </section><br/><br/><br/>
 

@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <link rel="SHORTCUT ICON" href="uploads/icon.jpg" TYPE="image/jpg"/>
     <title>Newland Hotels and Suites.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/datepicker/css/datepicker.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -29,8 +31,11 @@
 
 <body>
     <header id="header" role="">
+        <div style="background-color: white;width:100%">
+            <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+        </div>
         <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
-            <ul style="margin-top: 1%;">
+            <ul style="margin-top: 1%">
                 <li class='active'><a href='/'><b><i class="icon-home"></i>&nbsp;Home</b></a></li>
                 <li><a href='/services'><b>Services</b></a></li>
                 <li><a href='/rooms'><b>Rooms</b></a></li>
@@ -40,12 +45,12 @@
         </div>
     </header><!--/#header-->
 
-    <section id="main-slider" class="carousel" style="height:650px">
+    <section id="main-slider" class="carousel" style="height:650px; margin-top: 90px">
         <div class="carousel-inner" style="margin-top:-90px">
             <div class="item active" style="">
                 <div class="container" style="">
                     <div class="carousel-content" style="">
-                        <img class="" src="images/portfolio/thumb/slider-bg copy.jpg" alt="Front View" style="width:96%;height:500px;">
+                        <img class="" src="uploads/gallery/slider-bg copy.jpg" alt="Front View" style="width:96%;height:500px;">
                     </div>
                 </div>
             </div>
@@ -54,7 +59,8 @@
                 <div class="item" style="">
                     <div class="container" style="">
                         <div class="carousel-content" style="">
-                            <img class="" src="{{$slid->img}}" alt="{{$slid->name}}" style="width:96%;height:500px;">
+                            {{--<img class="" src="uploads/gallery/ccc.jpg" alt="Front View" style="width:96%;height:500px;">--}}
+                            <img class="" src="{{$slid->fullPath()}}" alt="{{$slid->name}}" style="width:96%;height:500px;">
                         </div>
                     </div>
                 </div>
@@ -73,7 +79,7 @@
                     @foreach($images as $img)
                         <div class="col-md-4 col-sm-6">
                             <div class="center">
-                                <img class="img-thumbnail" src="{{$img->img}}" alt="{{$img->name}}" style="">
+                                <img class="img-thumbnail" src="{{$img->fullPath()}}" alt="{{$img->name}}" style="">
                                 <h4>{{$img->name}}</h4>
                                 <p>{{$img->description}}</p>
                             </div>
@@ -97,7 +103,7 @@
                         <li class="portfolio-item apps">
                             <div class="item-inner">
                                 <div class="portfolio-image">
-                                    <img src="{{$carte->image()->first()->image}}" alt="{{$carte->name}}">
+                                    <img src="{{$carte->image()->first()->fullPath()}}" alt="{{$carte->name}}">
                                     <div class="overlay">
                                         <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="{{$img->img}}"><i                                                                 class="icon-eye-open"></i></a>
                                     </div>
@@ -266,48 +272,6 @@
 
                 <div class="row" id="search_table">
 
-                </div>
-
-                {{--@if(isset($customer))--}}
-                    {{--<div class="row">--}}
-                        {{--<div class="col-md-10 col-md-offset-1">--}}
-                            {{--<table class="table table-bordered table-striped table-hover table-responsive">--}}
-                                {{--<thead>--}}
-                                {{--<tr>--}}
-                                    {{--<th>#</th>--}}
-                                    {{--<th>Surname</th>--}}
-                                    {{--<th>First Name</th>--}}
-                                    {{--<th>Mobile Number</th>--}}
-                                    {{--<th>Email</th>--}}
-                                    {{--<th>Room</th>--}}
-                                    {{--<th>Check In</th>--}}
-                                    {{--<th>Check Out</th>--}}
-                                {{--</tr>--}}
-                                {{--</thead>--}}
-                                {{--<tbody>--}}
-                                {{--@if($customer->count() > 0)--}}
-                                    {{--<?php $i=1?>--}}
-                                    {{--@foreach($customer as $cus)--}}
-                                        {{--<tr>--}}
-                                            {{--<td>{{$i++}}</td>--}}
-                                            {{--<td>{{$cus->sname}}</td>--}}
-                                            {{--<td>{{$cus->fname}}</td>--}}
-                                            {{--<td>{{$cus->mobile}}</td>--}}
-                                            {{--<td>{{$cus->email}}</td>--}}
-                                            {{--<td>{{$cus->roomNo()->first()->room_no}}</td>--}}
-                                            {{--<td>{{$cus->check_in->format('D, jS, M Y')}}</td>--}}
-                                            {{--<td>{{$cus->check_out->format('D, jS, M Y')}}</td>--}}
-                                        {{--</tr>--}}
-                                    {{--@endforeach--}}
-                                {{--@else--}}
-                                    {{--<tr><th colspan="8">No Match Found</th></tr>--}}
-                                {{--@endif--}}
-                                {{--</tbody>--}}
-                            {{--</table>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
-
             </div>
         </div><!--/.container-->
     </section><!--/#services-->
@@ -368,29 +332,30 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="js/jquery-ui.js"></script>
+{{--<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>--}}
 <script src="js/main.js"></script>
 <script src="js/custom/default.js"></script>
 <script>
-    jQuery(document).ready(function() {
-        var DatePicker = function () {
-            //function to initiate bootstrap-datepicker
-            var runDatePicker = function () {
-                $('.date-picker').datepicker({
-                    autoclose: true,
-                    format: 'yyyy-mm-dd',
-                });
-            };
-            return {
-                //main function to initiate template pages
-                init: function () {
-                    runDatePicker();
-                }
-            };
-        }();
-
-        DatePicker.init();
-    });
+//    jQuery(document).ready(function() {
+//        var DatePicker = function () {
+//            //function to initiate bootstrap-datepicker
+//            var runDatePicker = function () {
+//                $('.date-picker').datepicker({
+//                    autoclose: true,
+//                    format: 'yyyy-mm-dd',
+//                });
+//            };
+//            return {
+//                //main function to initiate template pages
+//                init: function () {
+//                    runDatePicker();
+//                }
+//            };
+//        }();
+//
+//        DatePicker.init();
+//    });
 </script>
 </body>
 </html>

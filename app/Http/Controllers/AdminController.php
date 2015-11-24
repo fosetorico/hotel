@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Cartegory;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -18,13 +21,49 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+//    public function index()
+//    {
+//        return view('staffs.admin');
+//    }
+//
+//    public function removeStaff()
+//    {
+//        return view('staffs.staff-remove');
+//    }
+//
+//    public function register()
+//    {
+//        return view('auth.register');
+//    }
+
+    public function index(Request $request)
     {
-        return view('staffs.admin');
+        $inputs = $request->all();
+
+        if(isset($inputs['mobile']))
+        {
+            $user = User::where('mobile', $inputs['mobile'])->get();
+        }
+        return view('admin.edit_staff', compact('user'));
     }
 
-    public function removeStaff()
+    public function search(Request $request)
     {
-        return view('staffs.staff-remove');
+        $inputs = $request->all();
+
+        if(isset($inputs['mobile']))
+        {
+            $user = User::where('mobile', $inputs['mobile'])->get();
+        }
+        return view('admin.staff_details', compact('user'));
+    }
+
+    public function billing(){
+        if(Auth::user()->admin === 1){
+            $bill = Cartegory::all();
+            return view('admin.billing',compact('bill'));
+        }else{
+            return redirect('/staff');
+        }
     }
 }

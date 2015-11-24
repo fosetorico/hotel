@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <link rel="SHORTCUT ICON" href="uploads/icon.jpg" TYPE="image/jpg"/>
     <title>Newland Hotels and Suites.</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -14,7 +16,7 @@
     <script src="/js/html5shiv.js"></script>
     <script src="/js/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    {{--<link rel="shortcut icon" href="images/ico/favicon.ico">--}}
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
@@ -28,33 +30,31 @@
 
 <body>
 <header id="header" role="">
+    <div style="background-color: white;width:100%">
+        <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+    </div>
     <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
         <ul style="margin-top: 1%;">
-            <li class='active'><a href='/auth/login'><b><i class="icon-lock"></i>&nbsp;Staff Login</b></a></li>
-            <li><a href=''><b><i class="icon-lock"></i>&nbsp;Admin Login</b></a></li>
-            {{--<li><a href='/rooms'><b>Rooms</b></a></li>--}}
-            {{--<li><a href='/gallery'><b>Gallery</b></a></li>--}}
-            {{--<li class='active'><a href='/contact'><b>Contact</b></a></li>--}}
+            <li class='active'><a href='/auth/login'><b><i class="icon-lock"></i>&nbsp;Staff/Admin Login</b></a></li>
         </ul>
     </div>
 </header><!--/#header-->
 
-<section id="" class="" style="height:55px">
+<section id="" class="" style="">
 
 </section><!--/#main-slider-->
 
-<section id="services" STYLE="">
+<section id="services" STYLE="margin-top: 100px">
     <div class="container">
         <div class="box first" STYLE="margin-top:1%">
             <div class="center gap">
-                <h3><b>Staff Login.</b></h3>
+                <h3><b>Staff/Admin Login.</b></h3>
             </div>
             @include('errors.errors')
             <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:200px">
                 <div class="row" style="margin-top: 5%">
                     <form class="" method="post" action="/auth/login" role="form" style="margin-top: -2.5%;margin-left: 5%">
                         {!! csrf_field() !!}
-                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
                         <div class="col-sm-6" style="height: 70px;" id="" >
                             <div class="" style="margin-left: 5%">
                                 <label class="" for="">Email:</label>

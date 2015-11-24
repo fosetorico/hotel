@@ -70,6 +70,11 @@ class UploadController extends Controller
         $cart = Cartegory::all();
         return view('staffs.upload', compact('cart'));
     }
+    public function galIndex()
+    {
+        $cart = Cartegory::all();
+        return view('staffs.upload_gallery', compact('cart'));
+    }
 
     public function upload(Request $request)
     {
@@ -86,14 +91,18 @@ class UploadController extends Controller
         if($request->hasFile('image'))
         {
             $imageName = $room->id . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move(base_path() . $room->image_path, $imageName);
+            $request->file('image')->move(base_path() . '/public' . $room->image_path, $imageName);
             //Update Image url
             $room->image = $imageName;
             $room->save();
+            if($room->save()){
+                $this->setFlashMessage('Saved!!! ' . $room->name . ' have successfully been saved', 1);
+                return redirect('/upload');
+            }
         }
 
-        $this->setFlashMessage('Saved!!! ' . $room->name . ' have successfully been saved', 1);
-        return redirect('/upload');
+//        $this->setFlashMessage('Saved!!! ' . $room->name . ' have successfully been saved', 1);
+//        return redirect('/upload');
     }
 
     public function galleryUpload(Request $request)
@@ -104,7 +113,7 @@ class UploadController extends Controller
         if ($validator2->fails())
         {
             $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
-            return redirect('/upload')->withErrors($validator2)->withInput();
+            return redirect('/upload_gallery')->withErrors($validator2)->withInput();
         }
 
         $images = Images::create($inputs);
@@ -115,9 +124,12 @@ class UploadController extends Controller
             //Update Image url
             $images->img = $imageName;
             $images->save();
+            if($images->save()){
+                $this->setFlashMessage('Saved!!! ' . $images->name . ' have successfully been saved', 1);
+                return redirect('/upload');
+            }
         }
-
-        $this->setFlashMessage('Saved!!! ' . $images->name . ' have successfully been saved', 1);
-        return redirect('/upload');
+//        $this->setFlashMessage('Saved!!! ' . $images->name . ' have successfully been saved', 1);
+//        return redirect('/upload_gallery');
     }
 }

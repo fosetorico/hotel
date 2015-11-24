@@ -57,7 +57,7 @@ class DefaultController extends Controller
 
     public function getCategory($id){
         $cat = Cartegory::where('id', $id)->first();
-        $cat->image = $cat->image()->first()->image;
+        $cat->image = $cat->image()->first()->fullPath();
         $cat->roomNos = $cat->roomNos()->where('status', 0)->get();
 
         return response()->json($cat);
@@ -89,10 +89,12 @@ class DefaultController extends Controller
                 if ($reservation) {
                     $roomNo = $reservation->roomNo()->first();
                     $roomNo->status = 1;
-                    $reservation->status = 'hold';
+                    $reservation->status = 1;
                     $roomNo->save();
                     $reservation->save();
                     $reservation->roomNo = $reservation->roomNo()->first()->room_no;
+                    $reservation->In = $reservation->check_in->format('Y-m-d');
+                    $reservation->Out = $reservation->check_out->format('Y-m-d');;
                     $reservation->success = true;
                     $reservation->message = 'Reserved!!! You have successfully reserved the room.';
 
@@ -110,11 +112,11 @@ class DefaultController extends Controller
 
         if(isset($inputs['mobile_search']))
         {
-            $customer = Reservation::where('status', '<', 3)->where('mobile', $inputs['mobile_search'])->orderBy('check_in', 'desc')->get();
+            $customer = Reservation::where('status', '=', 1)->where('mobile', $inputs['mobile_search'])->orderBy('check_in', 'desc')->get();
         }
         elseif(isset($inputs['email_search']))
         {
-            $customer = Reservation::where('status', '<', 3)->where('email', $inputs['email_search'])->orderBy('check_in', 'desc')->get();
+            $customer = Reservation::where('status', '=', 1)->where('email', $inputs['email_search'])->orderBy('check_in', 'desc')->get();
         }
 
         if($customer->count() > 0){
@@ -127,12 +129,6 @@ class DefaultController extends Controller
             $customers->reserve = $customer;
             $customers->success = true;
         }
-
-//        $images = Images::where('disp','Y')->get();
-//        $slide = Images::where('slid','Y')->get();
-//        $cart = Cartegory::all();
-//        return view('layout.default', compact('images','slide', 'cart', 'customer'));
-
         return response()->json($customers);
     }
 }

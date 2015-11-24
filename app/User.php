@@ -13,7 +13,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     use Authenticatable, CanResetPassword;
 
     protected $table = 'users';
-    protected $fillable = ['email','password','surname','lastname','mobile','address'];
+    protected $fillable = ['photo','email','password','surname','lastname','mobile','address'];
 
     protected $hidden = ['admin', 'password', 'remember_token'];
 
@@ -21,4 +21,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->surname . ' ' . $this->lastname;
     }
 
+    public $image_path = '/uploads/staff/';
+
+    public function fullPath(){
+        return ($this->photo) ? $this->image_path . $this->photo : null;
+    }
 }

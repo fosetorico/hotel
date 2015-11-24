@@ -47,6 +47,12 @@ trait AuthenticatesUsers
 
         $credentials = $this->getCredentials($request);
 
+        //////////////////////////////////////////////////////// start: KHEENGZ CUSTOM CODE ////////////////////////////////////////////
+        // Allow Only Active Users Where status is 0
+//        $credentials = array_add($credentials, 'status', 0);
+        //////////////////////////////////////////////////////// end: KHEENGZ CUSTOM CODE //////////////////////////////////////////////
+
+
         if (Auth::attempt($credentials, $request->has('remember'))) {
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
@@ -82,9 +88,18 @@ trait AuthenticatesUsers
             return $this->authenticated($request, Auth::user());
         }
 
+        if(Auth::user()->status !== 0){
+            Auth::logout();
+            return redirect($this->loginPath())
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withErrors([
+                    $this->loginUsername() => 'Access Denied. Please Contact Admin!',
+                ]);
+        }
+
 //Authenticate User or Admin
         if(Auth::user()->admin === 1){
-            return redirect('/admin');
+            return redirect('/register');
         }else{
             return redirect('/staff');
         }
@@ -124,7 +139,7 @@ trait AuthenticatesUsers
     {
         Auth::logout();
 
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/auth/login');
     }
 
     /**

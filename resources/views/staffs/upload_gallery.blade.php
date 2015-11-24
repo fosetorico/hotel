@@ -34,7 +34,7 @@
     </div>
     <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/staff'><b style="">Check Reservation</b></a></li>
+            <li><a href='/staff'><b style=""><b style="">Check Reservation</b></b></a></li>
             <li class='active'><a href='/upload'><b>Upload Images</b></a></li>
             <li><a href='/availability'><b>Availability</b></a></li>
             <li><a href='/checking'><b>Checking</b></a></li>
@@ -49,35 +49,36 @@
 
             <div class="tabbable"> <!-- Only required for left/right tabs -->
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="/upload" data-toggle="">Room Images.</a></li>
-                    <li><a href="/upload_gallery" data-toggle="">Gallery Images.</a></li>
+                    <li><a href="/upload" data-toggle="">Room Images.</a></li>
+                    <li class="active"><a href="/upload_gallery" data-toggle="">Gallery Images.</a></li>
                 </ul><br/><hr style="margin-left:13%; width: 73%;"/>
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="tab1">
+
+                    <div class="tab-pane active" id="tab2">
                         <div style="border:2px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
                             <div class="center gap">
-                                <h4>Rooms Images.</h4><hr style="margin-left: 20%; width:60%;"/>
+                                <h4>Gallery Images.</h4><hr style="margin-left: 20%; width:60%;"/>
                             </div>
                             <!-- start: FLASH MESSAGE -->
                             @if(Session::has('flash_message'))
                                 {!! Session::get('flash_message') !!}
                             @endif
+                            @include('errors.errors')
                             <div class="row" style="margin-top: 5%">
-                                @include('errors.errors')
-                                <form class="" enctype="multipart/form-data" method="post" action="/upload" role="form" style="margin-top: -2.5%;margin-left: 2%">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <div class="col-sm-6" style="height: 70px;" id="" >
-                                        <div class="" style="margin-left: 10%; width:80%; height: 200px; border: 2px solid #c0c0c0;">
-                                            <img id="img_prev" style="height: 100%;width:100%;" src="uploads/avatar.png" alt="passport">
-                                        </div>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="col-sm-6" style="height: 70px;" id="" >
+                                    <div class="" style="margin-left: 10%; width:80%; height: 200px; border: 2px solid #c0c0c0;">
+                                        <img id="img_prev2" style="height: 100%;width:100%;" src="uploads/avatar.png" alt="passport">
                                     </div>
-                                    <div class="col-sm-6" style="margin-left: 0%;" id="" >
+                                </div>
+                                <div class="col-sm-6" style="margin-left: 0%;">
+                                    <form enctype="multipart/form-data" class="" method="post" action="galleryUpload" role="form" style="margin-top: -2.5%;margin-left: 2%">
                                         <div class="row" style="height: 70px">
                                             <div class="">
                                                 <label class="" for="">Image:</label>
                                                 <div class="form-group">
-                                                    <input type="file" name="image" id="image" onchange="readURL(this);"/>
+                                                    <input type="file" name="img" id="img" onchange="readURL2(this);"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,31 +90,25 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row" style="height: 80px">
-                                            <div class="">
-                                                <label class="" for="">Image Room Cartegory:</label>
-                                                <div class="form-group">
-                                                    <select class="form-control" required="required" style="width:70%" name="cart_id" id="cart_id">
-                                                        <option value="">Select room</option>
-                                                        @foreach($cart as $car)
-                                                            <option value="{{$car->id}}">{{$car->name}}</option>
-                                                        @endforeach
-                                                    </select>
+                                        <div class="row" style="height: 120px">
+                                            <div class="" style="">
+                                                <label class="" for="">Image Description:</label>
+                                                <div class="form-group" style="">
+                                        <textarea name="description" id="description" style="width:70%" class="form-control" required="required" placeholder="Image Description">
+                                        </textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row" style="height: 60px">
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    <button style="margin-left: 0%;width:70%" id ="upload_room" style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Upload</b></button>
+                                                    <button style="margin-left: 0%;width:70%" id ="upload_gal" style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Upload</b></button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><br/>
-                                </form><br/>
+                                    </form>
+                                </div>
                             </div><br/>
-                        </div><br/>
-                    </div>
                         </div><br/><br/><br/><br/>
                     </div>
 

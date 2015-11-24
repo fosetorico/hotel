@@ -12,9 +12,9 @@ class Images extends Model
 
     protected $fillable = ['img','name','description','slid','disp'];
 
-    public $image_path = '/public/uploads/gallery/';
+    public $image_path = '/uploads/gallery/';
 
     public function fullPath(){
-        return ($this->image) ? $this->image_path . $this->img : null;
+        return ($this->img) ? $this->image_path . $this->img : null;
     }
 }

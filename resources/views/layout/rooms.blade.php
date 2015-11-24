@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <link rel="SHORTCUT ICON" href="uploads/icon.jpg" TYPE="image/jpg"/>
     <title>Newland Hotels and Suites.</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/datepicker/css/datepicker.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -29,6 +31,9 @@
 
 <body data-spy="scroll" data-target="" data-offset="0">
     <header id="header" role="banner">
+        <div style="background-color: white;width:100%">
+            <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+        </div>
         <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
             <ul style="margin-top: 1%;">
                 <li><a href='/'><b><i class="icon-home"></i>&nbsp;Home</b></a></li>
@@ -41,7 +46,7 @@
     </header><!--/#header-->
 
     @foreach($cart as $car)
-        <section id="main-slider" class="carousel" style="height: 750px">
+        <section id="main-slider" class="carousel" style="margin-top:80px;height: 750px">
             <div class="carousel-inner" style="margin-top:-90px;height:800px">
                 <?php $i = 0?>
                 @if($car->rooms()->count() > 0)
@@ -58,7 +63,7 @@
                                     <div class="row" style="margin-top: 4%">
                                         <div class="col-sm-8 col-sm-offset-2">
                                             <div class="carousel-content" style="">
-                                                    <img class="" src="{{$room->image}}" alt="" style="width:96%;height:400px;">
+                                                    <img class="" src="{{$room->fullPath()}}" alt="" style="width:96%;height:400px;">
                                             </div>
                                         </div>
                                     </div><br/>
@@ -239,7 +244,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script src="js/main.js"></script>
 <script src="js/custom/default.js"></script>
 <script>

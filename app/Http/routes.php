@@ -30,6 +30,11 @@ Route::post('/checkOut-room','StaffController@checkOut_room');
 Route::get('/checking', 'StaffController@checking');
 Route::get('/c_out', 'StaffController@cOut');
 
+Route::post('/block_staff', 'AdminController@block_staff');
+Route::post('/unblock_staff', 'AdminController@unblock_staff');
+
+Route::post('/admin_edit', 'AdminController@admin_edit');
+
 Route::post('/edit_staff', 'AdminController@index');
 Route::post('/view_staff', 'AdminController@search');
 //Route::get('/billing', 'AdminController@billing');
@@ -98,7 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Uses Auth Middleware
     });
 
-    Route::get('/billing','AdminController@billing');      //function () {
+//    Route::get('/billing','AdminController@billing');      //function () {
 //        if(Auth::user()->admin === 1){
 //            return view('admin.billing');
 //        }else{

@@ -52,6 +52,7 @@ class StaffController extends Controller
     {
         $messages = [
             'rno.required' => 'The Room No is Required!',
+            'phone.required' => 'The Mobile No is Required!',
             'phone.numeric' => 'The Mobile Number may only contain Numbers!',
 
         ];

@@ -61,9 +61,11 @@
                             <div class="center gap">
                                 <h4>Edit Admin Details.</h4><hr style="margin-left: 20%; width:60%;"/>welcome {{Auth::user()->fullName()}}
                             </div>
-                            {{--@if(isset($user))--}}
-                                {{--@foreach($user as $use)--}}
-                                    <form class="" method="post" action="" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                            @if(Session::has('flash_message'))
+                                {!! Session::get('flash_message') !!}
+                            @endif
+                            @include('errors.errors')
+                                    <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="row" style="margin-top: 0%; margin-left: 5%;">
                                             <div class="col-sm-6" style="margin-left: -4%" id="" >
@@ -71,16 +73,17 @@
                                                     <label class="" for="">Current Email:</label>
                                                     <div class="row" style="">
                                                         <div class="form-group col-sm-9">
-                                                            <input type="text" value="{{Auth::user()->email}}" style="" name="mobile" id="mobile" disabled="disabled" class="form-control">
+                                                            <input type="text" value="{{Auth::user()->email}}" style="" disabled="disabled" class="form-control">
+                                                            <input type="hidden" name="old_email" value="{{Auth::user()->mobile}}">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6" style="margin-left: -4%" id="" >
                                                 <div class="" style="margin-left: 5%">
-                                                    <label class="" for="">New Email:</label>
+                                                    <label class="" for="">New Email Address:</label>
                                                     <div class="form-group col-sm-9">
-                                                        <input type="text" style="margin-left: -8%" name="email" id="email" class="form-control" required="required" placeholder="New Email">
+                                                        <input type="text" style="margin-left: -8%" name="email" id="email" value="{{ old('email')}}" required="required" class="form-control" placeholder="Mobile No">
                                                     </div>
                                                     <div class="form-group col-sm-3">
                                                         <div class="form-group">
@@ -90,13 +93,17 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </form><br>
+                                    <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="row" style="margin-top: 0%; margin-left: 5%;">
                                             <div class="col-sm-6" style="margin-left: -4%" id="" >
                                                 <div class="" style="margin-left: 5%">
                                                     <label class="" for="">Current Mobile No:</label>
                                                     <div class="row" style="">
                                                         <div class="form-group col-sm-9">
-                                                            <input type="text" value="{{Auth::user()->mobile}}" style="" name="mobile" id="mobile" disabled="disabled" class="form-control">
+                                                            <input type="text" value="{{Auth::user()->mobile}}" style="" disabled="disabled" class="form-control">
+                                                            <input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -105,7 +112,7 @@
                                                 <div class="" style="margin-left: 5%">
                                                     <label class="" for="">New Mobile No:</label>
                                                     <div class="form-group col-sm-9">
-                                                        <input type="text" style="margin-left: -8%" name="mobile" id="mobile" class="form-control" required="required" placeholder="Mobile No">
+                                                        <input type="text" style="margin-left: -8%" name="mobile" id="mobile" value="{{ old('mobile')}}" required="required" class="form-control" placeholder="Mobile No">
                                                     </div>
                                                     <div class="form-group col-sm-3">
                                                         <div class="form-group">
@@ -115,13 +122,16 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </form><br>
+                                    <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="row" style="margin-top: 0%; margin-left: 5%;">
                                             <div class="col-sm-6" style="margin-left: -4%" id="" >
                                                 <div class="" style="margin-left: 5%">
                                                     <label class="" for="">New Password:</label>
                                                     <div class="row" style="">
                                                         <div class="form-group col-sm-9">
-                                                            <input type="text" style="" name="mobile" id="mobile" class="form-control" placeholder="New Password">
+                                                            <input type="password" style="" name="password" id="password" required="required" class="form-control" placeholder="New Password">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -130,7 +140,8 @@
                                                 <div class="" style="margin-left: 5%">
                                                     <label class="" for="">Confirm New Password:</label>
                                                     <div class="form-group col-sm-9">
-                                                        <input type="password" style="margin-left: -8%" name="password" id="password" class="form-control" required="required" placeholder="Confirm New Password">
+                                                        <input type="password" style="margin-left: -8%" name="password_confirmation" id="password_confirmation" required="required" class="form-control" placeholder="Confirm New Password">
+                                                        <input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">
                                                     </div>
                                                     <div class="form-group col-sm-3">
                                                         <div class="form-group">

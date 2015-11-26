@@ -61,15 +61,19 @@
                             <div class="center gap">
                                 <h4>Block Staff.</h4><hr style="margin-left: 20%; width:60%;"/>
                             </div>
+                            @if(Session::has('flash_message'))
+                                {!! Session::get('flash_message') !!}
+                            @endif
+                            @include('errors.errors')
                                 <div class="row" style="margin-top: 5%; margin-left: 0%;">
-                                    <form class="" method="post" action="" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                                    <form class="" method="post" action="/block_staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="col-sm-6" style="margin-left: -4%" id="" >
                                             <div class="" style="margin-left: 5%">
                                                 <label class="" for="">Mobile No:</label>
                                                 <div class="row" style="">
                                                     <div class="form-group col-sm-9">
-                                                        <input type="text" style="" name="mobile" id="mobile" class="form-control" required="required" placeholder="Mobile No">
+                                                        <input type="text" style="" name="mobile" value="{{ old('mobile') }}" id="mobile" class="form-control" required="required" placeholder="Mobile No">
                                                     </div>
                                                     <div class="form-group col-sm-3">
                                                         <div class="form-group">
@@ -80,14 +84,14 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <form class="" method="post" action="/staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                                    <form class="" method="post" action="/block_staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <div class="col-sm-6" style="" id="" >
                                             <div class="" style="margin-left: -3%">
                                                 <label class="" for="">Email Address:</label>
                                                 <div class="row" style="">
                                                     <div class="form-group col-sm-9">
-                                                        <input type="text" style="" name="email" id="email" class="form-control" required="required" placeholder="Email Address">
+                                                        <input type="text" style="" name="email" value="{{ old('email') }}" id="email" class="form-control" required="required" placeholder="Email Address">
                                                     </div>
                                                     <div class="form-group col-sm-3">
                                                         <div class="form-group">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2015 at 12:33 AM
+-- Generation Time: Nov 24, 2015 at 11:56 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -133,7 +133,7 @@ INSERT INTO `reservation` (`id`, `sname`, `fname`, `mobile`, `email`, `roomNo_id
 (25, 'dfgh', 'rbtnymuyr', '3333333', 'dhf@ghn.drfg544', '10', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 3, '2015-11-13 08:12:24', '2015-11-13 08:12:24'),
 (26, 'esrfrrr', 'rbtnymuyr', '1234566', 'dhf@ghn.drfg544', '6', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 4, '2015-11-13 08:14:20', '2015-11-13 08:14:20'),
 (27, 'esrfrrr', 'cccccc', '475897', 'dhf@ghn.drfg544', '15', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 3, '2015-11-13 18:03:23', '2015-11-13 18:03:23'),
-(29, 'Opus', 'Soniar', '09876543390', 'sonia@yahoo.com', '15', '2015-11-21 20:33:30', '2015-11-22 06:42:27', 2, '2015-11-19 06:42:27', '2015-11-23 20:33:30'),
+(29, 'Opus', 'Soniar', '09876543390', 'sonia@yahoo.com', '15', '2015-11-21 20:33:30', '2015-11-22 06:42:27', 3, '2015-11-19 06:42:27', '2015-11-24 19:28:33'),
 (30, 'daniel', 'apus', '455677889989', 'ssss@rrrr.ggg', '8', '2015-11-25 20:28:27', '2015-11-28 20:28:27', 1, '2015-11-23 20:28:27', '2015-11-23 20:28:27'),
 (31, 'kinsley', 'chinaka', '23456788988', 'kins@yahoo.com', '16', '2015-11-25 20:51:28', '2015-11-30 20:51:28', 1, '2015-11-23 20:51:28', '2015-11-23 20:51:28'),
 (32, 'pearl', 'charles', '87652424242', 'eee@eee.cccc', '4', '2015-11-24 20:52:37', '2015-11-26 20:52:37', 1, '2015-11-23 20:52:37', '2015-11-23 20:52:37'),
@@ -240,7 +240,7 @@ INSERT INTO `room_no` (`id`, `room_no`, `cart_id`, `status`, `created_at`, `upda
 (12, 'N208', '1', 0, '2015-11-11 14:36:10', '2015-11-11 14:36:10'),
 (13, 'N301', '3', 0, '2015-11-11 14:37:35', '2015-11-11 14:37:35'),
 (14, 'N302', '2', 0, '2015-11-11 14:37:54', '2015-11-13 08:05:50'),
-(15, 'N303', '2', 1, '2015-11-11 14:38:09', '2015-11-19 06:42:27'),
+(15, 'N303', '2', 0, '2015-11-11 14:38:09', '2015-11-24 19:28:33'),
 (16, 'N304', '1', 1, '2015-11-11 14:38:29', '2015-11-23 20:51:28'),
 (17, 'N305', '1', 0, '2015-11-11 14:38:51', '2015-11-13 07:58:47'),
 (18, 'N306', '1', 0, '2015-11-11 14:39:01', '2015-11-12 09:15:26'),
@@ -267,15 +267,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `photo`, `email`, `password`, `surname`, `lastname`, `mobile`, `address`, `status`, `admin`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '85ed (10).JPG', 'pascal@yahoo.com', '$2y$10$HgOHJJnlnYJs77vcvzLgf.iWBiDC9BZHNoLJMhn3r6mU.TK3b7Kvm', 'Adigwe', 'Pascal', '0987654322', 'legislative quarters Apo', 0, 1, 'LhKRkEo4sHGnCvdQSQcNACkSMt5tDTbM6d7B80WxX1eA0ZKs0WlJyY3ONdQ0', '2015-11-14 06:57:05', '2015-11-22 17:05:04'),
-(2, 'Kul_vee.jpg', 'kingsley4united@yahoo.com', '$2y$10$vPx3xQcskat85jzZ/uZae.TxDRSBNJeGvAEE7xeJE9XET39Re4jgu', 'Chinaka', 'Kingsley', '09077665436', 'ghfcvghf dfvc fgjghfg', 0, 0, '8zg0okPA0BQtsWtA9jxfFvSO96oX7ZDzEMeoS8AUA1sIuTWJt2MR836yy1Up', '2015-11-16 18:14:19', '2015-11-22 18:15:47');
+(1, '85ed (10).JPG', 'pascal@yahoo.com', '$2y$10$HgOHJJnlnYJs77vcvzLgf.iWBiDC9BZHNoLJMhn3r6mU.TK3b7Kvm', 'Adigwe', 'Pascal', '0987654322', 'legislative quarters Apo', 0, 1, 'GYkGIp2Wooav1KG33b6ZXn60nlhw3l4laTywe3P7oq1BKkP0bOmgyS2rUENS', '2015-11-14 06:57:05', '2015-11-24 21:18:40'),
+(2, 'Kul_vee.jpg', 'kingsley4united@yahoo.com', '$2y$10$vPx3xQcskat85jzZ/uZae.TxDRSBNJeGvAEE7xeJE9XET39Re4jgu', 'Chinaka', 'Kingsley', '09077665436', 'ghfcvghf dfvc fgjghfg', 0, 0, 'D625tr0ko2hrp8780UxDMKX5J50NxUWdQKLvHI7dU0Z0OkcDbT0vd7DOrusS', '2015-11-16 18:14:19', '2015-11-24 21:14:40'),
+(4, '4.jpg', 'admin@gmail.com', '$2y$10$PyLQxxGP1MKR3pgIi1aTGe.12gNCWmBwlZxpw38p5.dX6R.63FV7.', 'Jane', 'jhgf', '23456788988', 'ssssss', 0, 0, NULL, '2015-11-24 21:34:00', '2015-11-24 21:34:00'),
+(5, '5.png', 'admin@gmailu.com', '$2y$10$IqNRk/uiGkXPqnRX2TmX5ODkIj/Ic82qb4Pd3qUChygiHhN8x6QhK', 'ffff', 'jhgf', '233333333', 'ssasx', 0, 0, NULL, '2015-11-24 21:38:03', '2015-11-24 21:38:03');
 
 --
 -- Indexes for dumped tables
@@ -361,7 +363,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 DELIMITER $$
 --
 -- Events

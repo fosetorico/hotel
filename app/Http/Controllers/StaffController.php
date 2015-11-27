@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class StaffController extends Controller
@@ -59,6 +60,39 @@ class StaffController extends Controller
         return Validator::make($data, [
             'rno' => 'required',
             'phone' => 'required|numeric',
+        ], $messages);
+    }
+
+    protected function validator3(array $data)
+    {
+        $messages = [
+            'mobile.required' => 'The Mobile Number is Required!',
+            'mobile.numeric' => 'The Mobile Number must be Numbers!',
+        ];
+        return Validator::make($data, [
+            'mobile' => 'required|numeric',
+        ], $messages);
+    }
+    protected function validator4(array $data)
+    {
+        $messages = [
+            'email.required' => 'Email Address is Required!',
+            'email.email' => 'A valid Email Address is Required!',
+        ];
+        return Validator::make($data, [
+            'email' => 'required|email',
+        ], $messages);
+    }
+    protected function validator5(array $data)
+    {
+        $messages = [
+            'password.required' => 'Password is Required!',
+            'password_confirmation.required' => 'Confirm Password is Required!',
+            'password.confirmed' => 'Password Mismatch!',
+        ];
+        return Validator::make($data, [
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|min:6'
         ], $messages);
     }
 
@@ -225,5 +259,70 @@ class StaffController extends Controller
                 return redirect('/c_out');
         }
 
+    }
+
+    public function detail()
+    {
+//        $staf = User::all();
+        return view('staffs.edit_record');  //,compact('staf'));
+    }
+
+    public function edit_detail(Request $request)
+    {
+        $inputs = $request->all();
+
+        if(isset($inputs['mobile'])) {
+            if ($this->validator3($inputs)->fails()) {
+                $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+                return redirect('/edit_detail')->withErrors($this->validator3($inputs))->withInput();
+            }
+
+            $staf = User::where('mobile', $inputs['old_mobile'])->first();
+            if($staf){
+                $staf->mobile = $inputs['mobile'];
+                $staf->save();
+                $this->setFlashMessage('Mobile Number Edited successfully.', 1);
+            }
+            else{
+                $this->setFlashMessage('Error!!! Please check your inputs.', 2);
+            }
+            return redirect('/edit_detail');
+        }
+
+        elseif(isset($inputs['email'])) {
+            if ($this->validator4($inputs)->fails()) {
+                $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+                return redirect('/edit_detail')->withErrors($this->validator4($inputs))->withInput();
+            }
+
+            $staf = User::where('mobile', $inputs['old_email'])->first();
+            if($staf){
+                $staf->email = $inputs['email'];
+                $staf->save();
+                $this->setFlashMessage('Email Address Edited successfully.', 1);
+            }
+            else{
+                $this->setFlashMessage('Error!!! Please check your inputs.', 2);
+            }
+            return redirect('/edit_detail');
+        }
+
+        elseif(isset($inputs['password'])) {
+            if ($this->validator5($inputs)->fails()) {
+                $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+                return redirect('/edit_detail')->withErrors($this->validator5($inputs))->withInput();
+            }
+
+            $staf = User::where('mobile', $inputs['old_mobile'])->first();
+            if($staf){
+                $staf->password = Hash::make($inputs['password']);
+                $staf->save();
+                $this->setFlashMessage('Password Edited successfully.', 1);
+            }
+            else{
+                $this->setFlashMessage('Error!!! Please check your inputs.', 2);
+            }
+            return redirect('/edit_detail');
+        }
     }
 }

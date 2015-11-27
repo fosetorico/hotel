@@ -40,6 +40,8 @@
             <li><a href='/upload'><b>Upload Images</b></a></li>
             <li><a href='/availability'><b>Availability</b></a></li>
             <li><a href='/checking'><b>Checking</b></a></li>
+            <li><a href='/edit_detail'><b>Edit Details</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
             {{--<li><a href=''><b>Gallery</b></a></li>--}}
             {{--<li class='active'><a href='/contact'><b>Contact</b></a></li>--}}
         </ul>
@@ -53,7 +55,8 @@
     <div class="container">
         <div class="box first" STYLE="margin-top:2%">
             <div class="center gap">
-                <h3><b>Check Reservation Details.</b></h3> welcome {{Auth::user()->fullName()}}   <a href='/auth/logout'><b>Logout</b></a>
+                <h3><b>Check Reservation Details.</b></h3>
+                welcome {{Auth::user()->fullName()}}
             </div>
             <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:150px">
                 <div class="row" style="margin-top: 5%">

@@ -38,6 +38,8 @@
             <li><a href='/upload'><b>Upload Images</b></a></li>
             <li class='active'><a href='/availability'><b>Availability</b></a></li>
             <li><a href='/checking'><b>Checking</b></a></li>
+            <li><a href='/edit_detail'><b>Edit Details</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
         </ul>
     </div>
 </header><!--/#header-->
@@ -59,6 +61,7 @@
                         <div style="border:2px solid #c0c0c0; margin-left: 10%; width: 80%; border-radius: 10px 10px;">
                             <div class="center gap">
                                 <h4>Available Rooms.</h4><hr style="margin-left: 20%; width:60%;"/>
+                                welcome {{Auth::user()->fullName()}}
                             </div>
                             <table class="table table-bordered table-striped table-hover table-responsive" style="margin-left: 10%; width: 80%">
                                 <thead>

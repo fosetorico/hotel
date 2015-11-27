@@ -35,6 +35,9 @@ Route::post('/unblock_staff', 'AdminController@unblock_staff');
 
 Route::post('/admin_edit', 'AdminController@admin_edit');
 
+Route::get('/edit_detail', 'StaffController@detail');
+Route::post('/edit_detail', 'StaffController@edit_detail');
+
 Route::post('/edit_staff', 'AdminController@index');
 Route::post('/view_staff', 'AdminController@search');
 //Route::get('/billing', 'AdminController@billing');

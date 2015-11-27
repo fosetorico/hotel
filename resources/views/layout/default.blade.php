@@ -283,7 +283,7 @@
                     <div class="col-sm-6">
                         <h1>Our Address.</h1><hr style="width: 70%;margin-left: 0%"/>
                         <address>
-                            <h4><b>Newland Hotel and Suite.</b></h4>
+                            <h4><b>Newland Hotels and Suites.</b></h4>
                             11 Koforidua St, Off Mambolo St<br>
                             Wuse Zone 2, Abuja.<br>
                             <abbr title="Phone">Tel:</abbr> (234) 456-7890-899

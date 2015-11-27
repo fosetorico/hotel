@@ -38,7 +38,8 @@
             <li class='active'><a href='/view_staff'><b>View Details</b></a></li>
             <li><a href='/block'><b>Block & Unblock Staff</b></a></li>
             <li><a href='/edit_staff'><b>Edit Records</b></a></li>
-            <li><a href='/billing'><b>Edit Billings</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <!--li><a href='/billing'><b>Edit Billings</b></a></li-->
         </ul>
     </div>
 </header><!--/#header-->
@@ -59,7 +60,8 @@
                     <div class="tab-pane active" id="tab1">
                         <div style="border:2px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
                             <div class="center gap">
-                                <h4>View Staff Details.</h4><hr style="margin-left: 20%; width:60%;"/>welcome {{Auth::user()->fullName()}}
+                                <h4>View Staff Details.</h4><hr style="margin-left: 20%; width:60%;"/>
+                                welcome {{Auth::user()->fullName()}}
                             </div>
                             <div class="row" style="margin-top: 5%; margin-left: 0%;">
                                 <form class="" method="post" action="/view_staff" role="form" style="margin-top: -2.5%;margin-left: 5%">

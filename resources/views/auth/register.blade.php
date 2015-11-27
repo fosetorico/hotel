@@ -38,7 +38,8 @@
             <li><a href='/view_staff'><b>View Details</b></a></li>
             <li><a href='/block'><b>Block & Unblock Staff</b></a></li>
             <li><a href='/edit_staff'><b>Edit Records</b></a></li>
-            <li><a href='/billing'><b>Edit Billings</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <!--li><a href='/billing'><b>Edit Billings</b></a></li-->
         </ul>
     </div>
 </header><!--/#header-->
@@ -51,7 +52,8 @@
     <div class="container">
         <div class="box first" STYLE="margin-top:1%">
             <div class="center gap">
-                <h3><b>Register Staff.</b></h3> welcome {{Auth::user()->fullName()}}   <a href='/auth/logout'><b>Logout</b></a>
+                <h3><b>Register Staff.</b></h3>
+                welcome {{Auth::user()->fullName()}}
             </div>
             <!-- start: FLASH MESSAGE -->
             @if(Session::has('flash_message'))

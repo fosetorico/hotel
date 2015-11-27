@@ -38,7 +38,8 @@
             <li><a href='/view_staff'><b>View Details</b></a></li>
             <li><a href='/block'><b>Block & Unblock Staff</b></a></li>
             <li class='active'><a href='/edit_staff'><b>Edit Records</b></a></li>
-            <li><a href='/billing'><b>Edit Billings</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <!--li><a href='/billing'><b>Edit Billings</b></a></li-->
         </ul>
     </div>
 </header><!--/#header-->
@@ -49,122 +50,116 @@
 <section id="services" STYLE="">
     <div class="container">
         <div class="box first" STYLE="margin-top:2%">
-            <div class="tabbable"> <!-- Only required for left/right tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="/edit_staff" data-toggle="">Staff.</a></li>
-                    <li><a href="/edit_admin" data-toggle="">Admin.</a></li>
-                </ul><br/><hr style="margin-left:13%; width: 73%;"/>
+            {{--<div class="tabbable"> <!-- Only required for left/right tabs -->--}}
+                {{--<ul class="nav nav-tabs">--}}
+                    {{--<li><a href="/edit_staff" data-toggle="">Staff.</a></li>--}}
+                    {{--<li class="active"><a href="/edit_admin" data-toggle="">Admin.</a></li>--}}
+                {{--</ul><br/><hr style="margin-left:13%; width: 73%;"/>--}}
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab1">
+                {{--<div class="tab-content">--}}
+                    {{--<div class="tab-pane active" id="tab1">--}}
                         <div style="border:2px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
                             <div class="center gap">
-                                <h4>Edit Staff Details.</h4><hr style="margin-left: 20%; width:60%;"/>
+                                <h4>Edit Admin Details.</h4><hr style="margin-left: 20%; width:60%;"/>
+                                welcome {{Auth::user()->fullName()}}
                             </div>
-                            <div class="row" style="margin-top: 5%; margin-left: 0%;">
-                                <form class="" method="post" action="/edit_staff" role="form" style="margin-top: -2.5%;margin-left: 5%">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <div class="col-sm-9 col-lg-offset-1" style="" id="" >
-                                        <label class="" for="">Staff Mobile No:</label>
-                                        <div class="row">
-                                            <div class="form-group col-sm-7">
-                                                <input type="text" style="" name="mobile" id="mobile" class="form-control" required="required" placeholder="Mobile No">
-                                            </div>
-                                            <div class="form-group col-sm-5">
-                                                <div class="form-group">
-                                                    <center><button style="margin-left: 0%; width: 90%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
+                            @if(Session::has('flash_message'))
+                                {!! Session::get('flash_message') !!}
+                            @endif
+                            @include('errors.errors')
+                            <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="row" style="margin-top: 0%; margin-left: 5%;">
+                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
+                                        <div class="" style="margin-left: 5%">
+                                            <label class="" for="">Current Email:</label>
+                                            <div class="row" style="">
+                                                <div class="form-group col-sm-9">
+                                                    <input type="text" value="{{Auth::user()->email}}" style="" disabled="disabled" class="form-control">
+                                                    <input type="hidden" name="old_email" value="{{Auth::user()->mobile}}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            @if(isset($user))
-                                @foreach($user as $use)
-                                    <form class="" method="post" action="" role="form" style="margin-top: -2.5%;margin-left: 5%">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <div class="row" style="margin-top: 0%; margin-left: 5%;">
-                                            <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                                <div class="" style="margin-left: 5%">
-                                                    <label class="" for="">Current Email:</label>
-                                                    <div class="row" style="">
-                                                        <div class="form-group col-sm-9">
-                                                            <input type="text" value="{{$use->email}}" style="" name="mobile" id="mobile" disabled="disabled" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
+                                        <div class="" style="margin-left: 5%">
+                                            <label class="" for="">New Email Address:</label>
+                                            <div class="form-group col-sm-9">
+                                                <input type="text" style="margin-left: -8%" name="email" id="email" value="{{ old('email')}}" required="required" class="form-control" placeholder="Email Address">
                                             </div>
-                                            <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                                <div class="" style="margin-left: 5%">
-                                                    <label class="" for="">New Email:</label>
-                                                    <div class="form-group col-sm-9">
-                                                        <input type="text" style="margin-left: -8%" name="email" id="email" class="form-control" required="required" placeholder="Mobile No">
-                                                    </div>
-                                                    <div class="form-group col-sm-3">
-                                                        <div class="form-group">
-                                                            <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
-                                                        </div>
-                                                    </div>
+                                            <div class="form-group col-sm-3">
+                                                <div class="form-group">
+                                                    <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row" style="margin-top: 0%; margin-left: 5%;">
-                                            <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                                <div class="" style="margin-left: 5%">
-                                                    <label class="" for="">Current Moile No:</label>
-                                                    <div class="row" style="">
-                                                        <div class="form-group col-sm-9">
-                                                            <input type="text" value="{{$use->mobile}}" style="" name="mobile" id="mobile" disabled="disabled" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                                <div class="" style="margin-left: 5%">
-                                                    <label class="" for="">New Mobile No:</label>
-                                                    <div class="form-group col-sm-9">
-                                                        <input type="text" style="margin-left: -8%" name="mobile" id="mobile" class="form-control" required="required" placeholder="Mobile No">
-                                                    </div>
-                                                    <div class="form-group col-sm-3">
-                                                        <div class="form-group">
-                                                            <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
-                                                        </div>
-                                                    </div>
+                                    </div>
+                                </div>
+                            </form><br>
+                            <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="row" style="margin-top: 0%; margin-left: 5%;">
+                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
+                                        <div class="" style="margin-left: 5%">
+                                            <label class="" for="">Current Mobile No:</label>
+                                            <div class="row" style="">
+                                                <div class="form-group col-sm-9">
+                                                    <input type="text" value="{{Auth::user()->mobile}}" style="" disabled="disabled" class="form-control">
+                                                    <input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row" style="margin-top: 0%; margin-left: 5%;">
-                                            <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                                <div class="" style="margin-left: 5%">
-                                                    <label class="" for="">Current Password:</label>
-                                                    <div class="row" style="">
-                                                        <div class="form-group col-sm-9">
-                                                            <input type="text" value="tttttt" style="" name="mobile" id="mobile" disabled="disabled" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
+                                        <div class="" style="margin-left: 5%">
+                                            <label class="" for="">New Mobile No:</label>
+                                            <div class="form-group col-sm-9">
+                                                <input type="text" style="margin-left: -8%" name="mobile" id="mobile" value="{{ old('mobile')}}" required="required" class="form-control" placeholder="Mobile No">
                                             </div>
-                                            <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                                <div class="" style="margin-left: 5%">
-                                                    <label class="" for="">New Password:</label>
-                                                    <div class="form-group col-sm-9">
-                                                        <input type="password" style="margin-left: -8%" name="password" id="password" class="form-control" required="required" placeholder="Mobile No">
-                                                    </div>
-                                                    <div class="form-group col-sm-3">
-                                                        <div class="form-group">
-                                                            <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
-                                                        </div>
-                                                    </div>
+                                            <div class="form-group col-sm-3">
+                                                <div class="form-group">
+                                                    <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                @endforeach
-                            @endif
-                        </div>
-                    </div><br/>
-                </div>
-            </div><br/><br/><br/><br/>
+                                    </div>
+                                </div>
+                            </form><br>
+                            <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="row" style="margin-top: 0%; margin-left: 5%;">
+                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
+                                        <div class="" style="margin-left: 5%">
+                                            <label class="" for="">New Password:</label>
+                                            <div class="row" style="">
+                                                <div class="form-group col-sm-9">
+                                                    <input type="password" style="" name="password" id="password" required="required" class="form-control" placeholder="New Password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
+                                        <div class="" style="margin-left: 5%">
+                                            <label class="" for="">Confirm New Password:</label>
+                                            <div class="form-group col-sm-9">
+                                                <input type="password" style="margin-left: -8%" name="password_confirmation" id="password_confirmation" required="required" class="form-control" placeholder="Confirm New Password">
+                                                <input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <div class="form-group">
+                                                    <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            {{--@endforeach--}}
+                            {{--@endif--}}
+                        </div><br/><br/><br/><br/>
+                    {{--</div><br/>--}}
+                {{--</div>--}}
+            {{--</div>--}}<br/><br/><br/><br/>
         </div>
 
     </div>
@@ -194,6 +189,6 @@
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/main.js"></script>
-{{--<script src="js/custom/default.js"></script>--}}
+<script src="js/custom/default.js"></script>
 </body>
 </html>

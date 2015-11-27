@@ -40,6 +40,8 @@
             <li><a href='/upload'><b>Upload Images</b></a></li>
             <li><a href='/availability'><b>Availability</b></a></li>
             <li class='active'><a href='/checking'><b>Checking</b></a></li>
+            <li><a href='/edit_detail'><b>Edit Details</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
         </ul>
     </div>
 </header><!--/#header-->
@@ -65,7 +67,8 @@
 
                             @include('errors.errors')<br>
                             <div class="center gap">
-                                <h3><b>Check Out Customer.</b></h3> welcome {{Auth::user()->fullName()}}   <a href='/auth/logout'><b>Logout</b></a>
+                                <h3><b>Check Out Customer.</b></h3>
+                                welcome {{Auth::user()->fullName()}}
                             </div>
                             <form method="post" action="/checkOut-room" role="form" style="margin-left: 10%;width:80%;margin-top: -2.5%">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">

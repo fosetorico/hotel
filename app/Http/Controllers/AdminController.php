@@ -174,7 +174,7 @@ class AdminController extends Controller
         if(isset($inputs['mobile'])) {
             if ($this->validator($inputs)->fails()) {
                 $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
-                return redirect('/edit_admin')->withErrors($this->validator($inputs))->withInput();
+                return redirect('/edit_staff')->withErrors($this->validator($inputs))->withInput();
             }
 
             $staf = User::where('mobile', $inputs['old_mobile'])->first();
@@ -186,13 +186,13 @@ class AdminController extends Controller
             else{
                 $this->setFlashMessage('Error!!! Please check your inputs.', 2);
             }
-            return redirect('/edit_admin');
+            return redirect('/edit_staff');
         }
 
         elseif(isset($inputs['email'])) {
             if ($this->validator2($inputs)->fails()) {
                 $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
-                return redirect('/edit_admin')->withErrors($this->validator2($inputs))->withInput();
+                return redirect('/edit_staff')->withErrors($this->validator2($inputs))->withInput();
             }
 
             $staf = User::where('mobile', $inputs['old_email'])->first();
@@ -204,25 +204,81 @@ class AdminController extends Controller
             else{
                 $this->setFlashMessage('Error!!! Please check your inputs.', 2);
             }
-            return redirect('/edit_admin');
+            return redirect('/edit_staff');
         }
 
         elseif(isset($inputs['password'])) {
             if ($this->validator3($inputs)->fails()) {
                 $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
-                return redirect('/edit_admin')->withErrors($this->validator3($inputs))->withInput();
+                return redirect('/edit_staff')->withErrors($this->validator3($inputs))->withInput();
             }
 
             $staf = User::where('mobile', $inputs['old_mobile'])->first();
             if($staf){
                 $staf->password = Hash::make($inputs['password']);
                 $staf->save();
-                $this->setFlashMessage('Email Address Edited successfully.', 1);
+                $this->setFlashMessage('Password Edited successfully.', 1);
             }
             else{
                 $this->setFlashMessage('Error!!! Please check your inputs.', 2);
             }
-            return redirect('/edit_admin');
+            return redirect('/edit_staff');
         }
     }
+
+//    public function staff_edit(Request $request)
+//    {
+//        $inputs = $request->all();
+//
+//        if (isset($inputs['mobile'])) {
+//            if ($this->validator($inputs)->fails()) {
+//                $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+//                return redirect('/edit_staff')->withErrors($this->validator($inputs))->withInput();
+//            }
+//
+//            $staf = User::where('mobile', $inputs['old_mobile'])->first();
+//            if ($staf) {
+//                $staf->mobile = $inputs['mobile'];
+//                $staf->save();
+//                $this->setFlashMessage('Mobile Number Edited successfully.', 1);
+//            } else {
+//                $this->setFlashMessage('Error!!! Please check your inputs.', 2);
+//            }
+//            return redirect('/edit_staff');
+//        }
+//
+//        elseif (isset($inputs['email'])) {
+//            if ($this->validator2($inputs)->fails()) {
+//                $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+//                return redirect('/edit_staff')->withErrors($this->validator2($inputs))->withInput();
+//            }
+//
+//            $staf = User::where('mobile', $inputs['old_email'])->first();
+//            if ($staf) {
+//                $staf->email = $inputs['email'];
+//                $staf->save();
+//                $this->setFlashMessage('Email Address Edited successfully.', 1);
+//            } else {
+//                $this->setFlashMessage('Error!!! Please check your inputs.', 2);
+//            }
+//            return redirect('/edit_staff');
+//        }
+//
+//        elseif (isset($inputs['password'])) {
+//            if ($this->validator3($inputs)->fails()) {
+//                $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+//                return redirect('/edit_staff')->withErrors($this->validator3($inputs))->withInput();
+//            }
+//
+//            $staf = User::where('mobile', $inputs['old_mobile'])->first();
+//            if ($staf) {
+//                $staf->password = Hash::make($inputs['password']);
+//                $staf->save();
+//                $this->setFlashMessage('Password Edited successfully.', 1);
+//            } else {
+//                $this->setFlashMessage('Error!!! Please check your inputs.', 2);
+//            }
+//            return redirect('/edit_staff');
+//        }
+//    }
 }

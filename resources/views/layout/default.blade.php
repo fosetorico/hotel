@@ -27,6 +27,28 @@
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="/js/script.js"></script>
 
+    <style rel="stylesheet">
+        #main-slider{height:650px; margin-top: 90px}
+        .carousel-inner{margin-top:-90px}
+        .slid_img{width:96%;height:500px;}
+        @media(max-width: 815px) and (min-width: 700px){
+            #main-slider{height:550px; margin-top: 90px}
+            .carousel-inner{margin-top:-90px}
+            .slid_img{width:86%;height:400px;}
+        }
+        @media(max-width: 700px) and (min-width: 570px){
+            #main-slider{height:500px; margin-top: 90px}
+            .carousel-inner{margin-top:-90px}
+            .slid_img{width:90%;height:350px;}
+        }
+        @media(max-width: 570px) and (min-width: 0px){
+            #main-slider{height:450px; margin-top: 90px}
+            .carousel-inner{margin-top:-90px}
+            .slid_img{width:100%;height:300px;}
+        }
+
+    </style
+
 </head><!--/head-->
 
 <body>
@@ -45,12 +67,12 @@
         </div>
     </header><!--/#header-->
 
-    <section id="main-slider" class="carousel" style="height:650px; margin-top: 90px">
-        <div class="carousel-inner" style="margin-top:-90px">
+    <section id="main-slider" class="carousel" style="">
+        <div class="carousel-inner" style="">
             <div class="item active" style="">
                 <div class="container" style="">
                     <div class="carousel-content" style="">
-                        <img class="" src="uploads/gallery/slider-bg copy.jpg" alt="Front View" style="width:96%;height:500px;">
+                        <img class="slid_img" src="uploads/gallery/slider-bg copy.jpg" alt="Front View" id="slid_img" style="">
                     </div>
                 </div>
             </div>
@@ -59,8 +81,7 @@
                 <div class="item" style="">
                     <div class="container" style="">
                         <div class="carousel-content" style="">
-                            {{--<img class="" src="uploads/gallery/ccc.jpg" alt="Front View" style="width:96%;height:500px;">--}}
-                            <img class="" src="{{$slid->fullPath()}}" alt="{{$slid->name}}" style="width:96%;height:500px;">
+                            <img class="slid_img" src="{{$slid->fullPath()}}" alt="{{$slid->name}}" style="">
                         </div>
                     </div>
                 </div>
@@ -71,50 +92,70 @@
         <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
     </section><!--/#main-slider-->
 
-    <section id="services" STYLE="margin-top: 2%">
+        <!--div style="border: 2px solid blue;height: 15px; width: 815px;"></div>
+        <div style="border: 2px solid blue;height: 15px; width: 700px;"></div>
+        <div style="border: 2px solid blue;height: 15px; width: 570px;"></div>
+        <div style="border: 2px solid blue;height: 15px;"></div>
+        <div style="border: 2px solid blue;height: 15px;"></div>
+        <br/-->
+
+    <section id="portfolio" style="margin-top: -1%">
         <div class="container">
-            <div class="box first" style="border-radius: 10px 10px">
+            <div class="box" style="border-radius: 10px 10px">
                 <div class="row">
 
                     @foreach($images as $img)
                         <div class="col-md-4 col-sm-6">
-                            <div class="center">
-                                <img class="img-thumbnail" src="{{$img->fullPath()}}" alt="{{$img->name}}" style="">
-                                <h4>{{$img->name}}</h4>
-                                <p>{{$img->description}}</p>
-                            </div>
+                            <ul class="portfolio-items col-1">
+                                <li class="portfolio-item apps">
+                                    <div class="item-inner">
+                                        <div class="portfolio-image">
+                                            <img src="{{$img->fullPath()}}" alt="{{$img->name}}">
+                                            <div class="overlay">
+                                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="{{$img->fullPath()}}"><i                                                                 class="icon-eye-open"></i></a>
+                                            </div>
+                                        </div>
+                                        <h4><b>{{$img->name}}</b></h4><br/>
+                                        <p>{{$img->description}}</p>
+                                    </div>
+                                </li><!--/.portfolio-item-->
+                            </ul>
                         </div>
                     @endforeach
 
-                </div><!--/.row-->
+                </div>
             </div><!--/.box-->
         </div><!--/.container-->
-    </section><!--/#services-->
+    </section><!--/#portfolio-->
 
     <section id="portfolio">
         <div class="container">
-            <div class="box" style="border-radius: 10px 10px">
-                <div class="center gap">
-                    <h2>Room Cartegory.</h2>
+            <div class="box" style="border-radius: 10px 10px; background-color: ghostwhite">
+                <div class="center gap" style="margin-top: -5%">
+                    <h2><label class="h2">Room Category.</label></h2>
                 </div><!--/.center-->
-                <ul class="portfolio-items col-3">
+                <div class="row" style="margin-top: -5%">
 
                     @foreach($cart as $carte)
-                        <li class="portfolio-item apps">
-                            <div class="item-inner">
-                                <div class="portfolio-image">
-                                    <img src="{{$carte->image()->first()->fullPath()}}" alt="{{$carte->name}}">
-                                    <div class="overlay">
-                                        <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="{{$img->img}}"><i                                                                 class="icon-eye-open"></i></a>
+                        <div class="col-md-4 col-sm-6">
+                            <ul class="portfolio-items col-1">
+                                <li class="portfolio-item apps">
+                                    <div class="item-inner">
+                                        <div class="portfolio-image">
+                                            <img src="{{$carte->image()->first()->fullPath()}}" alt="{{$carte->name}}">
+                                            <div class="overlay">
+                                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" href="{{$carte->image()->first()->fullPath()}}"><i                                                                 class="icon-eye-open"></i></a>
+                                            </div>
+                                        </div>
+                                        <h4><b>{{$carte->name}}</b></h4><br/>
+                                            <center><button type="button" value="{{$carte->id}}" class="btn book_room btn-primary btn-sm" style="width: 80%"><b>Reserve</b></button></center>
                                     </div>
-                                </div>
-                                <h4><b>{{$carte->name}}</b></h4><br/>
-                                    <center><button type="button" value="{{$carte->id}}" class="btn book_room btn-primary btn-sm" style="width: 80%"><b>Reserve</b></button></center>
-                            </div>
-                        </li><!--/.portfolio-item-->
+                                </li><!--/.portfolio-item-->
+                            </ul>
+                        </div>
                     @endforeach
 
-                </ul>
+                </div>
             </div><!--/.box-->
         </div><!--/.container-->
     </section><!--/#portfolio-->
@@ -123,24 +164,23 @@
         <div class="container">
             <div class="box" style="border-radius: 10px 10px">
                 <div class="center" style="margin-top: -5%">
-                    <h2>Room Reservation.</h2>
+                    <h2><label class="h2">Room Reservation.</label></h2>
                 </div>
+
                 <div id="pricing-table" class="row" style="border:1px solid #c0c0c0; border-radius: 5px 5px">
 
 
                     <div class="col-sm-6" style="">
                         <ul class="plan" style="margin-top:5%">
                             <li class="plan-name"><h4><b><label id="room_name"></label></b></h4></li>
-                            <div id="pricing-table" class="row">
-                                <div class="col-sm-6" style="">
-                                    <div class="portfolio-image" style="width:100%;">
-                                        <img src="" id="cat_image1" alt="" style="width:100%; height:200px; margin-left:5%">
-                                    </div><br/><br/>
-                                </div>
-                                <div class="col-sm-6" style="">
-                                    <section style="">
-                                        <label style="margin-top:16%"><h2><i>&#8358;<label id="room_price"></label></i></h2></label>
-                                    </section>
+                            <div id="" class="row">
+                                <div class="col-sm-10" style="margin-left: 10%;">
+                                    <div class="portfolio-image" style="width:80%;">
+                                        <img src="" id="cat_image1" alt="" style="width:100%; height:200px; margin-left:5%"><br/>
+                                        <h3><label style="">
+                                            <b><i>&#8358;&nbsp;<label id="room_price"></label></i></b><hr style="margin-left: -50%;width:200%;"/>
+                                        </label></h3>
+                                    </div>
                                 </div>
                             </div>
                         </ul>
@@ -154,12 +194,12 @@
                         <div id="msg_div" class="alert">
 
                         </div>
-                        <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="margin-top: -2.5%">
+                        <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="margin-top: -10.5%">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="row" style="">
                                     <div class="col-sm-6" style="" id="" >
                                         <div class="">
-                                            <label class="" for="">Enter Surname:</label>
+                                            <label class="" for="">Surname:</label>
                                             <div class="form-group">
                                                 <input type="text" style="" name="sname" id="sname" class="form-control" required="required" placeholder="Surename">
                                             </div>
@@ -167,7 +207,7 @@
                                     </div>
                                     <div class="col-sm-6" style="" id="" >
                                         <div class="">
-                                            <label class="" for="">Enter Firstname:</label>
+                                            <label class="" for="">Firstname:</label>
                                             <div class="form-group">
                                                 <input type="text" name="fname" id="fname" class="form-control" required="required" placeholder="Firstname">
                                             </div>
@@ -185,7 +225,7 @@
                                 <div class="row" style="">
                                     <div class="col-sm-6" style="" id="" >
                                         <div class="">
-                                            <label class="" for="">Enter Phone Number:</label>
+                                            <label class="" for="">Mobile Number:</label>
                                             <div class="form-group">
                                                 <input type="text" name="mobile" id="mobile" class="form-control" required="required" placeholder="Phone Number">
                                             </div>
@@ -193,7 +233,7 @@
                                     </div>
                                     <div class="col-sm-6" style="" id="" >
                                         <div class="form-group">
-                                            <label class="" for="">Enter E-Mail:</label>
+                                            <label class="" for="">E-Mail:</label>
                                             <input type="text" name="email" id="email" class="form-control" required="required" placeholder="Email address">
                                         </div>
                                     </div>
@@ -202,13 +242,13 @@
                                     <div class="col-sm-6" style="" id="" >
                                         <div class="form-group">
                                             <label class="" for="">Check In:</label>
-                                            <input type="text" name="check_in" id="check_in" class="form-control date-picker" required="required" placeholder="Check In">
+                                            <input type="text" name="check_in" id="check_in" class="form-control date-picker2" required="required" placeholder="Check In">
                                         </div>
                                     </div>
                                     <div class="col-sm-6" style="" id="" >
                                         <div class="form-group">
                                             <label class="" for="">Check Out:</label>
-                                            <input type="text" name="check_out" id="check_out" class="form-control date-picker" required="required" placeholder="Check Out">
+                                            <input type="text" name="check_out" id="check_out" class="form-control date-picker2" required="required" placeholder="Check Out">
                                         </div>
                                     </div>
                                 </div>
@@ -223,54 +263,54 @@
         </div>
     </section><!--/#pricing-->
 
-    <section id="services" STYLE="">
+    <section id="services" STYLE="margin-top: 1.6%">
         <div class="container">
-            <div class="box first" style="border-radius: 10px 10px; margin-top: 0.1%">
+            <div class="box first" style="border-radius: 10px 10px; margin-top: -2%">
                 <div class="center gap" STYLE="">
                     <h4><b><i>Forgot Your Reservation Details?...Search Here.</i></b></h4>
                 </div>
-                <div style="border:1px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px; height:120px">
+                <div style="border:1px solid #c0c0c0;border-radius: 10px 10px; ">
                     <div class="row" style="margin-top: 5%">
-                        <form id="mobile_form" class="" method="post" action="/check" role="form" style="margin-top: -2.5%;margin-left: 2%">
+                        <form id="mobile_form" class="" method="post" action="/check" role="form" style="">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="col-sm-6" style="" id="" >
-                                <div class="" style="margin-left: 5%">
-                                    <label class="" for="">Mobile No:</label>
+                                <div class="" style="">
+                                    <label class="" style="margin-left: 5%" for="">Mobile No:</label>
                                     <div class="row" style="">
-                                        <div class="form-group col-sm-9">
-                                            <input type="text" style="" name="mobile_search" id="mobile_search" class="form-control" required="required" placeholder="Mobile No">
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <div class="form-group">
-                                                <center><button id ="mobile_search_btn" style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
-                                            </div>
-                                        </div>
+                                        <table style="margin-left: 5%; width: 90%" cellpadding="7" cellspacing="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="80%"><input type="text" style="" name="mobile_search" id="mobile_search" class="form-control" required="required" placeholder="Mobile No"></td>
+                                                    <td width="20%"><button id ="mobile_search_btn" style="" type="submit" class="btn btn-primary "><b>Search</b></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <form id="email_form" class="" method="post" action="/check" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                        <form id="email_form" class="" method="post" action="/check" role="form" style="">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="col-sm-6" style="" id="" >
-                                <div class="" style="margin-left: -3%">
-                                    <label class="" for="">Email Address:</label>
+                                <div class="" style="">
+                                    <label class="" style="margin-left: 5%" for="">Email Address:</label>
                                     <div class="row" style="">
-                                        <div class="form-group col-sm-9">
-                                            <input type="text" style="" name="email_search" id="email_search" class="form-control" required="required" placeholder="Email Address">
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <div class="form-group">
-                                                <center><button id ="email_search_btn" style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Search</b></button></center>
-                                            </div>
-                                        </div>
+                                        <table style="margin-left: 5%; width: 90%" cellpadding="7" cellspacing="0">
+                                            <tbody>
+                                            <tr>
+                                                <td width="80%"><input type="text" style="" name="email_search" id="email_search" class="form-control" required="required" placeholder="Email Address"></td>
+                                                <td width="20%"><button id ="email_search_btn" style="" type="submit" class="btn btn-primary "><b>Search</b></button></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div><br/><br/><br/>
                 </div><br/>
 
-                <div class="row" id="search_table">
+                <div class="row" id="search_table"></div>
 
             </div>
         </div><!--/.container-->

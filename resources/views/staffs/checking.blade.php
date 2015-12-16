@@ -189,7 +189,8 @@
 {{--<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>--}}
 <script src="js/main.js"></script>
 <script src="js/custom/staff.js"></script>
-<script>
+
+<!--script>
 //    jQuery(document).ready(function() {
 //        var DatePicker = function () {
 //            //function to initiate bootstrap-datepicker
@@ -211,6 +212,6 @@
 //
 //        DatePicker.init();
 //    });
-</script>
+</script-->
 </body>
 </html>

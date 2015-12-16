@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2015 at 11:56 PM
+-- Generation Time: Dec 09, 2015 at 03:51 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `status` int(3) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=43 ;
 
 --
 -- Dumping data for table `reservation`
@@ -125,19 +125,18 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 
 INSERT INTO `reservation` (`id`, `sname`, `fname`, `mobile`, `email`, `roomNo_id`, `check_in`, `check_out`, `status`, `created_at`, `updated_at`) VALUES
 (19, 'Anene', 'valentine', '4444444444444', 'dhf@ghn.drfg', '17', '2015-11-15 11:04:20', '2015-11-15 17:45:21', 4, '2015-11-13 07:58:47', '2015-11-13 07:58:47'),
-(20, 'Kayoh', 'Obi', '6666666', 'eeee@hhh.vo', '9', '2015-11-16 10:52:41', '2015-11-15 17:24:50', 4, '2015-11-13 08:00:22', '2015-11-13 08:00:22'),
-(21, 'Anene', 'vallee', '3333333', 'dhf@ghn.drfg544', '7', '2015-11-15 20:37:05', '2015-11-15 17:24:50', 3, '2015-11-13 08:01:09', '2015-11-23 20:37:05'),
-(22, 'esrfrrr', 'cccccc', '999999999999', 'eeee@hhh.vo', '14', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 2, '2015-11-13 08:05:50', '2015-11-13 08:05:50'),
-(23, 'fgmhhm', 'rbtnymuyr', '3333333', 'eeee@hhh.vo', '5', '2015-11-15 10:52:41', '2015-11-15 17:24:50', 3, '2015-11-13 08:06:51', '2015-11-13 08:06:51'),
+(20, 'Kayoh', 'Obi', '6666666', 'eeee@hhh.vo', '9', '2015-12-02 10:52:41', '2015-12-04 17:24:50', 4, '2015-11-13 08:00:22', '2015-11-13 08:00:22'),
+(21, 'Anene', 'vallee', '3333333', 'dhf@ghn.drfg544', '7', '2015-12-02 20:37:05', '2015-12-03 17:24:50', 4, '2015-11-13 08:01:09', '2015-11-23 20:37:05'),
+(22, 'esrfrrr', 'cccccc', '999999999999', 'eeee@hhh.vo', '14', '2015-12-04 10:52:41', '2015-12-02 17:24:50', 1, '2015-11-13 08:05:50', '2015-11-13 08:05:50'),
+(23, 'fgmhhm', 'rbtnymuyr', '3333333', 'eeee@hhh.vo', '5', '2015-12-02 10:52:41', '2015-12-01 17:24:50', 4, '2015-11-13 08:06:51', '2015-11-13 08:06:51'),
 (24, 'esrfrrr', 'rbtnymuyr', '475897', 'dhf@ghn.drfg', '8', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 4, '2015-11-13 08:09:53', '2015-11-13 08:09:53'),
-(25, 'dfgh', 'rbtnymuyr', '3333333', 'dhf@ghn.drfg544', '10', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 3, '2015-11-13 08:12:24', '2015-11-13 08:12:24'),
-(26, 'esrfrrr', 'rbtnymuyr', '1234566', 'dhf@ghn.drfg544', '6', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 4, '2015-11-13 08:14:20', '2015-11-13 08:14:20'),
-(27, 'esrfrrr', 'cccccc', '475897', 'dhf@ghn.drfg544', '15', '2015-11-18 10:52:41', '2015-11-15 17:24:50', 3, '2015-11-13 18:03:23', '2015-11-13 18:03:23'),
-(29, 'Opus', 'Soniar', '09876543390', 'sonia@yahoo.com', '15', '2015-11-21 20:33:30', '2015-11-22 06:42:27', 3, '2015-11-19 06:42:27', '2015-11-24 19:28:33'),
-(30, 'daniel', 'apus', '455677889989', 'ssss@rrrr.ggg', '8', '2015-11-25 20:28:27', '2015-11-28 20:28:27', 1, '2015-11-23 20:28:27', '2015-11-23 20:28:27'),
-(31, 'kinsley', 'chinaka', '23456788988', 'kins@yahoo.com', '16', '2015-11-25 20:51:28', '2015-11-30 20:51:28', 1, '2015-11-23 20:51:28', '2015-11-23 20:51:28'),
-(32, 'pearl', 'charles', '87652424242', 'eee@eee.cccc', '4', '2015-11-24 20:52:37', '2015-11-26 20:52:37', 1, '2015-11-23 20:52:37', '2015-11-23 20:52:37'),
-(33, 'aaaaaaa', 'ssssss', '233333333', 'email@email.email', '11', '2015-11-26 21:58:43', '2015-12-04 21:58:43', 2, '2015-11-23 21:58:43', '2015-11-23 21:58:43');
+(35, 'Opus', 'Daniel', '443332397744', 'john@doe.yosss', '8', '2015-12-02 19:43:22', '2015-12-02 18:13:22', 4, '2015-11-30 18:13:22', '2015-11-30 18:13:22'),
+(37, 'aaaaa', 'ssssss', '22222', 'janet@jane.juliet', '8', '2015-12-03 19:05:58', '2015-12-03 19:05:58', 1, '2015-11-30 19:05:58', '2015-11-30 19:05:58'),
+(38, 'aaaa', 'qqqqqq', '2222', 'emma@gmail.com', '7', '2015-12-03 11:00:56', '2015-12-04 11:00:56', 4, '2015-12-02 11:00:56', '2015-12-02 11:00:56'),
+(39, 'aaaaa', 'ssssss', '2222222', 'sss@gmail.com', '9', '2015-12-03 11:04:31', '2015-12-03 11:04:31', 4, '2015-12-02 11:04:31', '2015-12-02 11:04:32'),
+(40, 'ssssss', 'ssssss', '22222', 'inuwa@isiaka.zuma', '10', '2015-12-03 11:07:21', '2015-12-03 11:07:21', 4, '2015-12-02 11:07:21', '2015-12-02 11:07:21'),
+(41, 'dddddd', 'cccc', '09077665436', 'george@gmail.com', '13', '2015-12-03 11:08:50', '2015-12-04 11:08:50', 4, '2015-12-02 11:08:50', '2015-12-02 11:08:50'),
+(42, 'ccccc', 'dddddd', '2222222', 'ben04@gmail.com', '15', '2015-12-04 11:28:03', '2015-12-04 11:28:03', 1, '2015-12-02 11:28:03', '2015-12-02 11:28:03');
 
 -- --------------------------------------------------------
 
@@ -229,19 +228,19 @@ INSERT INTO `room_no` (`id`, `room_no`, `cart_id`, `status`, `created_at`, `upda
 (1, 'N101', '3', 0, '2015-11-11 14:32:00', '2015-11-12 09:12:48'),
 (2, 'N102', '1', 0, '2015-11-11 14:32:17', '2015-11-11 14:32:17'),
 (3, 'N103', '2', 0, '2015-11-11 14:32:31', '2015-11-12 10:26:30'),
-(4, 'N104', '3', 1, '2015-11-11 14:33:06', '2015-11-23 20:52:37'),
+(4, 'N104', '3', 0, '2015-11-11 14:33:06', '2015-11-27 10:42:26'),
 (5, 'N201', '3', 0, '2015-11-11 14:33:23', '2015-11-13 08:06:52'),
 (6, 'N202', '2', 0, '2015-11-11 14:33:47', '2015-11-13 08:14:20'),
 (7, 'N203', '3', 0, '2015-11-11 14:34:16', '2015-11-23 20:37:05'),
 (8, 'N204', '2', 1, '2015-11-11 14:34:41', '2015-11-23 20:28:27'),
 (9, 'N205', '3', 0, '2015-11-11 14:35:18', '2015-11-13 08:00:22'),
-(10, 'N206', '3', 0, '2015-11-11 14:35:38', '2015-11-13 08:12:24'),
-(11, 'N207', '1', 1, '2015-11-11 14:36:00', '2015-11-23 21:58:43'),
+(10, 'N206', '3', 0, '2015-11-11 14:35:38', '2015-11-27 14:22:22'),
+(11, 'N207', '1', 0, '2015-11-11 14:36:00', '2015-11-23 21:58:43'),
 (12, 'N208', '1', 0, '2015-11-11 14:36:10', '2015-11-11 14:36:10'),
 (13, 'N301', '3', 0, '2015-11-11 14:37:35', '2015-11-11 14:37:35'),
-(14, 'N302', '2', 0, '2015-11-11 14:37:54', '2015-11-13 08:05:50'),
-(15, 'N303', '2', 0, '2015-11-11 14:38:09', '2015-11-24 19:28:33'),
-(16, 'N304', '1', 1, '2015-11-11 14:38:29', '2015-11-23 20:51:28'),
+(14, 'N302', '2', 1, '2015-11-11 14:37:54', '2015-11-13 08:05:50'),
+(15, 'N303', '2', 1, '2015-11-11 14:38:09', '2015-11-24 19:28:33'),
+(16, 'N304', '1', 0, '2015-11-11 14:38:29', '2015-11-23 20:51:28'),
 (17, 'N305', '1', 0, '2015-11-11 14:38:51', '2015-11-13 07:58:47'),
 (18, 'N306', '1', 0, '2015-11-11 14:39:01', '2015-11-12 09:15:26'),
 (19, 'N307', '2', 0, '2015-11-11 14:39:19', '2015-11-11 14:39:19'),
@@ -274,9 +273,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `photo`, `email`, `password`, `surname`, `lastname`, `mobile`, `address`, `status`, `admin`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '85ed (10).JPG', 'pascal@yahoo.com', '$2y$10$HgOHJJnlnYJs77vcvzLgf.iWBiDC9BZHNoLJMhn3r6mU.TK3b7Kvm', 'Adigwe', 'Pascal', '0987654322', 'legislative quarters Apo', 0, 1, 'GYkGIp2Wooav1KG33b6ZXn60nlhw3l4laTywe3P7oq1BKkP0bOmgyS2rUENS', '2015-11-14 06:57:05', '2015-11-24 21:18:40'),
-(2, 'Kul_vee.jpg', 'kingsley4united@yahoo.com', '$2y$10$vPx3xQcskat85jzZ/uZae.TxDRSBNJeGvAEE7xeJE9XET39Re4jgu', 'Chinaka', 'Kingsley', '09077665436', 'ghfcvghf dfvc fgjghfg', 0, 0, 'D625tr0ko2hrp8780UxDMKX5J50NxUWdQKLvHI7dU0Z0OkcDbT0vd7DOrusS', '2015-11-16 18:14:19', '2015-11-24 21:14:40'),
-(4, '4.jpg', 'admin@gmail.com', '$2y$10$PyLQxxGP1MKR3pgIi1aTGe.12gNCWmBwlZxpw38p5.dX6R.63FV7.', 'Jane', 'jhgf', '23456788988', 'ssssss', 0, 0, NULL, '2015-11-24 21:34:00', '2015-11-24 21:34:00'),
+(1, '85ed (10).JPG', 'pascal@yahoo.com', '$2y$10$RIA7pULHFucFDfnns3kY2uaSQY6H0lEnCb3wx4pHehLn3rJ5pXysC', 'Adigwe', 'Pascal', '09878776556', 'legislative quarters Apo', 0, 1, 'UkRenDJUMGAp7FpVcapB25kh0a8Meejkvug30Ybvkr1sk2xG74PetDXuHIkf', '2015-11-14 06:57:05', '2015-11-26 22:23:11'),
+(2, 'Kul_vee.jpg', 'kingsley4united@yahoo.com', '$2y$10$whfiI51yWfYT3w..a.eXiuyR2ote9TZVLttDkm08QV97FIxPzysIm', 'Chinaka', 'Kingsley', '08996574532', 'ghfcvghf dfvc fgjghfg', 0, 0, 'FCqw3kRtHKojeCzGJC5LS4bJO7Si74uGyqBcYx23DmBWEezv1KhXefY1Af4F', '2015-11-16 18:14:19', '2015-11-27 11:42:06'),
+(4, '4.jpg', 'admin@gmail.com', '$2y$10$PyLQxxGP1MKR3pgIi1aTGe.12gNCWmBwlZxpw38p5.dX6R.63FV7.', 'Jane', 'jhgf', '23456788988', 'ssssss', 0, 0, 'g16wwu54VBdhQWomg76seEOYTEWf4f0KjF0j72kkCDWHUKDLt1ouvDEOYMA0', '2015-11-24 21:34:00', '2015-11-26 18:54:27'),
 (5, '5.png', 'admin@gmailu.com', '$2y$10$IqNRk/uiGkXPqnRX2TmX5ODkIj/Ic82qb4Pd3qUChygiHhN8x6QhK', 'ffff', 'jhgf', '233333333', 'ssasx', 0, 0, NULL, '2015-11-24 21:38:03', '2015-11-24 21:38:03');
 
 --
@@ -343,7 +342,7 @@ MODIFY `room_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `reservation_status`
 --
@@ -373,7 +372,11 @@ WHERE id IN (SELECT roomNo_id FROM reservation
 WHERE status >= 3)$$
 
 CREATE DEFINER=`root`@`localhost` EVENT `reservationExpire` ON SCHEDULE EVERY 30 MINUTE STARTS '2015-11-17 21:00:00' ON COMPLETION PRESERVE ENABLE DO UPDATE reservation SET status = 4 
-WHERE NOW() >= DATE_ADD(check_in, INTERVAL 24 HOUR) AND status = 1$$
+WHERE NOW() >= DATE_ADD(check_in, INTERVAL -24 HOUR) AND status = 1$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `roomClose` ON SCHEDULE EVERY 30 MINUTE STARTS '2015-11-29 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE room_no SET status = 1
+WHERE id IN (SELECT roomNo_id FROM reservation
+WHERE check_in <= DATE_ADD(NOW(), INTERVAL 48 HOUR) AND status = 1) AND status = 0$$
 
 DELIMITER ;
 

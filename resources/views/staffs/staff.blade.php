@@ -11,6 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -208,29 +209,31 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery-ui.js"></script>
+{{--<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>--}}
 <script src="js/main.js"></script>
 <script src="js/custom/default.js"></script>
-<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script>
-    jQuery(document).ready(function() {
-        var DatePicker = function () {
-            //function to initiate bootstrap-datepicker
-            var runDatePicker = function () {
-                $('.date-picker').datepicker({
-                    autoclose: true,
-                    format: 'yyyy-mm-dd',
-                });
-            };
-            return {
-                //main function to initiate template pages
-                init: function () {
-                    runDatePicker();
-                }
-            };
-        }();
 
-        DatePicker.init();
-    });
-</script>
+{{--<script>--}}
+    {{--jQuery(document).ready(function() {--}}
+        {{--var DatePicker = function () {--}}
+            {{--//function to initiate bootstrap-datepicker--}}
+            {{--var runDatePicker = function () {--}}
+                {{--$('.date-picker').datepicker({--}}
+                    {{--autoclose: true,--}}
+                    {{--format: 'yyyy-mm-dd',--}}
+                {{--});--}}
+            {{--};--}}
+            {{--return {--}}
+                {{--//main function to initiate template pages--}}
+                {{--init: function () {--}}
+                    {{--runDatePicker();--}}
+                {{--}--}}
+            {{--};--}}
+        {{--}();--}}
+
+        {{--DatePicker.init();--}}
+    {{--});--}}
+{{--</script>--}}
 </body>
 </html>

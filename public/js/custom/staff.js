@@ -9,6 +9,15 @@ $(function(){
         yearRange: "-10:+10"
     });
 
+    $('.date-picker2').datepicker({
+        autoclose: true,
+        dateFormat: 'yy-mm-dd',
+        minDate: "2",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-10:+10"
+    });
+
     $('#roomNoCat_id').bind('change', function(){
         //loader show
         var id = $(this).val();

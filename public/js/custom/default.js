@@ -149,7 +149,7 @@ $(function(){
                 if(!data.success){
                     var output = data.message + '<ul>';
                     $('#msg_div').addClass('alert-danger');
-                    $.each(data.errors, function (index, value) {
+                    $.reset(data.errors, function (index, value) {
                         output += '<li>'+value+'</li>';
                     });
                     output += '</ul>';

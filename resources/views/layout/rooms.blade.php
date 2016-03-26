@@ -27,34 +27,43 @@
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="/js/script.js"></script>
 
+    <style rel="stylesheet">
+        #main-slider{margin-top:80px;height: 720px}
+        .carousel-inner{margin-top:-120px;height:750px}
+        .slid_img{width:100%;height:400px;}
+        .item{background-color: ghostwhite;height: 700px;}
+        #cat_image1{width:105%; height:200px; margin-left:0%}
+    </style>
+
 </head><!--/head-->
 
 <body data-spy="scroll" data-target="" data-offset="0">
     <header id="header" role="banner">
         <div style="background-color: white;width:100%">
-            <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+            <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 55px; width: 40%">
         </div>
-        <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
-            <ul style="margin-top: 1%;">
+        <div id='cssmenu' style="margin-left: 5%;width:90%;">
+            <ul style="margin-top: 0%;">
                 <li><a href='/'><b><i class="icon-home"></i>&nbsp;Home</b></a></li>
-                <li><a href='/services'><b>Services</b></a></li>
+                {{--<li><a href='/services'><b>Services</b></a></li>--}}
                 <li class='active'><a href='/rooms'><b>Rooms</b></a></li>
                 <li><a href='/gallery'><b>Gallery</b></a></li>
                 <li><a href='/contact'><b>Contact</b></a></li>
+                <li class="pull-right"><a href='/staff'><i class="icon-lock"></i>&nbsp;<b>Admin</b></a></li>
             </ul>
         </div>
     </header><!--/#header-->
 
     @foreach($cart as $car)
-        <section id="main-slider" class="carousel" style="margin-top:80px;height: 750px">
-            <div class="carousel-inner" style="margin-top:-90px;height:800px">
+        <section id="main-slider" class="carousel" style="">
+            <div class="carousel-inner" style="">
                 <?php $i = 0?>
                 @if($car->rooms()->count() > 0)
                     @foreach($car->rooms()->get() as $room)
                         @if($i < 1)
-                            <div class="item active" style="background-color: ghostwhite;height: 700px;">
+                            <div class="item active" style="">
                         @else
-                            <div class="item" style="background-color: ghostwhite;height: 700px;">
+                            <div class="item" style="">
                         @endif
                                 <div class="container" style=""><br/>
                                     <div class="center gap">
@@ -63,11 +72,11 @@
                                     <div class="row" style="margin-top: 4%">
                                         <div class="col-sm-8 col-sm-offset-2">
                                             <div class="carousel-content" style="">
-                                                    <img class="" src="{{$room->fullPath()}}" alt="" style="width:96%;height:400px;">
+                                                <img class="slid_img" src="{{$room->fullPath()}}" alt="{{$room->name}}" style="width:100%;height:400px;">
                                             </div>
                                         </div>
                                     </div><br/>
-                                    <h4><b> Room {{$room->name}}</b></h4>
+                                    <h4><b>{{$room->name}}</b></h4>
                                 </div><br/>
                                 <div class="form-group">
                                     <center><button value="{{$car->id}}" style="width: 30%;" type="button" class="reserveRoomBtn btn btn-primary "><b>Reserve</b></button></center>
@@ -82,11 +91,11 @@
         </section><!--/#main-slider-->
     @endforeach
 
-    <section id="pricing" class="hide" style="margin-top: 5%;margin-top: 4.53%">
+    <section id="pricing" class="hide" style="margin-top: 4.7%;">
         <div class="container">
             <div class="box" style=" border-radius: 10px 10px">
-                <div class="center" >
-                    <h2>Room Reservation.</h2>
+                <div class="center" style="margin-top: -5%">
+                    <h2><label class="h2">Room Reservation.</label></h2>
                 </div>
                 <div id="pricing-table" class="row" style="border:1px solid #c0c0c0; border-radius: 5px 5px">
 
@@ -94,19 +103,15 @@
                     <div class="col-sm-6" style="">
                         <ul class="plan" style="margin-top:5%">
                             <li class="plan-name"><h4><b><label id="room_name"></label></b></h4></li>
-                            <div id="pricing-table2" class="row">
-                                <div class="col-sm-6" style="">
-                                    <div class="portfolio-image" style="width:100%;">
-                                        <img src="" id="cat_image1" alt="" style="width:100%; height:200px; margin-left:5%">
-                                        <!--div class="overlay">
-                                            <a class="preview btn btn-danger" id="cat_image2" title="Lorem ipsum dolor sit amet" href=""><i class="icon-eye-open"></i></a>
-                                        </div-->
-                                    </div><br/><br/>
-                                </div>
-                                <div class="col-sm-6" style="">
-                                    <section style="">
-                                        <label style="margin-top:16%"><h2><i>&#8358;<label id="room_price"></label></i></h2></label>
-                                    </section>
+                            <div id="" class="row">
+                                <div class="col-sm-10" style="margin-left: 10%;">
+                                    <div class="portfolio-image" style="width:80%;">
+                                        <img src="" id="cat_image1" alt="" style="width:100%; height:200px; margin-left:5%"><br/>
+                                        <h4><label style="">
+                                                <i>Start Price:<b>&#8358;&nbsp;<label id="start"></label></b></i><hr style="margin-left: -50%;width:200%;"/>
+                                                <i>Normal Price:<b>&#8358;&nbsp;<label id="room_price"></label></b></i><hr style="margin-left: -50%;width:200%;"/>
+                                        </label></h4>
+                                    </div>
                                 </div>
                             </div>
                         </ul>
@@ -150,7 +155,7 @@
                             <div class="row" style="">
                                 <div class="col-sm-6" style="" id="" >
                                     <div class="">
-                                        <label class="" for="">Enter Phone Number:</label>
+                                        <label class="" for="">Phone Number:</label>
                                         <div class="form-group">
                                             <input type="text" name="mobile" id="mobile" class="form-control" required="required" placeholder="Phone Number">
                                         </div>
@@ -158,7 +163,7 @@
                                 </div>
                                 <div class="col-sm-6" style="" id="" >
                                     <div class="form-group">
-                                        <label class="" for="">Enter E-Mail:</label>
+                                        <label class="" for="">E-Mail:</label>
                                         <input type="text" name="email" id="email" class="form-control" required="required" placeholder="Email address">
                                     </div>
                                 </div>
@@ -167,13 +172,13 @@
                                 <div class="col-sm-6" style="" id="" >
                                     <div class="form-group">
                                         <label class="" for="">Check In:</label>
-                                        <input type="text" name="check_in" id="check_in" class="form-control date-picker" required="required" placeholder="Check In">
+                                        <input type="text" name="check_in" id="check_in" class="form-control date-picker2" required="required" placeholder="Check In">
                                     </div>
                                 </div>
                                 <div class="col-sm-6" style="" id="" >
                                     <div class="form-group">
                                         <label class="" for="">Check Out:</label>
-                                        <input type="text" name="check_out" id="check_out" class="form-control date-picker" required="required" placeholder="Check Out">
+                                        <input type="text" name="check_out" id="check_out" class="form-control date-picker2" required="required" placeholder="Check Out">
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +186,7 @@
                                 <center><button id="submitForm" style="width: 80%" type="submit" class="btn btn-primary "><b>Reserve</b></button></center>
                             </div>
                         </form>
-                    </div><br/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,33 +197,46 @@
             <div class="box last" style="border-radius: 10px 10px; margin-top: 5.5%; width: 100%;">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h1>Our Address.</h1><hr style="width: 70%;margin-left: 0%"/>
-                        <address>
-                            <h4><b>Newland Hotels and Suites.</b></h4>
-                            11 Koforidua St, Off Mambolo St<br>
-                            Wuse Zone 2, Abuja.<br>
-                            <abbr title="Phone">Tel:</abbr> (234) 456-7890-899
-                        </address>
-                    </div><!--/.col-sm-6-->
-                    <div class="col-sm-6">
-                        <h1>Connect With Us.</h1><hr style="width: 70%;margin-left: 0%"/>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="social">
-                                    <li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="social">
-                                    <li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        <h1>Contact Us.</h1><hr style="width: 70%;margin-left: 0%"/>
+                        {{--<address>--}}
+                        {{--<h4><b>Newland Hotels and Suites.</b></h4>--}}
+                        {{--11 Koforidua St, Off Mambolo St<br>--}}
+                        {{--Wuse Zone 2, Abuja.<br>--}}
+                        {{--<abbr title="Phone">Tel:</abbr> (234) 456-7890-899--}}
+                        {{--</address>--}}
                     </div>
-                </div><!--/.col-sm-6-->
+                    <div class="col-sm-6">
+                        <address>
+                            <h4 style="text-decoration: underline"><b>Newland Hotels and Suites.</b></h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    11 Koforidua St, Off Mambolo St<br>
+                                    Wuse Zone 2, Abuja.<br>
+                                </div>
+                                <div class="col-md-6">
+                                    <abbr title="Phone"><b>Tel:</b></abbr><br/>
+                                    08090555427, 08063061008,<br>
+                                    092918034, 092918033.
+                                </div>
+                            </div>
+                        </address>
+                        {{--<h1>Connect With Us.</h1><hr style="width: 70%;margin-left: 0%"/>--}}
+                        {{--<div class="row">--}}
+                        {{--<div class="col-md-6">--}}
+                        {{--<ul class="social">--}}
+                        {{--<li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>--}}
+                        {{--</ul>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-md-6">--}}
+                        {{--<ul class="social">--}}
+                        {{--<li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>--}}
+                        {{--</ul>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                    </div>
+                </div><!--6-->
             </div><!--/.row-->
         </div><!--/.box-->
-        </div><!--/.container-->
     </section><!--/#contact-->
 
 
@@ -247,26 +265,26 @@
 <script src="js/jquery-ui.js"></script>
 <script src="js/main.js"></script>
 <script src="js/custom/default.js"></script>
-<script>
-    jQuery(document).ready(function() {
-        var DatePicker = function () {
-            //function to initiate bootstrap-datepicker
-            var runDatePicker = function () {
-                $('.date-picker').datepicker({
-                    autoclose: true,
-                    format: 'yyyy-mm-dd',
-                });
-            };
-            return {
-                //main function to initiate template pages
-                init: function () {
-                    runDatePicker();
-                }
-            };
-        }();
+{{--<script>--}}
+    {{--jQuery(document).ready(function() {--}}
+        {{--var DatePicker = function () {--}}
+            {{--//function to initiate bootstrap-datepicker--}}
+            {{--var runDatePicker = function () {--}}
+                {{--$('.date-picker').datepicker({--}}
+                    {{--autoclose: true,--}}
+                    {{--format: 'yyyy-mm-dd',--}}
+                {{--});--}}
+            {{--};--}}
+            {{--return {--}}
+                {{--//main function to initiate template pages--}}
+                {{--init: function () {--}}
+                    {{--runDatePicker();--}}
+                {{--}--}}
+            {{--};--}}
+        {{--}();--}}
 
-        DatePicker.init();
-    });
-</script>
+        {{--DatePicker.init();--}}
+    {{--});--}}
+{{--</script>--}}
 </body>
 </html>

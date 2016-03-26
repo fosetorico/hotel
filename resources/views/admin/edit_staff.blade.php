@@ -32,13 +32,13 @@
     <div style="background-color: white;width:100%">
         <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
     </div>
-    <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
+    <div id='cssmenu' style="margin-left: 0%;width:100%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/register'><b style=""><i class=" icon-pencil"></i>&nbsp; Register Staff</b></a></li>
+            <li><a href='/register'><b style="">Register Staff</b></a></li>
             <li><a href='/view_staff'><b>View Details</b></a></li>
-            <li><a href='/block'><b>Block & Unblock Staff</b></a></li>
+            <li><a href='/block'><b>Block & Unblock</b></a></li>
             <li class='active'><a href='/edit_staff'><b>Edit Records</b></a></li>
-            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><b>Logout</b></a></li>
             <!--li><a href='/billing'><b>Edit Billings</b></a></li-->
         </ul>
     </div>
@@ -58,98 +58,138 @@
 
                 {{--<div class="tab-content">--}}
                     {{--<div class="tab-pane active" id="tab1">--}}
-                        <div style="border:2px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
+                        <div style="border:2px solid #c0c0c0; margin-left: 5%; width: 90%; border-radius: 10px 10px;">
                             <div class="center gap">
-                                <h4>Edit Admin Details.</h4><hr style="margin-left: 20%; width:60%;"/>
-                                welcome {{Auth::user()->fullName()}}
+                                <h4>Edit Your Details.</h4><hr style="margin-left: 20%; width:60%;"/>
+                                welcome <b>{{Auth::user()->fullName()}}</b>
                             </div>
                             @if(Session::has('flash_message'))
                                 {!! Session::get('flash_message') !!}
                             @endif
                             @include('errors.errors')
-                            <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                            <form class="" method="post" action="/admin_edit" role="form" style="">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="row" style="margin-top: 0%; margin-left: 5%;">
                                     <div class="col-sm-6" style="margin-left: -4%" id="" >
                                         <div class="" style="margin-left: 5%">
                                             <label class="" for="">Current Email:</label>
-                                            <div class="row" style="">
-                                                <div class="form-group col-sm-9">
+                                            {{--<div class="row" style="">--}}
+                                                <div class="" style="width: 80%; margin-left: 0%">
                                                     <input type="text" value="{{Auth::user()->email}}" style="" disabled="disabled" class="form-control">
                                                     <input type="hidden" name="old_email" value="{{Auth::user()->mobile}}">
                                                 </div>
-                                            </div>
+                                            {{--</div>--}}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                        <div class="" style="margin-left: 5%">
+                                    <div class="col-sm-6" style="" id="" >
+                                        <div class="" style="">
                                             <label class="" for="">New Email Address:</label>
-                                            <div class="form-group col-sm-9">
-                                                <input type="text" style="margin-left: -8%" name="email" id="email" value="{{ old('email')}}" required="required" class="form-control" placeholder="Email Address">
-                                            </div>
-                                            <div class="form-group col-sm-3">
-                                                <div class="form-group">
-                                                    <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
-                                                </div>
-                                            </div>
+                                            <table style="margin-left: 0%; width: 100%" cellpadding="7" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="80%">
+                                                            <input type="text" style="" name="email" id="email" value="{{ old('email')}}" required="required" class="form-control" placeholder="Email Address">
+                                                        </td>
+                                                        <td width="20%">
+                                                            <button style="width: 90%;" type="submit" class="btn btn-primary "><b>Edit</b></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            {{--<div class="form-group col-sm-9">--}}
+                                                {{--<input type="text" style="margin-left: -8%" name="email" id="email" value="{{ old('email')}}" required="required" class="form-control" placeholder="Email Address">--}}
+                                            {{--</div>--}}
+                                            {{--<div class="form-group col-sm-3">--}}
+                                                {{--<div class="form-group">--}}
+                                                    {{--<center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 </div>
                             </form><br>
-                            <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                            <form class="" method="post" action="/admin_edit" role="form" style="">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="row" style="margin-top: 0%; margin-left: 5%;">
                                     <div class="col-sm-6" style="margin-left: -4%" id="" >
                                         <div class="" style="margin-left: 5%">
                                             <label class="" for="">Current Mobile No:</label>
-                                            <div class="row" style="">
-                                                <div class="form-group col-sm-9">
+                                            {{--<div class="row" style="">--}}
+                                                <div class=""  style="width: 80%; margin-left: 0%">
                                                     <input type="text" value="{{Auth::user()->mobile}}" style="" disabled="disabled" class="form-control">
                                                     <input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">
                                                 </div>
-                                            </div>
+                                            {{--</div>--}}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                        <div class="" style="margin-left: 5%">
+                                    <div class="col-sm-6" style="" id="" >
+                                        <div class="" style="">
                                             <label class="" for="">New Mobile No:</label>
-                                            <div class="form-group col-sm-9">
-                                                <input type="text" style="margin-left: -8%" name="mobile" id="mobile" value="{{ old('mobile')}}" required="required" class="form-control" placeholder="Mobile No">
-                                            </div>
-                                            <div class="form-group col-sm-3">
-                                                <div class="form-group">
-                                                    <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
-                                                </div>
-                                            </div>
+                                            <table style="margin-left: 0%; width: 100%" cellpadding="7" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="80%">
+                                                            <input type="text" style="" name="mobile" id="mobile" value="{{ old('mobile')}}" required="required" class="form-control" placeholder="Mobile No">
+                                                        </td>
+                                                        <td width="20%">
+                                                            <button style="width: 90%" type="submit" class="btn btn-primary "><b>Edit</b></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            {{--<div class="form-group col-sm-9">--}}
+                                                {{--<input type="text" style="margin-left: -8%" name="mobile" id="mobile" value="{{ old('mobile')}}" required="required" class="form-control" placeholder="Mobile No">--}}
+                                            {{--</div>--}}
+                                            {{--<div class="form-group col-sm-3">--}}
+                                                {{--<div class="form-group">--}}
+                                                    {{--<center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 </div>
                             </form><br>
-                            <form class="" method="post" action="/admin_edit" role="form" style="margin-top: -2.5%;margin-left: 5%">
+                            <form class="" method="post" action="/admin_edit" role="form" style="">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="row" style="margin-top: 0%; margin-left: 5%;">
                                     <div class="col-sm-6" style="margin-left: -4%" id="" >
                                         <div class="" style="margin-left: 5%">
                                             <label class="" for="">New Password:</label>
-                                            <div class="row" style="">
-                                                <div class="form-group col-sm-9">
+                                            {{--<div class="row" style="">--}}
+                                                <div class="" style="width: 80%; margin-left: 0%">
                                                     <input type="password" style="" name="password" id="password" required="required" class="form-control" placeholder="New Password">
                                                 </div>
-                                            </div>
+                                            {{--</div>--}}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6" style="margin-left: -4%" id="" >
-                                        <div class="" style="margin-left: 5%">
+                                    <div class="col-sm-6" style="" id="" >
+                                        <div class="" style="">
                                             <label class="" for="">Confirm New Password:</label>
-                                            <div class="form-group col-sm-9">
-                                                <input type="password" style="margin-left: -8%" name="password_confirmation" id="password_confirmation" required="required" class="form-control" placeholder="Confirm New Password">
-                                                <input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">
-                                            </div>
-                                            <div class="form-group col-sm-3">
-                                                <div class="form-group">
-                                                    <center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>
-                                                </div>
-                                            </div>
+                                            <table style="margin-left: 0%; width: 100%" cellpadding="7" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="80%">
+                                                            <input type="password" style="" name="password_confirmation" id="password_confirmation" required="required" class="form-control" placeholder="Confirm New Password">
+                                                            <input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">
+                                                        </td>
+                                                        <td width="20%">
+                                                            <button style="width: 90%" type="submit" class="btn btn-primary "><b>Edit</b></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            {{--<div class="form-group col-sm-9">--}}
+                                                {{--<input type="password" style="margin-left: -8%" name="password_confirmation" id="password_confirmation" required="required" class="form-control" placeholder="Confirm New Password">--}}
+                                                {{--<input type="hidden" name="old_mobile" value="{{Auth::user()->mobile}}">--}}
+                                            {{--</div>--}}
+                                            {{--<div class="form-group col-sm-3">--}}
+                                                {{--<div class="form-group">--}}
+                                                    {{--<center><button style="margin-left: -60%;width: 130%" type="submit" class="btn btn-primary "><b>Edit</b></button></center>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 </div>

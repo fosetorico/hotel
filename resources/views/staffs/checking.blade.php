@@ -35,14 +35,14 @@
     <div style="background-color: white;width:100%">
         <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
     </div>
-    <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
+    <div id='cssmenu' style="margin-left: 0%;width:100%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/staff'><b style="">Check Reservation</b></a></li>
-            <li><a href='/upload'><b>Upload Images</b></a></li>
+            <li><a href='/staff'><b style="">Reservation</b></a></li>
+            <li><a href='/upload'><b>Upload</b></a></li>
             <li><a href='/availability'><b>Availability</b></a></li>
             <li class='active'><a href='/checking'><b>Checking</b></a></li>
-            <li><a href='/edit_detail'><b>Edit Details</b></a></li>
-            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <li><a href='/edit_detail'><b>Edit Detail</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><b>Logout</b></a></li>
         </ul>
     </div>
 </header><!--/#header-->
@@ -65,7 +65,7 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
-                        <div style="border:2px solid #c0c0c0; margin-left: 10%; width: 80%; border-radius: 10px 10px;">
+                        <div style="border:2px solid #c0c0c0; margin-left: 5%; width: 90%; border-radius: 10px 10px;">
                             @if(Session::has('flash_message'))
                                 {!! Session::get('flash_message') !!}
                             @endif
@@ -73,7 +73,7 @@
                             @include('errors.errors')<br>
                             <div class="center gap">
                                 <h3><b>Check In Customer.</b></h3>
-                                welcome {{Auth::user()->fullName()}}
+                                welcome <b>{{Auth::user()->fullName()}}</b>
                             </div>
 
                             <form method="post" action="/checkIn-room" role="form" style="margin-left: 10%;width:80%;margin-top: -2.5%">
@@ -155,6 +155,7 @@
                                     <center><button style="width: 80%" type="submit" class="btn btn-primary "><b>Check In</b></button></center>
                                 </div>
                             </form>
+                                <br>
                         </div>
                     </div>
                 </div><br/><br/><br/>
@@ -189,7 +190,8 @@
 {{--<script src="js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>--}}
 <script src="js/main.js"></script>
 <script src="js/custom/staff.js"></script>
-<script>
+
+<!--script>
 //    jQuery(document).ready(function() {
 //        var DatePicker = function () {
 //            //function to initiate bootstrap-datepicker
@@ -211,6 +213,6 @@
 //
 //        DatePicker.init();
 //    });
-</script>
+</script-->
 </body>
 </html>

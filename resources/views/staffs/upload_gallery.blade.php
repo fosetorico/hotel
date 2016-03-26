@@ -32,14 +32,14 @@
     <div style="background-color: white;width:100%">
         <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
     </div>
-    <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
+    <div id='cssmenu' style="margin-left: 0%;width:100%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/staff'><b style=""><b style="">Check Reservation</b></b></a></li>
-            <li class='active'><a href='/upload'><b>Upload Images</b></a></li>
+            <li><a href='/staff'><b style=""><b style="">Reservation</b></b></a></li>
+            <li class='active'><a href='/upload'><b>Upload</b></a></li>
             <li><a href='/availability'><b>Availability</b></a></li>
             <li><a href='/checking'><b>Checking</b></a></li>
-            <li><a href='/edit_detail'><b>Edit Details</b></a></li>
-            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <li><a href='/edit_detail'><b>Edit Detail</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><b>Logout</b></a></li>
         </ul>
     </div>
 </header><!--/#header-->
@@ -58,10 +58,10 @@
                 <div class="tab-content">
 
                     <div class="tab-pane active" id="tab2">
-                        <div style="border:2px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
+                        <div style="border:2px solid #c0c0c0; margin-left: 5%; width: 90%; border-radius: 10px 10px;">
                             <div class="center gap">
                                 <h4>Gallery Images.</h4><hr style="margin-left: 20%; width:60%;"/>
-                                welcome {{Auth::user()->fullName()}}
+                                welcome <b>{{Auth::user()->fullName()}}</b>
                             </div>
                             <!-- start: FLASH MESSAGE -->
                             @if(Session::has('flash_message'))
@@ -69,15 +69,15 @@
                             @endif
                             @include('errors.errors')
                             <div class="row" style="margin-top: 5%">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <div class="col-sm-6" style="height: 70px;" id="" >
-                                    <div class="" style="margin-left: 10%; width:80%; height: 200px; border: 2px solid #c0c0c0;">
-                                        <img id="img_prev2" style="height: 100%;width:100%;" src="uploads/avatar.png" alt="passport">
+                                <form enctype="multipart/form-data" class="" method="post" action="galleryUpload" role="form" style="margin-top: -2.5%;margin-left: 2%">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <div class="col-sm-6" style="height: 200px;" id="" >
+                                        <div class="" style="margin-left: 10%; width:80%; height: 200px; border: 2px solid #c0c0c0;">
+                                            <img id="img_prev2" style="height: 100%;width:100%;" src="uploads/avatar.png" alt="passport">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6" style="margin-left: 0%;">
-                                    <form enctype="multipart/form-data" class="" method="post" action="galleryUpload" role="form" style="margin-top: -2.5%;margin-left: 2%">
-                                        <div class="row" style="height: 70px">
+                                    <div class="col-sm-6" style="margin-left: 0%;">
+                                        <div class="row" style="height: 70px; margin-left: 8%">
                                             <div class="">
                                                 <label class="" for="">Image:</label>
                                                 <div class="form-group">
@@ -85,7 +85,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row" style="height: 70px">
+                                        <div class="row" style="height: 70px; margin-left: 8%">
                                             <div class="">
                                                 <label class="" for="">Image Name:</label>
                                                 <div class="form-group">
@@ -93,7 +93,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row" style="height: 120px">
+                                        <div class="row" style="height: 120px; margin-left: 8%">
                                             <div class="" style="">
                                                 <label class="" for="">Image Description:</label>
                                                 <div class="form-group" style="">
@@ -102,15 +102,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row" style="height: 60px">
+                                        <div class="row" style="height: 60px; margin-left: 8%">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <button style="margin-left: 0%;width:70%" id ="upload_gal" style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Upload</b></button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div><br/>
                         </div><br/><br/><br/><br/>
                     </div>

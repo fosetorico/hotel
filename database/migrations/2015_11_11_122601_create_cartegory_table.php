@@ -18,6 +18,7 @@ class CreateCartegoryTable extends Migration
             $table->text('description');
             $table->string('image_id');
             $table->string('price',15);
+            $table->string('start_price',15);
             $table->timestamps();
         });
     }

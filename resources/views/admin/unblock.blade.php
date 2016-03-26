@@ -32,13 +32,13 @@
     <div style="background-color: white;width:100%">
         <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
     </div>
-    <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
+    <div id='cssmenu' style="margin-left: 0%;width:100%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/register'><b style=""><i class=" icon-pencil"></i>&nbsp; Register Staff</b></a></li>
+            <li><a href='/register'><b style="">Register Staff</b></a></li>
             <li><a href='/view_staff'><b>View Details</b></a></li>
-            <li class='active'><a href='/block'><b>Block & Unblock Staff</b></a></li>
+            <li class='active'><a href='/block'><b>Block & Unblock</b></a></li>
             <li><a href='/edit_staff'><b>Edit Records</b></a></li>
-            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><b>Logout</b></a></li>
             <!--li><a href='/billing'><b>Edit Billings</b></a></li-->
         </ul>
     </div>
@@ -58,10 +58,10 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
-                        <div style="border:2px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
+                        <div style="border:2px solid #c0c0c0; margin-left: 5%; width: 90%; border-radius: 10px 10px;">
                             <div class="center gap">
                                 <h4>Unblock Staff.</h4><hr style="margin-left: 20%; width:60%;"/>
-                                welcome {{Auth::user()->fullName()}}
+                                welcome <b>{{Auth::user()->fullName()}}</b>
                             </div>
                             @if(Session::has('flash_message'))
                                 {!! Session::get('flash_message') !!}
@@ -74,14 +74,27 @@
                                         <div class="" style="margin-left: 5%">
                                             <label class="" for="">Mobile No:</label>
                                             <div class="row" style="">
-                                                <div class="form-group col-sm-9">
-                                                    <input type="text" style="" name="mobile" id="mobile" value="{{ old('mobile')}}" class="form-control" required="required" placeholder="Mobile No">
-                                                </div>
-                                                <div class="form-group col-sm-3">
-                                                    <div class="form-group">
-                                                        <center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Unblock</b></button></center>
-                                                    </div>
-                                                </div>
+                                                <table style="margin-left: 0%; width: 100%" cellpadding="7" cellspacing="0">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td width="70%">
+                                                            <input type="text" style="" name="mobile" id="mobile" value="{{ old('mobile')}}" class="form-control" required="required" placeholder="Mobile No">
+                                                        </td>
+                                                        <td width="30%">
+                                                            <button style="" type="submit" class="btn btn-primary "><b>Unblock</b></button>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                {{--<div class="form-group col-sm-9">--}}
+                                                    {{--<input type="text" style="" name="mobile" id="mobile" value="{{ old('mobile')}}" class="form-control" required="required" placeholder="Mobile No">--}}
+                                                {{--</div>--}}
+                                                {{--<div class="form-group col-sm-3">--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Unblock</b></button></center>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -92,19 +105,33 @@
                                         <div class="" style="margin-left: -3%">
                                             <label class="" for="">Email Address:</label>
                                             <div class="row" style="">
-                                                <div class="form-group col-sm-9">
-                                                    <input type="text" style="" name="email" id="email" value="{{ old('email')}}" class="form-control" required="required" placeholder="Email Address">
-                                                </div>
-                                                <div class="form-group col-sm-3">
-                                                    <div class="form-group">
-                                                        <center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Unblock</b></button></center>
-                                                    </div>
-                                                </div>
+                                                <table style="margin-left: 0%; width: 100%" cellpadding="7" cellspacing="0">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td width="70%">
+                                                            <input type="text" style="" name="email" id="email" value="{{ old('email')}}" class="form-control" required="required" placeholder="Email Address">
+                                                        </td>
+                                                        <td width="30%">
+                                                            <button style="" type="submit" class="btn btn-primary "><b>Unblock</b></button>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                {{--<div class="form-group col-sm-9">--}}
+                                                    {{--<input type="text" style="" name="email" id="email" value="{{ old('email')}}" class="form-control" required="required" placeholder="Email Address">--}}
+                                                {{--</div>--}}
+                                                {{--<div class="form-group col-sm-3">--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<center><button style="margin-left: -40%" type="submit" class="btn btn-primary "><b>Unblock</b></button></center>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
+                            <br><br>
                         </div>
                     </div><br/>
                 </div>

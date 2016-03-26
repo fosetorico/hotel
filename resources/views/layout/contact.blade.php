@@ -49,24 +49,25 @@
 <body data-spy="scroll" data-target="" data-offset="">
     <header id="header" role="">
         <div style="background-color: white;width:100%">
-            <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+            <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 55px; width: 40%">
         </div>
-        <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
-            <ul style="margin-top: 1%;">
+        <div id='cssmenu' style="margin-left: 5%;width:90%;">
+            <ul style="margin-top: 0%;">
                 <li><a href='/'><b><i class="icon-home"></i>&nbsp;Home</b></a></li>
-                <li><a href='/services'><b>Services</b></a></li>
+                {{--<li><a href='/services'><b>Services</b></a></li>--}}
                 <li><a href='/rooms'><b>Rooms</b></a></li>
                 <li><a href='/gallery'><b>Gallery</b></a></li>
                 <li class='active'><a href='/contact'><b>Contact</b></a></li>
+                <li class="pull-right"><a href='/staff'><i class="icon-lock"></i>&nbsp;<b>Admin</b></a></li>
             </ul>
         </div>
     </header><!--/#header-->
 
-    <section id="pricing" class="" style="margin-top: 210px">
+    <section id="pricing" class="" style="margin-top: 130px">
         <div id="map-canvas" style="border:1px solid #C0C0C0; height:420px;"></div>
     </section><br/><br/><br/>
 
-    <section id="contact">
+    <section id="contact" style="margin-top: -25px">
         <div class="container">
             <div class="box last" style="border-radius: 30px 30px">
                 <div class="row">
@@ -89,7 +90,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Message"></textarea>
+                                        <textarea name="message" id="message" required="required" class="form-control" rows="4" placeholder="Message"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button  style="margin-left: 15%;width:70%" type="submit" class="btn btn-primary btn-lg">Send Message</button>
@@ -106,23 +107,25 @@
                                     <h4><b>Newland Hotels and Suites.</b></h4>
                                     11 Koforidua St, Off Mambolo St<br>
                                     Wuse Zone 2, Abuja.<br>
-                                    <abbr title="Phone">Tel:</abbr> (234) 456-7890-899
+                                    <abbr title="Phone"><b>Tel:</b></abbr><br/>
+                                    08090555427, 08063061008,<br>
+                                    092918034, 092918033.
                                 </address>
                             </div>
                         </div>
-                        <h1>Connect with us.</h1><hr style="width: 70%;margin-left: 0%"/>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="social">
-                                    <li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="social">
-                                    <li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        {{--<h1>Connect with us.</h1><hr style="width: 70%;margin-left: 0%"/>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md-6">--}}
+                                {{--<ul class="social">--}}
+                                    {{--<li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-6">--}}
+                                {{--<ul class="social">--}}
+                                    {{--<li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div><!--/.col-sm-6-->
                 </div><!--/.row-->
             </div><!--/.box-->

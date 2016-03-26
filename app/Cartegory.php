@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cartegory extends Model
 {
     protected $table = 'cartegory';
-    protected $fillable = ['name', 'description', 'image_id','price'];
+    protected $fillable = ['name', 'description', 'image_id','price','start_price'];
 
     public function image()
     {

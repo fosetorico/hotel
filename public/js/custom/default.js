@@ -11,6 +11,15 @@ $(function(){
         yearRange: "-10:+10"
     });
 
+    $('.date-picker2').datepicker({
+        autoclose: true,
+        dateFormat: 'yy-mm-dd',
+        minDate: "2",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-10:+10"
+    });
+
     $('.book_room').bind('click', function(){
         $('#summaryDiv').html('');
         $('#reservation-form')[0].reset();
@@ -21,6 +30,7 @@ $(function(){
                 $('#pricing').removeClass('hide');
                 $('#summaryForm').removeClass('hide');
                 $('#room_price').text(data.price);
+                $('#start').text(data.start_price);
                 $('#room_name').text(data.name);
                 $('#cat_image1').attr('src', data.image);
                 $('#cat_image2').attr('href', data.image);
@@ -112,6 +122,7 @@ $(function(){
                 $('#summaryForm').removeClass('hide');
 
                 $('#room_price').text(data.price);
+                $('#start').text(data.start_price);
                 $('#room_name').text(data.name);
                 $('#cat_image1').attr('src', data.image);
                 $('#cat_image2').attr('href', data.image);
@@ -146,13 +157,13 @@ $(function(){
                 }
                 else {
                     $('#summaryForm').addClass('hide');
-                    var output = '<div class="col-sm-6" style="" id="summaryDiv">\
-                                    <section style="margin-top: 10%;width: 200%;margin-left: 5%">\
+                    var output = '<div class="col-sm-12" style="" id="summaryDiv">\
+                                    <section style="margin-top: 10%;width: 100%;margin-left: 0%">\
                                         <div class="row" style="background-color: white; border-radius:20px 20px">\
                                             <center><label><h4><b><i>Your Reservation Details...</i></b></h4></label></center>\
                                             <div class="alert alert-success">'+data.message+'</div>\
                                             <div class="col-md-10 col-md-offset-1">\
-                                                <table class="table table-bordered table-striped table-hover table-responsive" style="border-radius: 10px 10px">\
+                                                <table class="table table-bordered table-striped table-hover table-responsive" style="border-radius: 10px 10px;width: 100%">\
                                                     <tbody>\
                                                         <tr>';
                     output += '<td><label class="" for=""><b>Surname:</b></label></td>\
@@ -181,6 +192,9 @@ $(function(){
                                                         <tr>';
                     output += '<td><label class="" for=""><b>Room Number:</b></label></td>\
                                                                <td><label class="" for="">' + data.roomNo + '</label></td>\
+                                                        </tr>\
+                                                        <tr>\
+                                                            <td colspan="2"><b>Please Note That Reserved Room Shall Expire 24 Hours Before Reservation Date, If Transaction Is Not Made.</b></td>\
                                                         </tr>\
                                                     </tbody>\
                                                 </table><br/>\
@@ -242,7 +256,7 @@ $(function(){
                                 </div>\
                             </div>';
                 $('#search_table').html(output);
-                //$('#pricing').addClass('show');
+                //$('#pricing').addClass('show'); this.e.target();
             }
             //alert(data.id);
         });

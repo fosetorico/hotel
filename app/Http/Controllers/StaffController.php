@@ -263,8 +263,7 @@ class StaffController extends Controller
 
     public function detail()
     {
-//        $staf = User::all();
-        return view('staffs.edit_record');  //,compact('staf'));
+        return view('staffs.edit_detail');
     }
 
     public function edit_detail(Request $request)

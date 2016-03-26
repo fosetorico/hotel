@@ -3,6 +3,7 @@
 Route::get('/','DefaultController@index');
 Route::get('/rooms','RoomsController@index');
 Route::get('/contact','ContactController@index');
+Route::get('/gallery','ContactController@index2');
 
 Route::get('/get-category/{id?}', 'DefaultController@getCategory');
 

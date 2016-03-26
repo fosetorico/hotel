@@ -70,6 +70,23 @@ class DefaultController extends Controller
         $out = new Carbon($inputs['check_out']);
         $difference = $in->diffInHours($out, false);
 
+//        $check = Reservation::where('roomNo_id', $inputs['roomNo_id'])->where('check_in', $inputs['check_in'])->count();
+        $checks = Reservation::where('roomNo_id', $inputs['roomNo_id'])->get();
+        $count = 0;
+        foreach($checks as $check){
+            if($check->check_in->format('Y-m-d') === $inputs['check_in'])
+                $count++;
+        }
+
+        if($count > 0){
+            $reservation = new \stdClass();
+            $reservation->success = false;
+            $reservation->message = 'This Room Has Already Been Reserved On The Desired Check In Date.';
+            $reservation->errors = ['This Room Has Already Been Reserved On The Desired Check In Date'];
+
+            return response()->json($reservation);
+        }
+
         if($difference < 0){
             $reservation = new \stdClass();
             $reservation->success = false;
@@ -77,7 +94,8 @@ class DefaultController extends Controller
             $reservation->errors = ['Check Out Date cannot be less than Check In Date'];
 
             return response()->json($reservation);
-        }else {
+        }
+        else {
 
             if ($this->validator($inputs)->fails()) {
                 $reservation = new \stdClass();
@@ -88,9 +106,9 @@ class DefaultController extends Controller
                 $reservation = Reservation::create($inputs);
                 if ($reservation) {
                     $roomNo = $reservation->roomNo()->first();
-                    $roomNo->status = 1;
+//                    $roomNo->status = 1;
                     $reservation->status = 1;
-                    $roomNo->save();
+//                    $roomNo->save();
                     $reservation->save();
                     $reservation->roomNo = $reservation->roomNo()->first()->room_no;
                     $reservation->In = $reservation->check_in->format('Y-m-d');

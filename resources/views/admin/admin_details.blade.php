@@ -32,13 +32,13 @@
     <div style="background-color: white;width:100%">
         <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
     </div>
-    <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
+    <div id='cssmenu' style="margin-left: 0%;width:100%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/register'><b style=""><i class=" icon-pencil"></i>&nbsp; Register Staff</b></a></li>
+            <li><a href='/register'><b style="">Register Staff</b></a></li>
             <li class='active'><a href='/view_staff'><b>View Details</b></a></li>
-            <li><a href='/block'><b>Block & Unblock Staff</b></a></li>
+            <li><a href='/block'><b>Block & Unblock</b></a></li>
             <li><a href='/edit_staff'><b>Edit Records</b></a></li>
-            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><b>Logout</b></a></li>
             <!--li><a href='/billing'><b>Edit Billings</b></a></li-->
         </ul>
     </div>

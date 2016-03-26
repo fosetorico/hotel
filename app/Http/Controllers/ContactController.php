@@ -18,4 +18,13 @@ class ContactController extends Controller
     {
         return view('layout.contact');
     }
+
+    public function index2()
+    {
+        $images = Images::all();     //where('disp','Y')->get();
+        $slide = Images::all();      //where('slid','Y')->get();
+        $cart = Cartegory::all();
+        return view('layout.gallery', compact('images','slide', 'cart'));
+//        return view('layout.gallery');
+    }
 }

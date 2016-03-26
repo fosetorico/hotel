@@ -32,14 +32,14 @@
     <div style="background-color: white;width:100%">
         <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
     </div>
-    <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
+    <div id='cssmenu' style="margin-left: 0%;width:100%; height:80px">
         <ul style="margin-top: 1%;">
-            <li><a href='/staff'><b style="">Check Reservation</b></a></li>
-            <li><a href='/upload'><b>Upload Images</b></a></li>
+            <li><a href='/staff'><b style="">Reservation</b></a></li>
+            <li><a href='/upload'><b>Upload</b></a></li>
             <li class='active'><a href='/availability'><b>Availability</b></a></li>
             <li><a href='/checking'><b>Checking</b></a></li>
-            <li><a href='/edit_detail'><b>Edit Details</b></a></li>
-            <li class="pull-right"><a href='/auth/logout'><i class=" icon-off"></i>&nbsp;<b>Logout</b></a></li>
+            <li><a href='/edit_detail'><b>Edit Detail</b></a></li>
+            <li class="pull-right"><a href='/auth/logout'><b>Logout</b></a></li>
             {{--<li><a href=''><b>Gallery</b></a></li>--}}
             {{--<li><a href='/contact'><b>Contact</b></a></li>--}}
         </ul>
@@ -61,10 +61,10 @@
                 <div class="tab-content">
 
                     <div class="tab-pane active" id="tab2">
-                        <div style="border:2px solid #c0c0c0; margin-left: 15%; width: 70%; border-radius: 10px 10px;">
+                        <div style="border:2px solid #c0c0c0; margin-left: 5%; width: 90%; border-radius: 10px 10px;">
                             <div class="center gap">
                                 <h4>Reserved.</h4><hr style="margin-left: 20%; width:60%;"/>
-                                welcome {{Auth::user()->fullName()}}
+                                welcome <b>{{Auth::user()->fullName()}}</b>
                             </div>
                             <table class="table table-bordered table-striped table-hover table-responsive" style="margin-left: 10%; width: 80%">
                                 <thead>
@@ -89,7 +89,7 @@
                                         </tr>
                                     @endforeach
                                 @else
-                                    <tr><th colspan="8">No Room is Currently Available.</th></tr>
+                                    <tr><th colspan="8">No Room is Currently Reserved.</th></tr>
                                 @endif
                                 </tbody>
                             </table>

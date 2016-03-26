@@ -68,7 +68,7 @@ class UploadController extends Controller
     public function index()
     {
         $cart = Cartegory::all();
-        return view('staffs.upload', compact('cart'));
+        return view('staffs.uploads', compact('cart'));
     }
     public function galIndex()
     {

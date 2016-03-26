@@ -31,7 +31,7 @@
 <body>
 <header id="header" role="">
     <div style="background-color: white;width:100%">
-        <img src="uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
+        <img src="/uploads/logo.jpg" alt="" style="margin-left: 25%;height: 90px; width: 40%">
     </div>
     <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
         <ul style="margin-top: 1%;">

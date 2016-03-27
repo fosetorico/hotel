@@ -9,6 +9,12 @@ Route::get('/get-category/{id?}', 'DefaultController@getCategory');
 
 Route::post('/reserve-room/', 'DefaultController@reserveRoom');
 
+Route::get('/pass',function(){
+    return response()->json(\Hash::make("password"));
+});
+
+
+Route::post('/register-staff','StaffController@addStaff');
 Route::get('/staff','StaffController@index');
 Route::post('/staff','StaffController@search');
 Route::get('/availability','StaffController@availability');

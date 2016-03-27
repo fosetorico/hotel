@@ -61,7 +61,7 @@
             @endif
             @include('errors.errors')
             <div style="border:1px solid #c0c0c0; margin-left: 5%; width: 90%; border-radius: 10px 10px;">
-                <form enctype="multipart/form-data" method="POST" action="/auth/register" role="form" style="margin-top: 2%;margin-left: 10%;width: 80%">
+                <form enctype="multipart/form-data" method="post" action="/register-staff" role="form" style="margin-top: 2%;margin-left: 10%;width: 80%">
                     {!! csrf_field() !!}
                     <div class="row" style="">
                         <div class="col-sm-10" style="" id="" >

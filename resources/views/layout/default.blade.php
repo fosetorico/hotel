@@ -198,10 +198,11 @@
 
                     <div class="col-sm-6 hide" style="" id="summaryForm">
                         <center><label><i>There Is/Are <b><label id="room_count" style="color:red"></label></b> Room(s) Available That Match Your Choice</i></label><br/><br/></center>
-                        <div id="msg_div" class="alert">
 
+                        <div id="msg_div" class="alert hidden">
                         </div>
-                        <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="margin-top: -10.5%">
+
+                        <form id="reservation-form" class="contact-form" method="post" action="/reserve-room" role="form" style="">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="row" style="">
                                     <div class="col-sm-6" style="" id="" >

@@ -15,14 +15,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
 class StaffController extends Controller
 {
+
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
         $messages = [
@@ -323,5 +326,44 @@ class StaffController extends Controller
             }
             return redirect('/edit_detail');
         }
+    }
+
+    public function addStaff(Request $request)
+    {
+        $rules =  [
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'surname' => 'required|alpha|max:255',
+            'lastname' => 'required|alpha|max:255',
+            'mobile' => 'required|numeric|unique:users',
+            'address' => 'required|max:255',
+        ];
+        $inputs = $request->all();
+        $validator = Validator::make($inputs,$rules);
+
+        if ($validator->fails()) {
+            $this->setFlashMessage('Error!!! You have error(s) while filling the form.', 2);
+            return redirect('/register')->withErrors($validator)->withInput();
+//            $this->throwValidationException(
+//                $request, $validator
+//            );
+        }
+
+        $inputs['password'] = \Hash::make($inputs['password']);
+        $user = User::create($inputs);
+        if($request->hasFile('photo'))
+        {
+            $imageName = $user->id . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(base_path() . '/public' . $user->image_path, $imageName);
+            //Update Image url
+            $user->photo = $imageName;
+            $user->save();
+        }
+        $this->setFlashMessage('Saved!!! The Staff has been registered successfully.', 1);
+
+//        Auth::login($user);
+
+        return redirect('/register');
+
     }
 }

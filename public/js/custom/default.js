@@ -148,12 +148,12 @@ $(function(){
             if(data){
                 if(!data.success){
                     var output = data.message + '<ul>';
-                    $('#msg_div').addClass('alert-danger');
-                    $.reset(data.errors, function (index, value) {
+                    $('#msg_div').addClass('alert-danger').removeClass('hidden').show();
+                    $.each(data.errors, function (index, value) {
                         output += '<li>'+value+'</li>';
                     });
                     output += '</ul>';
-                    $('#msg_div').html(output);
+                    $('#msg_div').html(output).removeClass('hidden').show();
                 }
                 else {
                     $('#summaryForm').addClass('hide');

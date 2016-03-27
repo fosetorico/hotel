@@ -25,6 +25,7 @@ trait RegistersUsers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function postRegister(Request $request)
     {
         $validator = $this->validator($request->all());

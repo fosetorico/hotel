@@ -121,9 +121,10 @@
                     </div>
                     <div class="col-sm-6 hide" style="" id="summaryForm">
                         <center><label><i>There Are <b><label id="room_count" style="color:red"></label></b> Rooms Available That Match Your Choice</i></label><br/><br/></center>
-                        <div id="msg_div" class="alert">
 
+                        <div id="msg_div" class="alert hidden">
                         </div>
+
                         <form id="reservation-form" method="post" action="/reserve-room" role="form" style="margin-top: -2.5%">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="row" style="">

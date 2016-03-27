@@ -123,6 +123,6 @@ Route::group(['middleware' => 'auth'], function () {
 //    });
 });
 
-Route::post('/check/','DefaultController@search');
+Route::post('/check','DefaultController@search');
 
 Route::controller('auth', 'Auth\AuthController');

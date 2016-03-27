@@ -232,7 +232,7 @@ $(function(){
                                         </tr>\
                                     </thead>\
                                     <tbody>';
-        $.post('/check/', $('#mobile_form').serialize(), function(data){
+        $.post('/check', $('#mobile_form').serialize(), function(data){
             if(data){
                 if(!data.success){
                     output += '<tr>\

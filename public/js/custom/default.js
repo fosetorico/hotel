@@ -215,7 +215,7 @@ $(function(){
     });
 
     $('#mobile_search_btn').bind('click', function(e){
-        e.preventDefault();
+        //e.preventDefault();
         var output = '<div class="row">\
                             <div class="col-md-10 col-md-offset-1">\
                                 <table class="table table-bordered table-striped table-hover table-responsive">\
@@ -262,7 +262,8 @@ $(function(){
             }
             //alert(data.id);
         });
-        return false;
+        //return false;
+        e.preventDefault();
     });
 
 

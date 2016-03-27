@@ -25,6 +25,8 @@ $(function(){
         $('#reservation-form')[0].reset();
         var id = $(this).val();
         $.get('/get-category/'+id, function(data){
+            $('.loader').removeClass('hidden').show();
+
             if(data){
                 //$('#pricing').addClass('show');
                 $('#pricing').removeClass('hide');
@@ -43,11 +45,13 @@ $(function(){
                 //console.info('Room No', data.roomNos);
                 $('html, body').animate({
                     scrollTop: $('#pricing').offset().top
-                }, 2000);
+
+                }, 2000, function () {
+                  $('.loader').hide();
+                });
             }
             //alert(data.id);
         });
-
     });
 
     $('.update_stat').bind('click', function(){
@@ -109,13 +113,17 @@ $(function(){
 
     });
 
-    $('.reserveRoomBtn').bind('click', function(){
+    $('.reserveRoomBtn').bind('click', function()
+    {
         //image show
+        $('.loader').removeClass('hidden').show();
         $('#summaryDiv').html('');
         $('#reservation-form')[0].reset();
         var id = $(this).val();
-        $.get('/get-category/'+id, function(data){
-            if(data){
+        $.get('/get-category/'+id, function(data)
+        {
+            if(data)
+            {
                 //image hide
                 //$('#pricing').addClass('show');
                 $('#pricing').removeClass('hide');
@@ -139,11 +147,12 @@ $(function(){
             }
             //alert(data.id);
         });
-
+        $('.loader').hide();
     });
 
     $('#submitForm').bind('click', function(e){
         /*e.preventDefault();*/
+        $('.loader').removeClass('hidden').show();
         $.post('/reserve-room', $('#reservation-form').serialize(), function(data){
             if(data){
                 if(!data.success){
@@ -154,6 +163,8 @@ $(function(){
                     });
                     output += '</ul>';
                     $('#msg_div').html(output).removeClass('hidden').show();
+                    $('.loader').hide();
+
                 }
                 else {
                     $('#summaryForm').addClass('hide');
@@ -203,6 +214,8 @@ $(function(){
                                     </section><br/>\
                                  </div>';
                     $('#summaryDiv').html(output);
+                    $('.loader').hide();
+
                 }
                 console.info('Reservation', data);
                 //$('#pricing').addClass('show');
@@ -216,6 +229,7 @@ $(function(){
 
     $('#mobile_search_btn').bind('click', function(e){
         //e.preventDefault();
+        $('.loader').removeClass('hidden').show();
         var output = '<div class="row">\
                             <div class="col-md-10 col-md-offset-1">\
                                 <table class="table table-bordered table-striped table-hover table-responsive">\
@@ -234,12 +248,15 @@ $(function(){
                                     <tbody>';
         $.post('/check', $('#mobile_form').serialize(), function(data){
             if(data){
-                if(!data.success){
+                if(!data.success)
+                {
                     output += '<tr>\
                                     <tr><th colspan="8">No Match Found</th></tr>\
                                 </tr>';
+                   // $('.loader').hide();
                 }
-                else {
+                else
+                {
                     $.each(data.reserve, function(index, value){
                         output += '<tr>\
                                         <td>'+(index + 1)+'</td>\
@@ -258,6 +275,7 @@ $(function(){
                                 </div>\
                             </div>';
                 $('#search_table').html(output);
+                $('.loader').hide();
                 //$('#pricing').addClass('show'); this.e.target();
             }
             //alert(data.id);
@@ -269,6 +287,7 @@ $(function(){
 
     $('#email_search_btn').bind('click', function(e){
         //e.preventDefault();
+        $('.loader').removeClass('hidden').show();
         var output = '<div class="row">\
                             <div class="col-md-10 col-md-offset-1">\
                                 <table class="table table-bordered table-striped table-hover table-responsive">\
@@ -287,12 +306,15 @@ $(function(){
                                     <tbody>';
         $.post('/check', $('#email_form').serialize(), function(data){
             if(data){
-                if(!data.success){
+                if(!data.success)
+                {
                     output += '<tr>\
                                     <tr><th colspan="8">No Match Found</th></tr>\
                                 </tr>';
+                   // $('.loader').hide();
                 }
-                else {
+                else
+                {
                     $.each(data.reserve, function(index, value){
                         output += '<tr>\
                                         <td>'+(index + 1)+'</td>\
@@ -304,6 +326,7 @@ $(function(){
                                         <td>'+value.in+'</td>\
                                         <td>'+value.out+'</td>\
                                     </tr>';
+                        $('.loader').hide();
                     });
                 }
                 output +=           '</tbody>\
@@ -311,6 +334,7 @@ $(function(){
                                 </div>\
                             </div>';
                 $('#search_table').html(output);
+                $('.loader').hide();
                 //$('#pricing').addClass('show');
             }
             //alert(data.id);

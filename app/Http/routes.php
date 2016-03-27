@@ -7,11 +7,11 @@ Route::get('/gallery','ContactController@index2');
 
 Route::get('/get-category/{id?}', 'DefaultController@getCategory');
 
-Route::post('/reserve-room/', 'DefaultController@reserveRoom');
+Route::post('/reserve-room', 'DefaultController@reserveRoom');
 
-Route::get('/pass',function(){
-    return response()->json(\Hash::make("password"));
-});
+//Route::get('/pass',function(){
+//    return response()->json(\Hash::make("password"));
+//});
 
 
 Route::post('/register-staff','StaffController@addStaff');

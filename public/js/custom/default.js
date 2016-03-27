@@ -143,8 +143,8 @@ $(function(){
     });
 
     $('#submitForm').bind('click', function(e){
-        e.preventDefault();
-        $.post('/reserve-room/', $('#reservation-form').serialize(), function(data){
+        /*e.preventDefault();*/
+        $.post('/reserve-room', $('#reservation-form').serialize(), function(data){
             if(data){
                 if(!data.success){
                     var output = data.message + '<ul>';
@@ -209,7 +209,9 @@ $(function(){
             }
             //alert(data.id);
         });
-        return false;
+        /*return false;*/
+        e.preventDefault();
+
     });
 
     $('#mobile_search_btn').bind('click', function(e){

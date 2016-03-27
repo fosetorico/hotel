@@ -268,7 +268,7 @@ $(function(){
 
 
     $('#email_search_btn').bind('click', function(e){
-        e.preventDefault();
+        //e.preventDefault();
         var output = '<div class="row">\
                             <div class="col-md-10 col-md-offset-1">\
                                 <table class="table table-bordered table-striped table-hover table-responsive">\
@@ -285,7 +285,7 @@ $(function(){
                                         </tr>\
                                     </thead>\
                                     <tbody>';
-        $.post('/check/', $('#email_form').serialize(), function(data){
+        $.post('/check', $('#email_form').serialize(), function(data){
             if(data){
                 if(!data.success){
                     output += '<tr>\
@@ -315,7 +315,8 @@ $(function(){
             }
             //alert(data.id);
         });
-        return false;
+        //return false;
+        e.preventDefault();
     });
 
 

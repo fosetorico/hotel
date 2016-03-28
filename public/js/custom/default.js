@@ -1,7 +1,7 @@
 $(function(){
 
     $('#flash_message').delay(10000).slideUp(850);
-    $('.alert').delay(10).slideUp(8);
+    //$('.alert').delay(10).slideUp(8);
 
     $('.date-picker').datepicker({
         autoclose: true,

@@ -36,6 +36,7 @@
     <div id='cssmenu' style="margin-left: 5%;width:90%; height:80px">
         <ul style="margin-top: 1%;">
             <li class='active'><a href='/auth/login'><b><i class="icon-lock"></i>&nbsp;Staff/Admin Login</b></a></li>
+            <li class=''><a href='/'><b><i class="icon-home"></i>&nbsp;Home</b></a></li>
         </ul>
     </div>
 </header><!--/#header-->

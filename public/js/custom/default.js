@@ -1,6 +1,7 @@
 $(function(){
 
     $('#flash_message').delay(10000).slideUp(850);
+    $('.alert').delay(10).slideUp(8);
 
     $('.date-picker').datepicker({
         autoclose: true,
@@ -45,7 +46,6 @@ $(function(){
                 //console.info('Room No', data.roomNos);
                 $('html, body').animate({
                     scrollTop: $('#pricing').offset().top
-
                 }, 2000, function () {
                   $('.loader').hide();
                 });
@@ -60,6 +60,7 @@ $(function(){
         var id = $(this).val();
         $('#reserve_id').val(id);
         $.get('/get-reserve/'+id, function(data){
+            $('.loader').removeClass('hidden').show();
             if(data){
                 $('#update_res').removeClass('hide');
                 //$('#summaryForm').removeClass('hide');
@@ -67,7 +68,9 @@ $(function(){
                 $('#update_out').val(data.Out);
                 $('html, body').animate({
                     scrollTop: $('#update_res').offset().top
-                }, 2000);
+                }, 2000, function () {
+                    $('.loader').hide();
+                });
             }
             //alert(data.id);
         });
@@ -116,12 +119,12 @@ $(function(){
     $('.reserveRoomBtn').bind('click', function()
     {
         //image show
-        $('.loader').removeClass('hidden').show();
         $('#summaryDiv').html('');
         $('#reservation-form')[0].reset();
         var id = $(this).val();
         $.get('/get-category/'+id, function(data)
         {
+            $('.loader').removeClass('hidden').show();
             if(data)
             {
                 //image hide
@@ -143,7 +146,10 @@ $(function(){
                 //console.info('Room No', data.roomNos);
                 $('html, body').animate({
                     scrollTop: $('#pricing').offset().top
-                }, 2000);
+                }, 2000, function () {
+                    $('.loader').hide();
+                });
+
             }
             //alert(data.id);
         });
@@ -164,6 +170,7 @@ $(function(){
                     output += '</ul>';
                     $('#msg_div').html(output).removeClass('hidden').show();
                     $('.loader').hide();
+                    $('.alert').delay(5500).slideUp(5500);
 
                 }
                 else {
@@ -275,7 +282,12 @@ $(function(){
                                 </div>\
                             </div>';
                 $('#search_table').html(output);
-                $('.loader').hide();
+                $('html, body').animate({
+                    scrollTop: $('#search_table').offset().top
+                }, 2000, function () {
+                    $('.loader').hide();
+                });
+               // $('.loader').hide();
                 //$('#pricing').addClass('show'); this.e.target();
             }
             //alert(data.id);
@@ -334,7 +346,12 @@ $(function(){
                                 </div>\
                             </div>';
                 $('#search_table').html(output);
-                $('.loader').hide();
+                $('html, body').animate({
+                    scrollTop: $('#search_table').offset().top
+                }, 2000, function () {
+                    $('.loader').hide();
+                });
+                //$('.loader').hide();
                 //$('#pricing').addClass('show');
             }
             //alert(data.id);

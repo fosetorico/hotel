@@ -23,6 +23,7 @@ $(function(){
         var id = $(this).val();
         //$('#reserve_id').val(id);
         $.get('/get-rooms/'+id, function(data){
+            $('.loader').removeClass('hidden').show();
             if(data){
                 //loader hide
                 var output = '<option value="">Select Room</option>';
@@ -31,6 +32,7 @@ $(function(){
                 });
                 $('#roomNo_id').html(output);
             }
+            $('.loader').hide();
             //alert(data.id);
         });
 

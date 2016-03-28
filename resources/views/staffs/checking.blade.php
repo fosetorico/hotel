@@ -164,6 +164,10 @@
     </div><!--/.container-->
 </section><!--/#services-->
 
+<div class="loader hidden" style="position:fixed; z-index: 1000; top:0; left:0; height: 100%;
+        width:100%; background: rgba(0, 0, 0, .4) url('/uploads/loader.gif') 50% 50% no-repeat">
+</div>
+
 <footer id="footer">
     <div class="container">
         <div class="row">

@@ -193,6 +193,10 @@
         </div>
     </section><!--/#pricing-->
 
+    <div class="loader hidden" style="position:fixed; z-index: 1000; top:0; left:0; height: 100%;
+        width:100%; background: rgba(0, 0, 0, .4) url('/uploads/loader.gif') 50% 50% no-repeat">
+    </div>
+
     <section id="contact">
         <div class="container">
             <div class="box last" style="border-radius: 10px 10px; margin-top: 5.5%; width: 100%;">
